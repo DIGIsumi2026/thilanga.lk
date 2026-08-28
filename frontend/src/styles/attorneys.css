@@ -1,0 +1,49 @@
+.attorney-page-section {
+  margin-top: 35px;
+}
+.attorney-page-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.attorney-page-grid article {
+  background: #f8f7f3;
+}
+.attorney-photo.large {
+  height: 310px;
+  width: 100%;
+  border-radius: 0;
+  margin: 0;
+  object-fit: cover;
+  transition: 0.35s;
+}
+.attorney-page-grid article:hover .attorney-photo.large {
+  filter: contrast(1.05);
+  transform: scale(1.015);
+}
+.attorney-page-body {
+  padding: 22px;
+}
+.attorney-page-body h3 {
+  font: 23px var(--serif);
+  margin: 0;
+}
+.attorney-page-body p {
+  font-size: 10px;
+  color: #899296;
+}
+.attorney-page-body > div {
+  display: flex;
+  gap: 13px;
+  color: #53646a;
+}
+@media (max-width: 850px) {
+  .attorney-page-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .attorney-page-grid {
+    grid-template-columns: 1fr;
+  }
+}

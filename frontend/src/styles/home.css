@@ -1,0 +1,591 @@
+.hero {
+  height: min(100vh, 760px);
+  min-height: 650px;
+  background: var(--navy);
+  position: relative;
+  color: #fff;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0 0 0 37%;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #08252f 0%,
+    rgba(8, 37, 47, 0.97) 35%,
+    rgba(8, 37, 47, 0.55) 63%,
+    rgba(8, 37, 47, 0.08) 100%
+  );
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1180px;
+  height: 100%;
+  margin: auto;
+  padding: 160px 30px 65px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero-eyebrow {
+  font-size: 11px;
+  color: var(--gold);
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(201, 155, 59, 0.45);
+  width: max-content;
+  padding-bottom: 4px;
+}
+.hero h1 {
+  font-size: clamp(62px, 6.6vw, 100px);
+  line-height: 0.83;
+  letter-spacing: -3.3px;
+  margin: 0 0 36px;
+  max-width: 650px;
+}
+.clip-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+.hero-line {
+  display: block;
+}
+.hero h1 em {
+  font-style: italic;
+}
+.hero-pagination {
+  position: absolute;
+  bottom: 40px;
+  left: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-pagination button {
+  background: none;
+  border: 0;
+  color: #fff;
+  font-size: 8px;
+  opacity: 0.45;
+  padding: 0;
+}
+.hero-pagination button.active {
+  opacity: 1;
+}
+.hero-progress {
+  width: 80px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  margin-left: 5px;
+}
+.hero-progress i {
+  display: block;
+  height: 100%;
+  background: #fff;
+  transition: width 0.4s;
+}
+.hero-arrow {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--gold);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transition: 0.25s;
+}
+.hero:hover .hero-arrow {
+  opacity: 1;
+}
+.hero-arrow.prev {
+  left: 34px;
+}
+.hero-arrow.next {
+  right: 34px;
+}
+.about-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 85px;
+  align-items: center;
+}
+.about-media {
+  position: relative;
+  padding-left: 45px;
+}
+.about-media img {
+  height: 520px;
+  width: 100%;
+  object-fit: cover;
+}
+.experience-badge {
+  position: absolute;
+  left: 0;
+  bottom: 55px;
+  background: #d5a746;
+  width: 150px;
+  height: 120px;
+  padding: 15px 20px;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+.experience-badge b {
+  font: italic 56px/1 var(--serif);
+}
+.experience-badge span {
+  font: italic 16px/1.1 var(--serif);
+}
+.about-copy p {
+  color: var(--muted);
+  max-width: 500px;
+}
+.about-copy ul {
+  padding: 0;
+  list-style: none;
+  margin: 22px 0;
+}
+.about-copy li {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+  margin: 8px 0;
+}
+.about-copy li svg {
+  width: 14px;
+  color: #516267;
+}
+.inline-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.inline-actions > a:last-child {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 11px;
+}
+.practice-band {
+  background: var(--navy);
+  color: #fff;
+  padding: 95px max(30px, calc((100vw - 1180px) / 2));
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  gap: 45px;
+  overflow: hidden;
+}
+.practice-band h2 {
+  font-size: 48px;
+}
+.slider-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 28px;
+}
+.slider-buttons button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  display: grid;
+  place-items: center;
+}
+.practice-slider {
+  min-width: 0;
+}
+.practice-card {
+  height: 350px;
+  position: relative;
+  overflow: hidden;
+}
+.practice-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s;
+}
+.practice-card:hover img {
+  transform: scale(1.06);
+}
+.practice-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.08),
+    rgba(4, 18, 24, 0.75)
+  );
+}
+.practice-card h3 {
+  position: absolute;
+  left: 20px;
+  bottom: 16px;
+  font: italic 24px/1 var(--serif);
+  width: 70%;
+  margin: 0;
+}
+.practice-icon {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-size: 20px;
+}
+.practice-card button {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 0;
+  background: #fff;
+  color: var(--navy);
+}
+.achievement {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 65px;
+  align-items: center;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #fff;
+  box-shadow: 0 20px 50px rgba(16, 39, 45, 0.08);
+}
+.stat {
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+.stat strong {
+  font: 42px/1 var(--serif);
+}
+.stat small {
+  font-size: 9px;
+  color: #8d9699;
+  margin-top: 10px;
+}
+.achievement-copy details {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 12px 0;
+}
+.achievement-copy summary {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--serif);
+  font-size: 16px;
+  cursor: pointer;
+}
+.achievement-copy details p {
+  font-size: 10px;
+  color: #888;
+  padding-top: 10px;
+  margin: 0;
+}
+.expertise {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--navy);
+  color: #fff;
+}
+.expertise-copy {
+  padding: 80px max(35px, calc((100vw - 1180px) / 2)) 80px
+    max(35px, calc((100vw - 1180px) / 2));
+  padding-right: 60px;
+}
+.expertise-copy h2 {
+  font-size: 50px;
+}
+.expertise-copy > p {
+  color: #8fa1a7;
+  font-size: 11px;
+  max-width: 430px;
+}
+.rings {
+  display: grid;
+  gap: 17px;
+  margin-top: 35px;
+}
+.rings > div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.rings b {
+  width: 62px;
+  height: 62px;
+  border: 4px solid var(--gold);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--serif);
+  font-size: 14px;
+}
+.rings span {
+  font-size: 11px;
+}
+.expertise-media {
+  position: relative;
+  min-height: 540px;
+}
+.expertise-media > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.review-card {
+  position: absolute;
+  left: -70px;
+  top: 42%;
+  width: 255px;
+  background: #fff;
+  color: var(--ink);
+  padding: 25px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.16);
+}
+.review-card p {
+  font: italic 16px/1.3 var(--serif);
+}
+.review-card strong {
+  font-size: 10px;
+}
+.review-card span {
+  color: var(--gold);
+  display: block;
+  font-size: 10px;
+}
+.attorneys-home {
+  background: #f9f8f5;
+  max-width: none;
+  padding-left: max(30px, calc((100vw - 1180px) / 2));
+  padding-right: max(30px, calc((100vw - 1180px) / 2));
+}
+.attorney-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+.attorney-grid article {
+  background: white;
+  padding: 20px;
+  text-align: center;
+  transition: 0.3s;
+}
+.attorney-grid article:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+}
+.attorney-photo {
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #eee;
+  margin: 0 auto 18px;
+}
+.attorney-grid h3 {
+  font: 18px var(--serif);
+  margin-bottom: 4px;
+}
+.attorney-grid p {
+  font-size: 9px;
+  color: #8b9294;
+}
+.attorney-grid p em {
+  text-decoration: underline;
+  color: #24363d;
+}
+.attorney-grid article > div:last-child {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  color: #53646a;
+}
+.experience-note {
+  text-align: center;
+  font: italic 14px var(--serif);
+  margin: 35px 0 0;
+}
+.quote-section {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.quote-panel {
+  background: var(--navy);
+  color: #fff;
+  min-height: 330px;
+  padding: 65px 70px 45px;
+  position: relative;
+  overflow: hidden;
+  max-width: 950px;
+  margin: auto;
+}
+.quote-panel svg {
+  color: var(--gold);
+  fill: var(--gold);
+  margin-bottom: 20px;
+}
+.quote-panel p {
+  font: italic 25px/1.3 var(--serif);
+  max-width: 570px;
+}
+.quote-panel small {
+  color: var(--gold);
+  font-size: 9px;
+}
+.ghost-word {
+  position: absolute;
+  font: italic 110px var(--serif);
+  right: 20px;
+  bottom: -44px;
+  color: rgba(255, 255, 255, 0.045);
+}
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+.blog-grid article {
+  background: #fff;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.07);
+}
+.blog-image {
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+.blog-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s;
+}
+.blog-grid article:hover .blog-image img {
+  transform: scale(1.06);
+}
+.blog-image span {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: #fff;
+  padding: 4px 8px;
+  font-size: 8px;
+}
+.blog-body {
+  padding: 22px;
+}
+.blog-body h3 {
+  font: 20px/1.15 var(--serif);
+  min-height: 48px;
+}
+.blog-body small,
+.blog-body p {
+  font-size: 8px;
+  color: #899296;
+}
+.blog-body p {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0 0;
+}
+@media (max-width: 900px) {
+  .hero-bg {
+    left: 0;
+    opacity: 0.65;
+  }
+  .hero-shade {
+    background: linear-gradient(
+      90deg,
+      rgba(7, 35, 44, 0.94),
+      rgba(7, 35, 44, 0.5)
+    );
+  }
+  .hero-content {
+    padding: 140px 22px 50px;
+  }
+  .hero h1 {
+    font-size: clamp(56px, 16vw, 78px);
+    max-width: 520px;
+  }
+  .hero-arrow {
+    display: none;
+  }
+  .about-section,
+  .achievement,
+  .practice-band,
+  .expertise {
+    grid-template-columns: 1fr;
+  }
+  .practice-band {
+    padding: 75px 22px;
+  }
+  .about-media {
+    padding-left: 25px;
+  }
+  .about-media img {
+    height: 430px;
+  }
+  .experience-badge {
+    width: 130px;
+    height: 105px;
+  }
+  .attorney-grid,
+  .blog-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .expertise-copy {
+    padding: 70px 22px;
+  }
+  .review-card {
+    left: 18px;
+  }
+  .expertise-media {
+    min-height: 450px;
+  }
+}
+@media (max-width: 560px) {
+  .attorney-grid,
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+  .practice-card {
+    height: 330px;
+  }
+  .about-section {
+    gap: 50px;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .quote-panel {
+    padding: 45px 28px;
+  }
+  .attorney-photo {
+    height: 230px;
+  }
+}
