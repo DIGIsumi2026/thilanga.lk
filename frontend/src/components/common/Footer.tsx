@@ -39,16 +39,16 @@ export default function Footer() {
             <Phone size={14} /> Contact
           </h6>
           <p>
-            (123) 456 7890
+            +94 11 269 7106
             <br />
-            <u>info@domain.com</u>
+            <u>info@thilangasumathipala.lk</u>
           </p>
         </div>
       </div>
       <div className="footer-bottom">
         <div>{links()}</div>
         <small>
-          © 2026 Lawyer recreation. Built from the supplied visual reference.
+          © 2026 Thilanga Sumathipala. All rights reserved.
         </small>
       </div>
     </footer>
