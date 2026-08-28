@@ -239,6 +239,9 @@ export default function Navbar() {
               size={17}
               strokeWidth={1.6}
             />
+            <span className="nav-email-label">
+              info@thilangasumathipala.lk
+            </span>
           </a>
 
           <a
@@ -251,7 +254,7 @@ export default function Navbar() {
               strokeWidth={1.6}
             />
 
-            <span>
+            <span className="nav-phone-label">
               (+94) 112 697 106
             </span>
           </a>
