@@ -1,3 +1,8 @@
+//navigation bar 
+import brandLogo from "../assets/images/brand-logo.png";
+
+
+
 import hero1 from "./images/hero-1.jpg";
 import hero2 from "./images/hero-2.jpg";
 import hero3 from "./images/hero-3.jpg";
@@ -28,6 +33,11 @@ import blog3 from "./images/blog-3.jpg";
  * Add new physical image files to ./images and register them here.
  */
 export const imageAssets = {
+  brand:{
+    logo: brandLogo,
+  },
+
+  
   hero: {
     slide1: hero1,
     slide2: hero2,
