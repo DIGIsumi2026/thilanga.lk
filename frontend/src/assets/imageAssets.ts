@@ -6,7 +6,7 @@ import heroImage1 from "../assets/images/hero/image1.png";
 import heroImage2 from "../assets/images/hero/image2.png";
 import heroImage3 from "../assets/images/hero/image3.png";
 import heroImage4 from "../assets/images/hero/image4.png";
-import heroImage5 from "../assets/images/hero/image5.png";
+import heroImage5 from "../assets/images/hero/image5.jpg";
 
 
 import hero1 from "./images/hero-1.jpg";
