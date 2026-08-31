@@ -34,6 +34,9 @@ export default function HeroSection() {
         pagination={{
           el: '.hero-pagination',
           clickable: true,
+          renderBullet: function (index, className) {
+            return `<span class="${className}"><span class="progress-fill"></span></span>`;
+          },
         }}
       >
         {heroSlides.map((slide) => (
@@ -62,10 +65,9 @@ export default function HeroSection() {
                   </div>
 
                   <div className="hero-title-mask">
-                    <h1
-                      className={`hero-quote hero-quote-${slide.id}`}
-                    >
-                      {slide.quote}
+                    <h1 className={`hero-quote hero-quote-${slide.id}`}>
+                      <span className="quote-desktop">{slide.quote}</span>
+                      <span className="quote-mobile">{slide.shortQuote}</span>
                     </h1>
                   </div>
 

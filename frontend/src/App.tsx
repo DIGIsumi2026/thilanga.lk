@@ -4,7 +4,9 @@ import {Route,Routes,useLocation} from 'react-router-dom';
 
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
+{/*
 import FloatingContact from './components/common/FloatingContact';
+*/}
 import ScrollToTop from './components/common/ScrollToTop';
 import SmoothScroll from './components/common/SmoothScroll';
 
@@ -50,7 +52,7 @@ export default function App() {
 
       <Footer />
 
-      <FloatingContact />
+      {/*<FloatingContact /> */}
     </SmoothScroll>
   );
 }

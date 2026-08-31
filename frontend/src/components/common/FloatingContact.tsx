@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+{/*import { MessageCircle } from "lucide-react";
 export default function FloatingContact() {
   return (
     <a className="floating-contact" href="mailto:info@domain.com">
@@ -9,3 +9,4 @@ export default function FloatingContact() {
     </a>
   );
 }
+  */}
