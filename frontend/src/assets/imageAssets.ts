@@ -1,6 +1,12 @@
 //navigation bar 
 import brandLogo from "../assets/images/brand-logo.png";
 
+//hero section
+import heroImage1 from "../assets/images/hero/image1.png";
+import heroImage2 from "../assets/images/hero/image2.png";
+import heroImage3 from "../assets/images/hero/image3.png";
+import heroImage4 from "../assets/images/hero/image4.png";
+import heroImage5 from "../assets/images/hero/image5.png";
 
 
 import hero1 from "./images/hero-1.jpg";
@@ -36,14 +42,18 @@ export const imageAssets = {
   brand:{
     logo: brandLogo,
   },
-
-  
-  hero: {
+  hero:{
+    image1: heroImage1,
+    image2: heroImage2,
+    image3: heroImage3,
+    image4: heroImage4,
+    image5: heroImage5,
     slide1: hero1,
     slide2: hero2,
     slide3: hero3,
     slide4: hero4,
   },
+
   about: {
     overview: about,
     inner: innerAbout,

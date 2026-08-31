@@ -159,59 +159,59 @@ h1 em {
   --nav-glass-surface: rgba(7, 7, 7, 0.62);
   --nav-glass-highlight: rgba(255, 255, 255, 0.14);
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 12px;
+  left: 50%;
+  width: min(calc(100% - 32px), 1440px);
   z-index: 1000;
   color: #fff;
   overflow: hidden;
   border: 1px solid var(--nav-glass-highlight);
-  border-width: 0 0 1px;
+  border-radius: 18px;
   background:
     linear-gradient(115deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.04) 28%, transparent 52%, rgba(255, 255, 255, 0.09) 100%),
     var(--nav-glass-surface);
   -webkit-backdrop-filter: blur(22px) saturate(150%);
   backdrop-filter: blur(22px) saturate(150%);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 10px 30px rgba(5, 19, 24, 0.12);
-  transform: translateY(0);
+  transform: translate(-50%, 0);
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;
 }
 
 .site-header.is-top {
   position: absolute;
-  top: 0;
-  transform: translateY(0);
+  top: 12px;
+  transform: translate(-50%, 0);
   --nav-glass-surface: rgba(7, 7, 7, 0.58);
 }
 
 .site-header.is-scroll-visible,
 .site-header.is-scroll-hidden {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 12px;
+  left: 50%;
   --nav-glass-surface: rgba(7, 7, 7, 0.76);
   --nav-glass-highlight: rgba(255, 255, 255, 0.18);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.13), 0 12px 36px rgba(5, 19, 24, 0.2);
 }
 
 .site-header.is-scroll-visible {
-  transform: translateY(0);
+  transform: translate(-50%, 0);
 }
 
 .site-header.is-scroll-hidden {
-  transform: translateY(-110%);
+  transform: translate(-50%, -140%);
 }
 
 .site-header.menu-is-open {
-  transform: translateY(0);
+  transform: translate(-50%, 0);
 }
 
 .nav-shell {
   width: 100%;
-  max-width: 1500px;
-  height: 88px;
+  max-width: 1440px;
+  height: 72px;
   margin: 0 auto;
-  padding: 0 42px;
+  padding: 0 28px;
   display: grid;
   grid-template-columns: minmax(250px, 1fr) auto minmax(250px, 1fr);
   align-items: center;
@@ -229,9 +229,9 @@ h1 em {
 
 .brand-logo img {
   display: block;
-  width: clamp(205px, 17vw, 268px);
+  width: clamp(185px, 15vw, 230px);
   height: auto;
-  max-height: 42px;
+  max-height: 36px;
   object-fit: contain;
   object-position: left center;
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -269,7 +269,7 @@ h1 em {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 27px;
+  bottom: 20px;
   width: 100%;
   height: 1px;
   background: #fff;
@@ -711,14 +711,23 @@ h1 em {
    ========================================================= */
 
 @media (max-width: 900px) {
+  .site-header,
+  .site-header.is-top,
+  .site-header.is-scroll-visible,
+  .site-header.is-scroll-hidden {
+    top: 10px;
+    width: calc(100% - 20px);
+    border-radius: 14px;
+  }
+
   .site-header.is-scroll-visible,
   .site-header.is-scroll-hidden {
     --nav-glass-surface: rgba(7, 7, 7, 0.82);
   }
 
   .nav-shell {
-    height: 76px;
-    padding: 0 22px;
+    height: 66px;
+    padding: 0 18px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -779,8 +788,8 @@ h1 em {
 
 @media (max-width: 480px) {
   .nav-shell {
-    height: 72px;
-    padding: 0 16px;
+    height: 62px;
+    padding: 0 14px;
   }
 
   .brand-logo img {
