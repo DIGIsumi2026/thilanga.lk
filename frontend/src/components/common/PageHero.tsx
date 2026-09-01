@@ -12,7 +12,7 @@ export default function PageHero({
     <section
       className="page-hero"
       style={{
-        backgroundImage: `linear-gradient(90deg,rgba(5,25,33,.96),rgba(5,25,33,.62)), url(${imageAssets.hero.slide2})`,
+        backgroundImage: `linear-gradient(90deg,rgba(5,25,33,.96),rgba(5,25,33,.62)), url(${imageAssets.hero.image2})`,
       }}
     >
       <motion.h1

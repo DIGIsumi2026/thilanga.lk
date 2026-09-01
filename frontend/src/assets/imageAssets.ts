@@ -8,11 +8,11 @@ import heroImage3 from "../assets/images/hero/image3.png";
 import heroImage4 from "../assets/images/hero/image4.png";
 import heroImage5 from "../assets/images/hero/image5.jpg";
 
+//hero - accordian 
+import accordionCorporate from "../assets/images/hero/accordion/corporate.png";
+import accordionPolitical from "../assets/images/hero/accordion/political.png";
+import accordionPublicRelations from "../assets/images/hero/accordion/public-relations.png";
 
-import hero1 from "./images/hero-1.jpg";
-import hero2 from "./images/hero-2.jpg";
-import hero3 from "./images/hero-3.jpg";
-import hero4 from "./images/hero-4.jpg";
 
 import about from "./images/about.jpg";
 import innerAbout from "./images/inner-about.jpg";
@@ -48,11 +48,16 @@ export const imageAssets = {
     image3: heroImage3,
     image4: heroImage4,
     image5: heroImage5,
-    slide1: hero1,
-    slide2: hero2,
-    slide3: hero3,
-    slide4: hero4,
   },
+
+  home: {
+    accordion: {
+      corporate: accordionCorporate,
+      political: accordionPolitical,
+      publicRelations: accordionPublicRelations,
+    },
+  },
+
 
   about: {
     overview: about,

@@ -1,5 +1,11 @@
 import { motion } from "framer-motion";
 import HeroSection from "../sections/home/HeroSection";
+import LeadershipAccordion from "../sections/home/LeadershipAccordion";
+
+
+
+
+
 import AboutSection from "../sections/home/AboutSection";
 import PracticeCarousel from "../sections/home/PracticeCarousel";
 import AchievementSection from "../sections/home/AchievementSection";
@@ -17,6 +23,13 @@ export default function Home() {
       transition={{ duration: 0.25 }}
     >
       <HeroSection />
+      <LeadershipAccordion />
+
+
+
+
+
+
       <AboutSection />
       <PracticeCarousel />
       <AchievementSection />
