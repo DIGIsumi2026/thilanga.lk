@@ -59,7 +59,13 @@ const accordionItems: AccordionItem[] = [
 export default function LeadershipAccordion() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const panelsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  // Task 2: Active the first accordian when the section renders
+  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+
+  // Initialize GSAP states immediately on mount
+  useEffect(() => {
+    animatePanels(0);
+  }, []);
 
   // Initial Section Entrance (Anime.js)
   useEffect(() => {
@@ -104,6 +110,35 @@ export default function LeadershipAccordion() {
     return () => {
       observer.disconnect();
     };
+  }, []);
+
+  // Task 4: Mobile Scroll Observer to expand panels on scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (window.innerWidth > 900) return;
+
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number((entry.target as HTMLElement).dataset.index);
+            if (!isNaN(index)) {
+              setActiveIndex(index);
+              animatePanels(index);
+            }
+          }
+        });
+      },
+      {
+        rootMargin: '-35% 0px -40% 0px',
+        threshold: 0,
+      }
+    );
+
+    panelsRef.current.forEach((panel) => {
+      if (panel) observer.observe(panel);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   // Handle Resize Cleanup
@@ -222,7 +257,7 @@ export default function LeadershipAccordion() {
         <h2>
           A journey shaped by enterprise,
           <br />
-          public service and social impact.
+          public service and social impact
         </h2>
       </div>
 
@@ -233,6 +268,7 @@ export default function LeadershipAccordion() {
         {accordionItems.map((item, index) => (
           <div
             key={item.id}
+            data-index={index}
             ref={(element) => {
               panelsRef.current[index] = element;
             }}
@@ -262,10 +298,6 @@ export default function LeadershipAccordion() {
 
             <div className="leadership-panel-content">
               <div className="leadership-panel-top">
-                <span className="leadership-number">
-                  {item.number}
-                </span>
-
                 <span className="leadership-role">
                   {item.role}
                 </span>
