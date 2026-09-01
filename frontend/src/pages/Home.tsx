@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import HeroSection from "../sections/home/HeroSection";
 import LeadershipAccordion from "../sections/home/LeadershipAccordion";
-
+import LeadershipQuote from "../sections/home/LeadershipQuote";
 
 
 
@@ -24,6 +24,7 @@ export default function Home() {
     >
       <HeroSection />
       <LeadershipAccordion />
+      <LeadershipQuote/>
 
 
 

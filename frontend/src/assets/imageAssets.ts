@@ -13,6 +13,8 @@ import accordionCorporate from "../assets/images/hero/accordion/corporate.png";
 import accordionPolitical from "../assets/images/hero/accordion/political.png";
 import accordionPublicRelations from "../assets/images/hero/accordion/public-relations.png";
 
+//home - quote
+import quoteBackground from "../assets/images/hero/quote/quote-background.png";
 
 import about from "./images/about.jpg";
 import innerAbout from "./images/inner-about.jpg";
@@ -55,6 +57,9 @@ export const imageAssets = {
       corporate: accordionCorporate,
       political: accordionPolitical,
       publicRelations: accordionPublicRelations,
+    },
+    quote:{
+      background: quoteBackground,
     },
   },
 

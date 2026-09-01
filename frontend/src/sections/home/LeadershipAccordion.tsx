@@ -1,9 +1,9 @@
-import {useEffect, useRef, useState} from 'react';
-import {Link} from 'react-router-dom';
-import {ArrowUpRight} from 'lucide-react';
-import {gsap} from 'gsap';
-import {animate, stagger} from 'animejs';
-import {imageAssets} from '../../assets/imageAssets';
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
+import { gsap } from "gsap";
+import { animate, stagger } from "animejs";
+import { imageAssets } from "../../assets/imageAssets";
 
 type AccordionItem = {
   id: string;
@@ -19,40 +19,40 @@ type AccordionItem = {
 
 const accordionItems: AccordionItem[] = [
   {
-    id: 'corporate',
-    number: '01',
-    title: 'Corporate',
-    role: 'Entrepreneurship & Business Leadership',
+    id: "corporate",
+    number: "01",
+    title: "Corporate",
+    role: "Entrepreneurship & Business Leadership",
     description:
-      'A business leader and entrepreneur with decades of experience across printing, hospitality, commerce, energy, technology, entertainment and investment, with a strong focus on strategic growth and institutional leadership.',
+      "A business leader and entrepreneur with decades of experience across printing, hospitality, commerce, energy, technology, entertainment and investment, with a strong focus on strategic growth and institutional leadership.",
     image: imageAssets.home.accordion.corporate,
-    path: '/corporate',
-    accent: '#c99b3b',
-    glow: 'rgba(201,155,59,0.34)',
+    path: "/corporate",
+    accent: "#c99b3b",
+    glow: "rgba(201,155,59,0.34)",
   },
   {
-    id: 'political',
-    number: '02',
-    title: 'Political',
-    role: 'Public Service & National Leadership',
+    id: "political",
+    number: "02",
+    title: "Political",
+    role: "Public Service & National Leadership",
     description:
-      'A public-service journey spanning provincial and parliamentary leadership, including service as a Member of Parliament, Deputy Minister, Deputy Speaker of Parliament and State Minister of Technology & Innovation.',
+      "A public-service journey spanning provincial and parliamentary leadership, including service as a Member of Parliament, Deputy Minister, Deputy Speaker of Parliament and State Minister of Technology & Innovation.",
     image: imageAssets.home.accordion.political,
-    path: '/political',
-    accent: '#5aa8ff',
-    glow: 'rgba(62,134,255,0.34)',
+    path: "/political",
+    accent: "#5aa8ff",
+    glow: "rgba(62,134,255,0.34)",
   },
   {
-    id: 'public-relations',
-    number: '03',
-    title: 'Public Relations',
-    role: 'Philanthropy, Community & Cultural Impact',
+    id: "public-relations",
+    number: "03",
+    title: "Public Relations",
+    role: "Philanthropy, Community & Cultural Impact",
     description:
-      'A longstanding commitment to social service, humanitarian assistance, education, community development and cultural initiatives that support people and celebrate Sri Lankan achievement.',
+      "A longstanding commitment to social service, humanitarian assistance, education, community development and cultural initiatives that support people and celebrate Sri Lankan achievement.",
     image: imageAssets.home.accordion.publicRelations,
-    path: '/public-relations',
-    accent: '#7bc49b',
-    glow: 'rgba(71,178,126,0.3)',
+    path: "/public-relations",
+    accent: "#7bc49b",
+    glow: "rgba(71,178,126,0.3)",
   },
 ];
 
@@ -72,8 +72,8 @@ export default function LeadershipAccordion() {
     if (!sectionRef.current) return;
 
     const section = sectionRef.current;
-    const heading = section.querySelector('.leadership-heading');
-    const panels = section.querySelectorAll('.leadership-panel');
+    const heading = section.querySelector(".leadership-heading");
+    const panels = section.querySelectorAll(".leadership-panel");
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -84,7 +84,7 @@ export default function LeadershipAccordion() {
             opacity: [0, 1],
             y: [30, 0],
             duration: 800,
-            ease: 'outExpo',
+            ease: "outExpo",
           });
         }
 
@@ -94,7 +94,7 @@ export default function LeadershipAccordion() {
             y: [45, 0],
             delay: stagger(120),
             duration: 900,
-            ease: 'outExpo',
+            ease: "outExpo",
           });
         }
 
@@ -129,9 +129,9 @@ export default function LeadershipAccordion() {
         });
       },
       {
-        rootMargin: '-35% 0px -40% 0px',
+        rootMargin: "-35% 0px -40% 0px",
         threshold: 0,
-      }
+      },
     );
 
     panelsRef.current.forEach((panel) => {
@@ -149,12 +149,12 @@ export default function LeadershipAccordion() {
       const currentIsMobile = window.innerWidth <= 900;
       if (currentIsMobile !== isMobile) {
         isMobile = currentIsMobile;
-        
+
         if (currentIsMobile) {
           // Entering mobile mode: clean up desktop flex styles
           gsap.killTweensOf(panelsRef.current);
-          gsap.set(panelsRef.current, { clearProps: 'flexGrow,flexBasis' });
-          animatePanels(activeIndex); 
+          gsap.set(panelsRef.current, { clearProps: "flexGrow,flexBasis" });
+          animatePanels(activeIndex);
         } else {
           // Entering desktop mode: re-apply desktop styles
           animatePanels(activeIndex);
@@ -162,8 +162,8 @@ export default function LeadershipAccordion() {
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [activeIndex]);
 
   const animatePanels = (index: number | null) => {
@@ -172,9 +172,9 @@ export default function LeadershipAccordion() {
     panelsRef.current.forEach((panel, panelIndex) => {
       if (!panel) return;
 
-      const image = panel.querySelector('.leadership-panel-image');
-      const description = panel.querySelector('.leadership-description');
-      const cta = panel.querySelector('.leadership-cta');
+      const image = panel.querySelector(".leadership-panel-image");
+      const description = panel.querySelector(".leadership-description");
+      const cta = panel.querySelector(".leadership-cta");
 
       const isActive = panelIndex === index;
       const hasActive = index !== null;
@@ -183,8 +183,8 @@ export default function LeadershipAccordion() {
         gsap.to(panel, {
           flexGrow: hasActive ? (isActive ? 2.4 : 0.75) : 1,
           duration: 0.8,
-          ease: 'power4.out',
-          overwrite: 'auto',
+          ease: "power4.out",
+          overwrite: "auto",
         });
       }
 
@@ -192,8 +192,8 @@ export default function LeadershipAccordion() {
         gsap.to(image, {
           scale: isActive ? 1.055 : 1,
           duration: 0.9,
-          ease: 'power3.out',
-          overwrite: 'auto',
+          ease: "power3.out",
+          overwrite: "auto",
         });
       }
 
@@ -203,8 +203,8 @@ export default function LeadershipAccordion() {
           y: isActive ? 0 : 18,
           duration: 0.45,
           delay: isActive ? 0.18 : 0,
-          ease: 'power3.out',
-          overwrite: 'auto',
+          ease: "power3.out",
+          overwrite: "auto",
         });
       }
 
@@ -214,8 +214,8 @@ export default function LeadershipAccordion() {
           y: isActive ? 0 : 14,
           duration: 0.45,
           delay: isActive ? 0.24 : 0,
-          ease: 'power3.out',
-          overwrite: 'auto',
+          ease: "power3.out",
+          overwrite: "auto",
         });
       }
     });
@@ -245,14 +245,9 @@ export default function LeadershipAccordion() {
   };
 
   return (
-    <section
-      ref={sectionRef}
-      className="leadership-section"
-    >
+    <section ref={sectionRef} className="leadership-section">
       <div className="leadership-heading">
-        <span className="leadership-kicker">
-          Leadership across spheres
-        </span>
+        <span className="leadership-kicker">Leadership across spheres</span>
 
         <h2>
           A journey shaped by enterprise,
@@ -261,10 +256,7 @@ export default function LeadershipAccordion() {
         </h2>
       </div>
 
-      <div
-        className="leadership-accordion"
-        onMouseLeave={handleLeave}
-      >
+      <div className="leadership-accordion" onMouseLeave={handleLeave}>
         {accordionItems.map((item, index) => (
           <div
             key={item.id}
@@ -273,12 +265,12 @@ export default function LeadershipAccordion() {
               panelsRef.current[index] = element;
             }}
             className={`leadership-panel ${
-              activeIndex === index ? 'is-active' : ''
+              activeIndex === index ? "is-active" : ""
             }`}
             style={
               {
-                '--panel-accent': item.accent,
-                '--panel-glow': item.glow,
+                "--panel-accent": item.accent,
+                "--panel-glow": item.glow,
               } as React.CSSProperties
             }
             onMouseEnter={() => handleEnter(index)}
@@ -298,19 +290,13 @@ export default function LeadershipAccordion() {
 
             <div className="leadership-panel-content">
               <div className="leadership-panel-top">
-                <span className="leadership-role">
-                  {item.role}
-                </span>
+                <span className="leadership-role">{item.role}</span>
               </div>
 
               <div className="leadership-panel-bottom">
-                <h3>
-                  {item.title}
-                </h3>
+                <h3>{item.title}</h3>
 
-                <p className="leadership-description">
-                  {item.description}
-                </p>
+                <p className="leadership-description">{item.description}</p>
 
                 <Link
                   to={item.path}
@@ -318,12 +304,8 @@ export default function LeadershipAccordion() {
                   onClick={(event) => event.stopPropagation()}
                 >
                   Explore {item.title}
-
                   <span>
-                    <ArrowUpRight
-                      size={15}
-                      strokeWidth={1.7}
-                    />
+                    <ArrowUpRight size={15} strokeWidth={1.7} />
                   </span>
                 </Link>
               </div>
