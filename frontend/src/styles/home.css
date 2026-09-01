@@ -162,8 +162,22 @@
   line-height: 1.14;
   letter-spacing: -0.005px;
   text-wrap: balance;
-  opacity: 0;
-  transform: translateY(110%);
+}
+
+.hero-quote-line-mask {
+  display: block;
+  overflow: hidden;
+}
+.hero-quote-line {
+  display: block;
+  clip-path: inset(0 100% 0 0);
+  will-change: clip-path;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-quote-line {
+    clip-path: inset(0 0% 0 0) !important;
+  }
 }
 
 .quote-desktop {
@@ -204,22 +218,11 @@
   animation: heroRoleReveal 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
 }
 
-.swiper-slide-active .hero-quote {
-  animation: heroQuoteReveal 1s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both;
-}
-
 .swiper-slide-active .hero-button-wrap {
   animation: heroButtonReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both;
 }
 
 @keyframes heroRoleReveal {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes heroQuoteReveal {
   to {
     opacity: 1;
     transform: translateY(0);
