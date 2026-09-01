@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import HeroSection from "../sections/home/HeroSection";
 import LeadershipAccordion from "../sections/home/LeadershipAccordion";
 import LeadershipQuote from "../sections/home/LeadershipQuote";
+import NewsSection from "../sections/home/NewsSection";
 
 
 
-
-import AboutSection from "../sections/home/AboutSection";
+import AboutSection from "../sections/home/NewsSection";
 import PracticeCarousel from "../sections/home/PracticeCarousel";
 import AchievementSection from "../sections/home/AchievementSection";
 import ExpertiseSection from "../sections/home/ExpertiseSection";
@@ -25,13 +25,12 @@ export default function Home() {
       <HeroSection />
       <LeadershipAccordion />
       <LeadershipQuote/>
+      <NewsSection />
 
 
 
 
-
-
-      <AboutSection />
+      
       <PracticeCarousel />
       <AchievementSection />
       <ExpertiseSection />
