@@ -20,6 +20,9 @@ import quoteBackground from "../assets/images/hero/quote/quote-background.png";
 //hero 
 import aboutHero from "../assets/images/about/about-hero.png";
 
+//family image 
+import aboutFanily from "../assets/images/about/about-family.png";
+
 import about from "./images/about.jpg";
 import innerAbout from "./images/inner-about.jpg";
 import consultancy from "./images/consultancy.jpg";
@@ -70,6 +73,7 @@ export const imageAssets = {
 
   about: {
     hero: aboutHero,
+    family: aboutFanily,
   },
   practice: {
     businessLaw: practice1,

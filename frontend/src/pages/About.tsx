@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import AboutIntro from "../sections/about/AboutIntro";
-import AchievementSection from "../sections/home/AchievementSection";
-import AttorneysSection from "../sections/home/AttorneysSection";
+import AboutBiography from "../sections/about/AboutBiography";
 import "../styles/about.css";
 export default function About() {
   return (
@@ -11,8 +10,7 @@ export default function About() {
       exit={{ opacity: 0 }}
     >
       <AboutIntro />
-      <AchievementSection />
-      <AttorneysSection />
+      <AboutBiography/>
     </motion.main>
   );
 }
