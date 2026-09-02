@@ -1,34 +1,42 @@
-import { CheckCircle2 } from "lucide-react";
-import { imageAssets } from "../../assets/imageAssets";
-import { useAnimeReveal } from "../../hooks/useAnimeReveal";
-export default function AboutIntro() {
-  const ref = useAnimeReveal<HTMLElement>();
+import {motion} from 'framer-motion';
+import {imageAssets} from '../../assets/imageAssets';
+
+const AboutIntro = () => {
   return (
-    <section className="section about-inner" ref={ref} data-reveal-group>
-      <div data-reveal>
-        <span className="mini-kicker gold">Facts of lawyer agency</span>
-        <h2>
-          We are committed to helping
-          <br />
-          <em>our clients succeed.</em>
-        </h2>
-        <p>
-          We are a full-service business law firm providing clients with focused
-          legal advice. We solve complex business issues with a practical,
-          client-first approach.
-        </p>
-        <ul>
-          <li>
-            <CheckCircle2 />
-            Full service corporate and commercial law.
-          </li>
-          <li>
-            <CheckCircle2 />
-            Effective and innovative legal solutions.
-          </li>
-        </ul>
+    <section className="about-intro">
+      <div className="about-intro-media">
+        <img
+          src={imageAssets.about.hero}
+          alt="Thilanga Sumathipala"
+          className="about-intro-image"
+        />
+
+        <div className="about-intro-overlay" />
       </div>
-      <img data-reveal src={imageAssets.about.overview} alt="Lawyer working" />
+
+      <div className="about-intro-container">
+        <motion.div
+          className="about-intro-content"
+          initial={{opacity:0,y:30}}
+          animate={{opacity:1,y:0}}
+          transition={{
+            duration:0.9,
+            ease:[0.22,1,0.36,1],
+          }}
+        >
+
+          <blockquote className="about-intro-quote">
+            “Shaped by enterprise Driven by public service Defined by leadership ”
+          </blockquote>
+        </motion.div>
+      </div>
+
+      <div
+        className="about-intro-bottom-line"
+        aria-hidden="true"
+      />
     </section>
   );
-}
+};
+
+export default AboutIntro;

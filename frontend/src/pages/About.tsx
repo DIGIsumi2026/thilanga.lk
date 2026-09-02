@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import PageHero from "../components/common/PageHero";
 import AboutIntro from "../sections/about/AboutIntro";
 import AchievementSection from "../sections/home/AchievementSection";
 import AttorneysSection from "../sections/home/AttorneysSection";
@@ -11,7 +10,6 @@ export default function About() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <PageHero title="About agency" breadcrumb="About lawyer agency" />
       <AboutIntro />
       <AchievementSection />
       <AttorneysSection />

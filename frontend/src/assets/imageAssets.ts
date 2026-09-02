@@ -16,6 +16,10 @@ import accordionPublicRelations from "../assets/images/hero/accordion/public-rel
 //home - quote
 import quoteBackground from "../assets/images/hero/quote/quote-background.png";
 
+//about page 
+//hero 
+import aboutHero from "../assets/images/about/about-hero.png";
+
 import about from "./images/about.jpg";
 import innerAbout from "./images/inner-about.jpg";
 import consultancy from "./images/consultancy.jpg";
@@ -65,8 +69,7 @@ export const imageAssets = {
 
 
   about: {
-    overview: about,
-    inner: innerAbout,
+    hero: aboutHero,
   },
   practice: {
     businessLaw: practice1,
