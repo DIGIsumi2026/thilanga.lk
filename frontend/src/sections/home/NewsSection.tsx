@@ -1,17 +1,17 @@
-import { useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Calendar, ChevronLeft, ChevronRight, Play, X } from "lucide-react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { A11y, Navigation } from "swiper/modules";
+import { useEffect, useMemo, useState, useRef } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Calendar, ChevronLeft, ChevronRight, Play, X } from 'lucide-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { A11y, Navigation } from 'swiper/modules';
 import {
   getYouTubeFallbackThumbnail,
   getYouTubeThumbnail,
   getYouTubeVideoId,
   getYouTubeEmbedUrl,
-} from "../../utils/youtube";
+} from '../../utils/youtube';
 
-import "swiper/css";
-import "swiper/css/navigation";
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 type NewsVideoItem = {
   id: string;
@@ -34,13 +34,14 @@ export default function NewsSection() {
   const [activeVideo, setActiveVideo] = useState<VideoCardItem | null>(null);
   const [hoveredVideoId, setHoveredVideoId] = useState<string | null>(null);
   const [canPreviewOnHover, setCanPreviewOnHover] = useState(false);
+  const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    fetch("/data/newsVideos.json")
+    fetch('/data/newsVideos.json')
       .then((res) => res.json())
       .then((data: NewsVideoItem[]) => {
         const enhancedVideos = data.map((video) => {
-          const videoId = getYouTubeVideoId(video.videoUrl) || "";
+          const videoId = getYouTubeVideoId(video.videoUrl) || '';
           return {
             ...video,
             videoId,
@@ -53,7 +54,7 @@ export default function NewsSection() {
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Failed to load videos:", err);
+        console.error('Failed to load videos:', err);
         setLoading(false);
       });
   }, []);
@@ -63,34 +64,53 @@ export default function NewsSection() {
     if (!activeVideo) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
+      if (e.key === 'Escape') {
         setActiveVideo(null);
       }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, [activeVideo]);
 
   useEffect(() => {
     const checkHoverCapability = () => {
       const isDesktop = window.innerWidth > 900;
-      const hasHover = window.matchMedia(
-        "(hover: hover) and (pointer: fine)",
-      ).matches;
+      const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
       setCanPreviewOnHover(isDesktop && hasHover);
     };
 
     checkHoverCapability();
 
-    window.addEventListener("resize", checkHoverCapability);
-    return () => window.removeEventListener("resize", checkHoverCapability);
+    window.addEventListener('resize', checkHoverCapability);
+    return () => window.removeEventListener('resize', checkHoverCapability);
   }, []);
 
-  // Avoid horizontal scroll issues by only rendering necessary slides
   const visibleVideos = useMemo(() => {
     return videos;
   }, [videos]);
+
+  const handleMouseEnter = (videoId: string) => {
+    if (!canPreviewOnHover) return;
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    
+    hoverTimeoutRef.current = setTimeout(() => {
+      setHoveredVideoId(videoId);
+    }, 180); // Slight delay for performance/intent
+  };
+
+  const handleMouseLeave = (videoId: string) => {
+    if (!canPreviewOnHover) return;
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    setHoveredVideoId((current) => (current === videoId ? null : current));
+  };
+
+  const handleOpenVideo = (video: VideoCardItem) => {
+    // Clear hover state immediately before opening modal
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    setHoveredVideoId(null);
+    setActiveVideo(video);
+  };
 
   if (loading) {
     return (
@@ -111,7 +131,6 @@ export default function NewsSection() {
         <div className="news-shell">
           <div className="news-topbar">
             <div className="news-heading">
-              <span className="news-kicker">News & Insights</span>
               <h2>Latest Insights</h2>
               <p>
                 Conversations, stories and reflections on leadership, cricket
@@ -142,35 +161,22 @@ export default function NewsSection() {
             className="news-swiper"
             modules={[Navigation, A11y]}
             navigation={{
-              prevEl: ".news-prev",
-              nextEl: ".news-next",
+              prevEl: '.news-prev',
+              nextEl: '.news-next',
             }}
             spaceBetween={24}
             speed={850}
             grabCursor
             watchOverflow
             breakpoints={{
-              0: {
-                slidesPerView: 1.1,
-                spaceBetween: 16,
-              },
-              640: {
-                slidesPerView: 1.35,
-                spaceBetween: 18,
-              },
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              1100: {
-                slidesPerView: 3,
-                spaceBetween: 24,
-              },
+              0: { slidesPerView: 1.1, spaceBetween: 16 },
+              640: { slidesPerView: 1.35, spaceBetween: 18 },
+              768: { slidesPerView: 2, spaceBetween: 20 },
+              1100: { slidesPerView: 3, spaceBetween: 24 },
             }}
           >
             {visibleVideos.map((video) => {
-              const isPreviewing =
-                canPreviewOnHover && hoveredVideoId === video.id;
+              const isPreviewing = canPreviewOnHover && hoveredVideoId === video.id;
               const previewUrl = getYouTubeEmbedUrl(video.videoUrl, {
                 autoplay: true,
                 muted: true,
@@ -181,69 +187,71 @@ export default function NewsSection() {
               return (
                 <SwiperSlide key={video.id}>
                   <article
-                    className={`news-card ${isPreviewing ? "is-previewing" : ""}`}
-                    onMouseEnter={() => {
-                      if (!canPreviewOnHover) return;
-                      setHoveredVideoId(video.id);
-                    }}
-                    onMouseLeave={() => {
-                      if (!canPreviewOnHover) return;
-                      setHoveredVideoId((current) =>
-                        current === video.id ? null : current,
-                      );
-                    }}
+                    className={`news-card ${isPreviewing ? 'is-previewing' : ''}`}
+                    onMouseEnter={() => handleMouseEnter(video.id)}
+                    onMouseLeave={() => handleMouseLeave(video.id)}
                   >
-                    <button
-                      type="button"
+                    <div
                       className="news-media"
-                      onClick={() => setActiveVideo(video)}
+                      role="button"
+                      tabIndex={0}
+                      onClick={() => handleOpenVideo(video)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          handleOpenVideo(video);
+                        }
+                      }}
                       aria-label={`Play ${video.title}`}
                     >
-                      {!isPreviewing && (
-                        <img
-                          src={video.thumbnail}
-                          alt={video.title}
-                          className="news-thumbnail"
-                          onError={(event) => {
-                            const target = event.currentTarget;
-                            if (target.src !== video.fallbackThumbnail) {
-                              target.src = video.fallbackThumbnail;
-                            }
-                          }}
-                        />
-                      )}
+                      <img
+                        src={video.thumbnail}
+                        alt={video.title}
+                        className="news-thumbnail"
+                        onError={(event) => {
+                          const target = event.currentTarget;
+                          if (target.src !== video.fallbackThumbnail) {
+                            target.src = video.fallbackThumbnail;
+                          }
+                        }}
+                      />
 
                       {isPreviewing && previewUrl && (
-                        <div className="news-preview-player">
+                        <motion.div 
+                          className="news-preview-player"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ duration: 0.35 }}
+                        >
                           <iframe
                             src={previewUrl}
                             title={`${video.title} preview`}
                             allow="autoplay; encrypted-media; picture-in-picture"
                             tabIndex={-1}
                           />
-                        </div>
+                        </motion.div>
                       )}
 
                       <span className="news-media-overlay" />
-                      <span className="news-play-btn">
+                      
+                      <span 
+                        className="news-play-btn"
+                        style={{
+                          opacity: isPreviewing ? 0 : 1,
+                          transition: 'opacity 0.25s ease',
+                          pointerEvents: isPreviewing ? 'none' : 'auto'
+                        }}
+                      >
                         <Play size={22} fill="currentColor" strokeWidth={1.7} />
                       </span>
-                    </button>
+                    </div>
 
                     <div className="news-card-body">
-                      <span className="news-card-category">
-                        {video.category}
-                      </span>
-
+                      <span className="news-card-category">{video.category}</span>
                       <h3 className="news-card-title">{video.title}</h3>
-
-                      <p className="news-card-description">
-                        {video.description}
-                      </p>
-
+                      <p className="news-card-description">{video.description}</p>
                       <div className="news-card-date">
                         <Calendar size={15} strokeWidth={1.7} />
-
                         <span>{video.date}</span>
                       </div>
                     </div>
@@ -302,9 +310,9 @@ export default function NewsSection() {
                 ) : (
                   <div
                     style={{
-                      padding: "40px",
-                      textAlign: "center",
-                      color: "#fff",
+                      padding: '40px',
+                      textAlign: 'center',
+                      color: '#fff',
                     }}
                   >
                     Invalid video URL.
