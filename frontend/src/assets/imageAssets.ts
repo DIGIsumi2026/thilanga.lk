@@ -23,6 +23,9 @@ import aboutHero from "../assets/images/about/about-hero.png";
 //family image 
 import aboutFanily from "../assets/images/about/about-family.png";
 
+//contact cta
+import aboutContactCta from "./images/about/contact-cta.png";
+
 import about from "./images/about.jpg";
 import innerAbout from "./images/inner-about.jpg";
 import consultancy from "./images/consultancy.jpg";
@@ -74,7 +77,9 @@ export const imageAssets = {
   about: {
     hero: aboutHero,
     family: aboutFanily,
+    contactCta: aboutContactCta
   },
+
   practice: {
     businessLaw: practice1,
     investmentLitigation: practice2,

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import AboutIntro from "../sections/about/AboutIntro";
 import AboutBiography from "../sections/about/AboutBiography";
+import AboutContactCTA from "../sections/about/AboutContactCTA";
 import "../styles/about.css";
 export default function About() {
   return (
@@ -11,6 +12,7 @@ export default function About() {
     >
       <AboutIntro />
       <AboutBiography/>
+      <AboutContactCTA/>
     </motion.main>
   );
 }

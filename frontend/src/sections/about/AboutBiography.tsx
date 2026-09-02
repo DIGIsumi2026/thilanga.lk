@@ -30,6 +30,8 @@ const AboutBiography = () => {
     const image = section.querySelector<HTMLElement>('.about-biography-image-wrap');
     const paragraphs = section.querySelectorAll<HTMLElement>('.about-biography-text p');
 
+    const endLine = section.querySelector<HTMLElement>('.about-biography-end-line');
+
     const reducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
     ).matches;
@@ -38,6 +40,7 @@ const AboutBiography = () => {
       if (title) title.style.opacity = '1';
       if (titleLine) titleLine.style.opacity = '1';
       if (image) image.style.opacity = '1';
+      if (endLine) endLine.style.opacity = '1';
 
       paragraphs.forEach((paragraph) => {
         paragraph.style.opacity = '1';
@@ -109,8 +112,34 @@ const AboutBiography = () => {
 
     observer.observe(section);
 
+    let endLineObserver: IntersectionObserver | null = null;
+    if (endLine) {
+      endLineObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting) return;
+          
+          animate(endLine, {
+            opacity: [0, 1],
+            scaleX: [0.015, 1],
+            duration: 500,
+            ease: 'linear',
+          });
+
+          endLineObserver!.disconnect();
+        },
+        {
+          threshold: 1.0,
+          rootMargin: '0px 0px -10px 0px',
+        }
+      );
+      endLineObserver.observe(endLine);
+    }
+
     return () => {
       observer.disconnect();
+      if (endLineObserver) {
+        endLineObserver.disconnect();
+      }
     };
   },[]);
 
@@ -146,6 +175,11 @@ const AboutBiography = () => {
                 {paragraph}
               </p>
             ))}
+
+            <span
+              className="about-biography-end-line"
+              aria-hidden="true"
+            />
           </div>
         </div>
       </div>
