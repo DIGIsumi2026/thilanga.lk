@@ -29,6 +29,10 @@ import aboutContactCta from "./images/about/contact-cta.png";
 //hero
 import corporateThumbnail from "../assets/images/corporate/corporate-thumnail.png";
 
+//intro
+import corporateChairmanBackground from "../assets/images/corporate/chairman-background.png";
+
+
 import about from "./images/about.jpg";
 import innerAbout from "./images/inner-about.jpg";
 import consultancy from "./images/consultancy.jpg";
@@ -82,7 +86,10 @@ export const imageAssets = {
   corporate:{
     hero:{
       thumbnail: corporateThumbnail,
-    }
+    },
+    chairman:{
+      background: corporateChairmanBackground,
+    },
 
   },
 
