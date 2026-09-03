@@ -12,7 +12,7 @@ import SmoothScroll from './components/common/SmoothScroll';
 
 import Home from './pages/Home';
 import About from './pages/About';
-import PracticeAreas from './pages/PracticeAreas';
+import PracticeAreas from './pages/corporate';
 import Attorneys from './pages/Attorneys';
 import Journal from './pages/Journal';
 import Contact from './pages/Contact';

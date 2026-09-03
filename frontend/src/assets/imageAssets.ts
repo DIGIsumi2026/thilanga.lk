@@ -22,9 +22,12 @@ import aboutHero from "../assets/images/about/about-hero.png";
 
 //family image 
 import aboutFanily from "../assets/images/about/about-family.png";
-
 //contact cta
 import aboutContactCta from "./images/about/contact-cta.png";
+
+//corporate page
+//hero
+import corporateThumbnail from "../assets/images/corporate/corporate-thumnail.png";
 
 import about from "./images/about.jpg";
 import innerAbout from "./images/inner-about.jpg";
@@ -45,11 +48,7 @@ import blog1 from "./images/blog-1.jpg";
 import blog2 from "./images/blog-2.jpg";
 import blog3 from "./images/blog-3.jpg";
 
-/**
- * Central image registry.
- * Components/pages must import images only from this file.
- * Add new physical image files to ./images and register them here.
- */
+
 export const imageAssets = {
   brand:{
     logo: brandLogo,
@@ -78,6 +77,13 @@ export const imageAssets = {
     hero: aboutHero,
     family: aboutFanily,
     contactCta: aboutContactCta
+  },
+
+  corporate:{
+    hero:{
+      thumbnail: corporateThumbnail,
+    }
+
   },
 
   practice: {

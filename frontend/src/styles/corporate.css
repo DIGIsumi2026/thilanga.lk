@@ -1,0 +1,187 @@
+/* =========================================================
+   CORPORATE HERO
+   ========================================================= */
+
+.corporate-hero {
+  position: relative;
+  width: 100%;
+  background: #03111c;
+  overflow: hidden;
+}
+
+.corporate-hero-media {
+  position: relative;
+  width: 100%;
+  height: clamp(540px,73vh,760px);
+  overflow: hidden;
+  background: #03111c;
+}
+
+.corporate-hero-video,
+.corporate-hero-thumbnail {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.corporate-hero-video {
+  z-index: 1;
+  opacity: 1;
+}
+
+.corporate-hero-thumbnail {
+  z-index: 0;
+  opacity: 0;
+  transform: scale(1.015);
+}
+
+.corporate-hero-thumbnail.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.corporate-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(180deg,rgba(0,8,15,0.12) 0%,rgba(0,8,15,0.04) 45%,rgba(0,8,15,0.62) 100%),
+    linear-gradient(90deg,rgba(1,10,17,0.18) 0%,transparent 48%,rgba(1,10,17,0.12) 100%);
+  pointer-events: none;
+}
+
+.corporate-hero-label {
+  position: absolute;
+  top: 115px;
+  left: max(30px,calc((100% - var(--container)) / 2));
+  z-index: 4;
+}
+
+.corporate-hero-label span {
+  color: rgba(255,255,255,0.82);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.corporate-hero-quote {
+  position: absolute;
+  right: max(34px,calc((100% - var(--container)) / 2));
+  bottom: 46px;
+  z-index: 4;
+  width: min(560px,44vw);
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  opacity: 1;
+  will-change: transform;
+}
+
+.corporate-hero-quote-line {
+  width: 46px;
+  height: 1px;
+  margin-top: 17px;
+  flex: 0 0 auto;
+  background: var(--gold);
+}
+
+.corporate-hero-quote p {
+  margin: 0;
+  color: #fff;
+  font-family: var(--serif);
+  font-size: clamp(27px,2.45vw,40px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.13;
+  letter-spacing: -0.005px;
+  text-shadow: 0 3px 24px rgba(0,0,0,0.24);
+}
+
+@media (max-width: 1100px) {
+  .corporate-hero-media {
+    height: 600px;
+  }
+
+  .corporate-hero-quote {
+    width: min(520px,50vw);
+  }
+
+  .corporate-hero-quote p {
+    font-size: clamp(26px,3vw,35px);
+  }
+}
+
+@media (max-width: 900px) {
+  .corporate-hero-media {
+    height: 520px;
+  }
+
+  .corporate-hero-thumbnail {
+    opacity: 1;
+    transform: none;
+    object-position: center;
+  }
+
+  .corporate-hero-overlay {
+    background: linear-gradient(180deg,rgba(0,8,15,0.05) 0%,rgba(0,8,15,0.12) 45%,rgba(0,8,15,0.8) 100%);
+  }
+
+  .corporate-hero-label {
+    top: 90px;
+    left: 24px;
+  }
+
+  .corporate-hero-quote {
+    right: 24px;
+    bottom: 34px;
+    width: min(520px,72vw);
+    transform: none !important;
+  }
+
+  .corporate-hero-quote p {
+    font-size: clamp(25px,4vw,34px);
+  }
+}
+
+@media (max-width: 600px) {
+  .corporate-hero-media {
+    height: 500px;
+  }
+
+  .corporate-hero-thumbnail {
+    object-position: 38% center;
+  }
+
+  .corporate-hero-label {
+    top: 78px;
+    left: 18px;
+  }
+
+  .corporate-hero-label span {
+    font-size: 9px;
+  }
+
+  .corporate-hero-quote {
+    right: 18px;
+    bottom: 28px;
+    width: calc(100% - 36px);
+    gap: 12px;
+  }
+
+  .corporate-hero-quote-line {
+    width: 28px;
+    margin-top: 13px;
+  }
+
+  .corporate-hero-quote p {
+    font-size: clamp(24px,7.3vw,32px);
+    line-height: 1.1;
+    letter-spacing: -0.7px;
+  }
+}
