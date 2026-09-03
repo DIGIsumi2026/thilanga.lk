@@ -95,7 +95,7 @@
   margin: 0;
   color: #fff;
   font-family: var(--serif);
-  font-size: clamp(27px,2.45vw,40px);
+  font-size: clamp(27px,1.45vw,40px);
   font-weight: 400;
   font-style: italic;
   line-height: 1.13;
