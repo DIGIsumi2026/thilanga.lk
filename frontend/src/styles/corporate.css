@@ -374,3 +374,331 @@
     line-height: 1.82;
   }
 }
+
+/* =========================================================
+   CORPORATE COMPANY GRID
+   Reference: conmpany-grid.mp4
+   ========================================================= */
+
+.corporate-companies {
+  position: relative;
+  width: 100%;
+  padding: 105px 30px 115px;
+  background: #fbfbfb;
+  color: var(--ink);
+  overflow: hidden;
+}
+
+.corporate-companies-container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.corporate-companies-heading {
+  max-width: 670px;
+  margin-bottom: 42px;
+  opacity: 0;
+}
+
+.corporate-companies-kicker {
+  display: block;
+  margin-bottom: 13px;
+  color: var(--gold);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.corporate-companies-heading h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(46px,4.6vw,70px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.corporate-companies-heading p {
+  max-width: 560px;
+  margin: 17px 0 0;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.corporate-company-grid {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5,minmax(0,1fr));
+  grid-template-rows: repeat(3,96px);
+  border-top: 1px solid #e5e5e5;
+  border-left: 1px solid #e5e5e5;
+  background: #fff;
+}
+
+.corporate-company-tile {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fff;
+  color: #77777f;
+  text-decoration: none;
+  overflow: hidden;
+  opacity: 0;
+  transition: background 0.3s ease,color 0.3s ease;
+}
+
+.corporate-company-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #fafafa;
+  opacity: 0;
+  transition: opacity 0.32s ease;
+  pointer-events: none;
+}
+
+.corporate-company-tile:hover::after,
+.corporate-company-tile.is-active::after {
+  opacity: 1;
+}
+
+.corporate-company-logo-placeholder {
+  position: relative;
+  z-index: 2;
+  max-width: 72%;
+  color: #74747c;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-align: center;
+  transition: color 0.25s ease,transform 0.35s cubic-bezier(0.22,1,0.36,1);
+}
+
+.corporate-company-tile:hover .corporate-company-logo-placeholder,
+.corporate-company-tile.is-active .corporate-company-logo-placeholder {
+  color: #111;
+  transform: scale(1.04);
+}
+
+.corporate-company-plus {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 3;
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+  color: #d2008b;
+  pointer-events: none;
+}
+
+.corporate-company-preview {
+  position: relative;
+  z-index: 10;
+  min-width: 0;
+  min-height: 0;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  overflow: hidden;
+  background: #123b32;
+  opacity: 0;
+  transform-origin: center;
+}
+
+.corporate-company-preview-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 76% 28%,rgba(255,255,255,0.18),transparent 24%),
+    linear-gradient(120deg,#12463b 0%,#315f50 48%,#111d1a 100%);
+  transform: scale(1.025);
+  transition: transform 1s cubic-bezier(0.22,1,0.36,1);
+}
+
+.corporate-company-preview:hover .corporate-company-preview-bg {
+  transform: scale(1.06);
+}
+
+.corporate-company-preview-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,rgba(0,43,34,0.82) 0%,rgba(0,43,34,0.48) 44%,rgba(0,20,18,0.05) 100%);
+}
+
+.corporate-company-preview-content {
+  position: absolute;
+  left: 26px;
+  bottom: 25px;
+  z-index: 2;
+  width: min(74%,310px);
+}
+
+.corporate-company-preview-content strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #fff;
+  font-family: var(--sans);
+  font-size: clamp(37px,3.2vw,48px);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -2px;
+}
+
+.corporate-company-preview-content span {
+  display: block;
+  color: rgba(255,255,255,0.95);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.corporate-company-preview-content p {
+  margin: 6px 0 0;
+  color: rgba(255,255,255,0.65);
+  font-family: var(--sans);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.corporate-company-preview-arrow {
+  position: absolute;
+  right: 22px;
+  bottom: 23px;
+  z-index: 3;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  color: #fff;
+  transition: transform 0.35s ease,background 0.35s ease;
+}
+
+.corporate-company-preview:hover .corporate-company-preview-arrow {
+  transform: translate(3px,-3px);
+  background: rgba(255,255,255,0.12);
+}
+
+.corporate-company-mobile-preview {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .corporate-companies {
+    padding: 90px 25px 100px;
+  }
+
+  .corporate-company-grid {
+    grid-template-rows: repeat(3,88px);
+  }
+
+  .corporate-company-logo-placeholder {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 900px) {
+  .corporate-companies {
+    padding: 82px 22px 90px;
+  }
+
+  .corporate-companies-heading {
+    margin-bottom: 34px;
+  }
+
+  .corporate-company-grid {
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    grid-template-rows: none;
+  }
+
+  .corporate-company-tile {
+    min-height: 100px;
+  }
+
+  .corporate-company-mobile-preview {
+    margin-top: 18px;
+    padding: 26px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 190px;
+    background: linear-gradient(125deg,#0b3d35,#082721);
+    color: #fff;
+    text-decoration: none;
+    overflow: hidden;
+  }
+
+  .corporate-company-mobile-preview strong {
+    display: block;
+    margin-bottom: 6px;
+    font-family: var(--sans);
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -1.5px;
+  }
+
+  .corporate-company-mobile-preview span {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .corporate-company-mobile-preview p {
+    max-width: 420px;
+    margin: 7px 0 0;
+    color: rgba(255,255,255,0.67);
+    font-size: 12px;
+    line-height: 1.55;
+  }
+}
+
+@media (max-width: 600px) {
+  .corporate-companies {
+    padding: 70px 18px 78px;
+  }
+
+  .corporate-companies-heading h2 {
+    font-size: clamp(38px,11vw,52px);
+    letter-spacing: -1.5px;
+  }
+
+  .corporate-company-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+
+  .corporate-company-tile {
+    min-height: 92px;
+  }
+
+  .corporate-company-logo-placeholder {
+    max-width: 76%;
+    font-size: 10px;
+  }
+
+  .corporate-company-plus {
+    top: 6px;
+    right: 6px;
+  }
+
+  .corporate-company-mobile-preview {
+    min-height: 175px;
+    padding: 22px;
+  }
+}

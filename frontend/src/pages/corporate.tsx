@@ -1,6 +1,7 @@
 import {motion} from 'framer-motion';
 import CorporateHero from '../sections/corporate/CorporateHero';
 import CorporateChairman from '../sections/corporate/CorporateChairman';
+import CorporateCompanies from '../sections/corporate/CorporateCompanies';
 import '../styles/corporate.css';
 
 export default function Corporate() {
@@ -12,6 +13,7 @@ export default function Corporate() {
     >
       <CorporateHero />
       <CorporateChairman/>
+      <CorporateCompanies/>
     </motion.main>
   );
 }
