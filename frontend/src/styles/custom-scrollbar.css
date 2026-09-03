@@ -1,0 +1,60 @@
+/* PC ONLY */
+@media (min-width: 901px) {
+  html.custom-scrollbar-enabled {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  html.custom-scrollbar-enabled::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .custom-scrollbar-track {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 100vh;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* track itself shouldn't block clicks */
+  }
+  
+  .custom-scrollbar-track.visible {
+    opacity: 1;
+  }
+  
+  .custom-scrollbar-thumb {
+    position: absolute;
+    top: 0;
+    right: 4px;
+    width: 10px;
+    background: linear-gradient(145deg, rgba(45, 45, 45, 0.65), rgba(5, 5, 5, 0.75));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    cursor: grab;
+    pointer-events: auto;
+    transition: background 0.2s ease, width 0.2s ease, border-color 0.2s ease;
+  }
+  
+  .custom-scrollbar-thumb:hover,
+  .custom-scrollbar-thumb:active {
+    width: 12px;
+    background: linear-gradient(145deg, rgba(60, 60, 60, 0.8), rgba(0, 0, 0, 0.9));
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+  
+  .custom-scrollbar-thumb:active {
+    cursor: grabbing;
+  }
+}
+
+/* Hide custom scrollbar on mobile entirely */
+@media (max-width: 900px) {
+  .custom-scrollbar-track {
+    display: none !important;
+  }
+}

@@ -60,7 +60,7 @@ function links() {
       {[
         ["Home", "/"],
         ["About", "/about"],
-        ["Practice areas", "/practice-areas"],
+        ["Corporate", "/corporate"],
         ["Attorneys", "/attorneys"],
         ["Journal", "/journal"],
         ["Contact", "/contact"],

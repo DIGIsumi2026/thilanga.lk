@@ -9,6 +9,7 @@ import FloatingContact from './components/common/FloatingContact';
 */}
 import ScrollToTop from './components/common/ScrollToTop';
 import SmoothScroll from './components/common/SmoothScroll';
+import CustomScrollbar from './components/common/CustomScrollbar';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -23,6 +24,7 @@ export default function App() {
   return (
     <SmoothScroll>
       <ScrollToTop />
+      <CustomScrollbar />
 
       <Navbar />
 

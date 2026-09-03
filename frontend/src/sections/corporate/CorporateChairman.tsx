@@ -17,19 +17,45 @@ export default function CorporateChairman() {
 
     if (!section) return;
 
-    const kicker = section.querySelector<HTMLElement>('.corporate-chairman-kicker');
     const title = section.querySelector<HTMLElement>('.corporate-chairman-title');
+    const chairmanSpan = title?.querySelector<HTMLElement>('span');
+    const bar = section.querySelector<HTMLElement>('.corporate-chairman-bar');
     const line = section.querySelector<HTMLElement>('.corporate-chairman-line');
     const paragraphs = section.querySelectorAll<HTMLElement>('.corporate-chairman-text p');
+
+    const updateBarWidth = () => {
+      if (chairmanSpan && bar) {
+        const rect = chairmanSpan.getBoundingClientRect();
+        if (rect.width > 0) {
+          bar.style.width = `${Math.round(rect.width)}px`;
+        }
+      }
+    };
+
+    updateBarWidth();
+    if (document.fonts) {
+      document.fonts.ready.then(updateBarWidth);
+    }
+    window.addEventListener('resize', updateBarWidth);
+
+    let resizeObserver: ResizeObserver | null = null;
+    if (typeof ResizeObserver !== 'undefined' && chairmanSpan) {
+      resizeObserver = new ResizeObserver(() => {
+        updateBarWidth();
+      });
+      resizeObserver.observe(chairmanSpan);
+    }
 
     const reducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
     ).matches;
 
     const makeVisible = () => {
-      if (kicker) kicker.style.opacity = '1';
       if (title) title.style.opacity = '1';
-      if (line) line.style.opacity = '1';
+      if (bar) bar.style.opacity = '1';
+      if (line) {
+        line.style.transform = 'scaleX(1)';
+      }
 
       paragraphs.forEach((paragraph) => {
         paragraph.style.opacity = '1';
@@ -38,22 +64,16 @@ export default function CorporateChairman() {
 
     if (reducedMotion) {
       makeVisible();
-      return;
+      return () => {
+        window.removeEventListener('resize', updateBarWidth);
+        if (resizeObserver) resizeObserver.disconnect();
+      };
     }
 
     const runAnimation = () => {
       if (animatedRef.current) return;
 
       animatedRef.current = true;
-
-      if (kicker) {
-        animate(kicker,{
-          opacity:[0,1],
-          translateY:[18,0],
-          duration:650,
-          ease:'outExpo',
-        });
-      }
 
       if (title) {
         animate(title,{
@@ -65,13 +85,21 @@ export default function CorporateChairman() {
         });
       }
 
+      if (bar) {
+        animate(bar, {
+          opacity: [0, 1],
+          duration: 350,
+          delay: 200,
+          ease: 'outQuad',
+        });
+      }
+
       if (line) {
         animate(line,{
-          opacity:[0,1],
           scaleX:[0,1],
-          duration:750,
-          delay:220,
-          ease:'outExpo',
+          duration:1100,
+          delay:350,
+          ease:'outCubic',
         });
       }
 
@@ -80,7 +108,7 @@ export default function CorporateChairman() {
           opacity:[0,1],
           translateY:[30,0],
           delay:stagger(220,{
-            start:320,
+            start:450,
           }),
           duration:950,
           ease:'outExpo',
@@ -96,8 +124,8 @@ export default function CorporateChairman() {
         observer.disconnect();
       },
       {
-        threshold:0.15,
-        rootMargin:'0px 0px -8% 0px',
+        threshold:0.1,
+        rootMargin:'0px 0px -40px 0px',
       },
     );
 
@@ -105,6 +133,8 @@ export default function CorporateChairman() {
 
     return () => {
       observer.disconnect();
+      window.removeEventListener('resize', updateBarWidth);
+      if (resizeObserver) resizeObserver.disconnect();
     };
   },[]);
 
@@ -120,19 +150,17 @@ export default function CorporateChairman() {
 
       <div className="corporate-chairman-container">
         <div className="corporate-chairman-content">
-          <span className="corporate-chairman-kicker">
-            Corporate Leadership
-          </span>
-
           <h2 className="corporate-chairman-title">
             Thilanga Sumathipala
-            <span>The Chairman</span>
+            <span>Chairman</span>
           </h2>
 
-          <span
-            className="corporate-chairman-line"
+          <div
+            className="corporate-chairman-bar"
             aria-hidden="true"
-          />
+          >
+            <span className="corporate-chairman-line" />
+          </div>
 
           <div className="corporate-chairman-text">
             {chairmanParagraphs.map((paragraph,index) => (
