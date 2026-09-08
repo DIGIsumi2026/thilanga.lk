@@ -433,6 +433,7 @@
 
 .corporate-company-grid {
   position: relative;
+  isolation: isolate;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(5,minmax(0,1fr));
@@ -440,14 +441,13 @@
   border-top: 1px solid #e5e5e5;
   border-left: 1px solid #e5e5e5;
   background: #fff;
+  overflow: hidden;
 }
 
 .corporate-company-tile {
   position: relative;
+  z-index: 1;
   min-width: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border-right: 1px solid #e5e5e5;
   border-bottom: 1px solid #e5e5e5;
   background: #fff;
@@ -456,6 +456,30 @@
   overflow: hidden;
   opacity: 0;
   transition: background 0.3s ease,color 0.3s ease;
+}
+
+.corporate-company-tile.is-active {
+  z-index: 3;
+}
+
+.corporate-company-tile-action {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+}
+
+button.corporate-company-tile-action {
+  cursor: pointer;
 }
 
 .corporate-company-tile::after {
@@ -486,10 +510,27 @@
   transition: color 0.25s ease,transform 0.35s cubic-bezier(0.22,1,0.36,1);
 }
 
+.corporate-company-logo {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: auto;
+  max-width: 72%;
+  max-height: 52px;
+  object-fit: contain;
+  transition: filter 0.25s ease,transform 0.35s cubic-bezier(0.22,1,0.36,1);
+}
+
 .corporate-company-tile:hover .corporate-company-logo-placeholder,
 .corporate-company-tile.is-active .corporate-company-logo-placeholder {
   color: #111;
   transform: scale(1.04);
+}
+
+.corporate-company-tile:hover .corporate-company-logo,
+.corporate-company-tile.is-active .corporate-company-logo {
+  filter: contrast(1.08);
+  transform: scale(1.025);
 }
 
 .corporate-company-plus {
@@ -503,10 +544,17 @@
   place-items: center;
   color: #d2008b;
   pointer-events: none;
+  transition: opacity 0.3s ease,transform 0.38s cubic-bezier(0.22,1,0.36,1);
+}
+
+.corporate-company-tile:hover .corporate-company-plus,
+.corporate-company-tile.is-active .corporate-company-plus {
+  opacity: 0.72;
+  transform: rotate(45deg) scale(0.94);
 }
 
 .corporate-company-preview {
-  position: relative;
+  position: absolute;
   z-index: 10;
   min-width: 0;
   min-height: 0;
@@ -517,11 +565,18 @@
   background: #123b32;
   opacity: 0;
   transform-origin: center;
+  will-change: left,width,clip-path,transform,opacity;
 }
 
-.corporate-company-preview-bg {
+.corporate-company-preview-fallback,
+.corporate-company-preview-image {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.corporate-company-preview-fallback {
   background:
     radial-gradient(circle at 76% 28%,rgba(255,255,255,0.18),transparent 24%),
     linear-gradient(120deg,#12463b 0%,#315f50 48%,#111d1a 100%);
@@ -529,7 +584,14 @@
   transition: transform 1s cubic-bezier(0.22,1,0.36,1);
 }
 
-.corporate-company-preview:hover .corporate-company-preview-bg {
+.corporate-company-preview-image {
+  object-fit: cover;
+  transform: scale(1.025);
+  transition: transform 1s cubic-bezier(0.22,1,0.36,1);
+}
+
+.corporate-company-preview:hover .corporate-company-preview-fallback,
+.corporate-company-preview:hover .corporate-company-preview-image {
   transform: scale(1.06);
 }
 
@@ -564,6 +626,14 @@
   font-family: var(--sans);
   font-size: 13px;
   font-weight: 500;
+}
+
+.corporate-company-preview-content small {
+  display: block;
+  margin-top: 4px;
+  color: rgba(255,255,255,0.76);
+  font-family: var(--sans);
+  font-size: 11px;
 }
 
 .corporate-company-preview-content p {
@@ -624,6 +694,7 @@
   .corporate-company-grid {
     grid-template-columns: repeat(3,minmax(0,1fr));
     grid-template-rows: none;
+    grid-auto-rows: 100px;
   }
 
   .corporate-company-tile {
@@ -642,6 +713,17 @@
     color: #fff;
     text-decoration: none;
     overflow: hidden;
+  }
+
+  .corporate-company-mobile-preview > a {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    color: #fff;
   }
 
   .corporate-company-mobile-preview strong {
@@ -681,6 +763,7 @@
 
   .corporate-company-grid {
     grid-template-columns: repeat(2,minmax(0,1fr));
+    grid-auto-rows: 92px;
   }
 
   .corporate-company-tile {
