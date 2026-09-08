@@ -32,6 +32,41 @@ import corporateThumbnail from "../assets/images/corporate/corporate-thumnail.pn
 //intro
 import corporateChairmanBackground from "../assets/images/corporate/chairman-background.png";
 
+//company logos 
+import company01Logo from "../assets/images/corporate/companies/company-01-logo.webp";
+import company01Preview from "../assets/images/corporate/companies/previews/company-01-preview.webp";
+
+import company02Logo from "../assets/images/corporate/companies/company-02-logo.webp";
+import company02Preview from "../assets/images/corporate/companies/previews/company-02-preview.webp";
+
+import company03Logo from "../assets/images/corporate/companies/company-03-logo.webp";
+import company04Logo from "../assets/images/corporate/companies/company-04-logo.webp";
+import company05Logo from "../assets/images/corporate/companies/company-05-logo.webp";
+
+import company06Logo from "../assets/images/corporate/companies/company-06-logo.webp";
+import company06Preview from "../assets/images/corporate/companies/previews/company-06-preview.webp";
+
+import company07Logo from "../assets/images/corporate/companies/company-07-logo.webp";
+
+import company08Logo from "../assets/images/corporate/companies/company-08-logo.webp";
+import company08Preview from "../assets/images/corporate/companies/previews/company-08-preview.webp";
+
+import company09Logo from "../assets/images/corporate/companies/company-09-logo.webp";
+
+import company10Logo from "../assets/images/corporate/companies/company-10-logo.webp";
+import company10Preview from "../assets/images/corporate/companies/previews/company-10-preview.webp";
+
+import company11Logo from "../assets/images/corporate/companies/company-11-logo.webp";
+import company12Logo from "../assets/images/corporate/companies/company-12-logo.webp";
+import company13Logo from "../assets/images/corporate/companies/company-13-logo.webp";
+
+import company14Logo from "../assets/images/corporate/companies/company-14-logo.webp";
+import company14Preview from "../assets/images/corporate/companies/previews/company-14-preview.webp";
+
+import company15Logo from "../assets/images/corporate/companies/company-15-logo.webp";
+import company15Preview from "../assets/images/corporate/companies/previews/company-15-preview.webp";
+
+
 
 import about from "./images/about.jpg";
 import innerAbout from "./images/inner-about.jpg";
@@ -91,6 +126,74 @@ export const imageAssets = {
       background: corporateChairmanBackground,
     },
 
+    companies: {
+    company01: {
+      logo: company01Logo,
+      preview: company01Preview
+    },
+
+    company02: {
+      logo:company02Logo,
+      preview: company02Preview,
+    },
+
+    company03: {
+      logo: company03Logo,
+    },
+
+    company04: {
+      logo: company04Logo,
+    },
+
+    company05: {
+      logo: company05Logo,
+    },
+
+    company06: {
+      logo: company06Logo,
+      preview: company06Preview,
+    },
+
+    company07: {
+      logo: company07Logo,
+    },
+
+    company08: {
+      logo: company08Logo,
+      preview: company08Preview,
+    },
+
+    company09: {
+      logo: company09Logo,
+    },
+
+    company10: {
+      logo: company10Logo,
+      preview: company10Preview,
+    },
+
+    company11: {
+      logo: company11Logo,
+    },
+
+    company12: {
+      logo: company12Logo,
+    },
+
+    company13: {
+      logo: company13Logo,
+    },
+
+    company14: {
+      logo: company14Logo,
+      preview: company14Preview,
+    },
+
+    company15: {
+      logo: company15Logo,
+      preview: company15Preview,
+    },
+  },
   },
 
   practice: {

@@ -45,10 +45,10 @@ export default function CorporateCompanies() {
     useState<number | null>(null);
   const [previewGeometry,setPreviewGeometry] =
     useState<PreviewGeometry | null>(null);
+  const [previewRevision,setPreviewRevision] = useState(0);
   const [isDesktop,setIsDesktop] = useState(
     () => typeof window !== 'undefined' &&
-      window.innerWidth > DESKTOP_BREAKPOINT &&
-      window.matchMedia('(hover: hover) and (pointer: fine)').matches,
+      window.innerWidth > DESKTOP_BREAKPOINT,
   );
 
   const clearPreview = useCallback(() => {
@@ -113,6 +113,7 @@ export default function CorporateCompanies() {
     setActiveIndex(index);
     setActiveCompany(company);
     setPreviewGeometry(geometry);
+    setPreviewRevision((revision) => revision + 1);
   },[isDesktop,measurePreview]);
 
   const closeDesktopPreview = useCallback(() => {
@@ -171,9 +172,7 @@ export default function CorporateCompanies() {
 
   useEffect(() => {
     const updateViewport = () => {
-      const desktop =
-        window.innerWidth > DESKTOP_BREAKPOINT &&
-        window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      const desktop = window.innerWidth > DESKTOP_BREAKPOINT;
 
       setIsDesktop(desktop);
 
@@ -339,6 +338,8 @@ export default function CorporateCompanies() {
           top:previewGeometry.top,
           width:previewGeometry.width,
           height:previewGeometry.height,
+          opacity:1,
+          scale:1,
           clipPath:`circle(${revealRadius}px at ${previewGeometry.originX}px ${previewGeometry.originY}px)`,
           borderRadius:'0px',
           duration:0.48,
@@ -357,7 +358,7 @@ export default function CorporateCompanies() {
     }
 
     previousGeometryRef.current = previewGeometry;
-  },[activeCompany,isDesktop,previewGeometry]);
+  },[activeCompany,isDesktop,previewGeometry,previewRevision]);
 
   useEffect(() => () => {
     previewTimelineRef.current?.kill();
@@ -479,8 +480,10 @@ export default function CorporateCompanies() {
                 className={`corporate-company-tile ${
                   activeIndex === index ? 'is-active' : ''
                 }`}
-                onMouseEnter={() => {
-                  if (hasPreview) openPreview(company,index);
+                onPointerEnter={(event) => {
+                  if (hasPreview && event.pointerType !== 'touch') {
+                    openPreview(company,index);
+                  }
                 }}
               >
                 {hasPreview ? (
