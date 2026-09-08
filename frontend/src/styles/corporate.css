@@ -515,8 +515,8 @@ button.corporate-company-tile-action {
   z-index: 2;
   display: block;
   width: auto;
-  max-width: 72%;
-  max-height: 52px;
+  max-width: 88%;
+  max-height: 68px;
   object-fit: contain;
   transition: filter 0.25s ease,transform 0.35s cubic-bezier(0.22,1,0.36,1);
 }
