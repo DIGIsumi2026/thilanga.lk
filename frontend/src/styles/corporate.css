@@ -377,411 +377,835 @@
 
 /* =========================================================
    CORPORATE COMPANY GRID
-   Reference: conmpany-grid.mp4
    ========================================================= */
 
 .corporate-companies {
+
   position: relative;
+
   width: 100%;
+
   padding: 105px 30px 115px;
+
   background: #fbfbfb;
+
   color: var(--ink);
+
   overflow: hidden;
+
 }
 
 .corporate-companies-container {
+
   width: 100%;
+
   max-width: 1180px;
+
   margin: 0 auto;
+
 }
 
 .corporate-companies-heading {
+
   max-width: 670px;
+
   margin-bottom: 42px;
+
   opacity: 0;
+
 }
 
 .corporate-companies-kicker {
+
   display: block;
+
   margin-bottom: 13px;
+
   color: var(--gold);
+
   font-family: var(--sans);
+
   font-size: 10px;
+
   font-weight: 600;
+
   letter-spacing: 0.17em;
+
   text-transform: uppercase;
+
 }
 
 .corporate-companies-heading h2 {
+
   margin: 0;
+
   color: var(--ink);
+
   font-family: var(--serif);
+
   font-size: clamp(46px,4.6vw,70px);
+
   font-weight: 400;
+
   line-height: 1;
+
   letter-spacing: -2px;
+
 }
 
 .corporate-companies-heading p {
+
   max-width: 560px;
+
   margin: 17px 0 0;
+
   color: var(--muted);
+
   font-family: var(--sans);
+
   font-size: 14px;
+
   line-height: 1.75;
+
 }
 
 .corporate-company-grid {
+
   position: relative;
+
   isolation: isolate;
+
   width: 100%;
+
   display: grid;
+
   grid-template-columns: repeat(5,minmax(0,1fr));
+
   grid-template-rows: repeat(3,110px);
+
   border-top: 1px solid #e5e5e5;
+
   border-left: 1px solid #e5e5e5;
+
   background: #fff;
+
   overflow: hidden;
+
 }
 
 .corporate-company-tile {
+
   position: relative;
+
   z-index: 1;
+
   min-width: 0;
+
   border-right: 1px solid #e5e5e5;
+
   border-bottom: 1px solid #e5e5e5;
+
   background: #fff;
+
   color: #77777f;
+
   text-decoration: none;
+
   overflow: hidden;
+
   opacity: 0;
+
   transition: background 0.3s ease,color 0.3s ease;
+
 }
 
 .corporate-company-tile.is-active {
+
   z-index: 3;
+
 }
 
 .corporate-company-tile-action {
+
   position: relative;
+
   z-index: 2;
+
   width: 100%;
+
   height: 100%;
+
   padding: 0;
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   border: 0;
+
   background: transparent;
+
   color: inherit;
+
   font: inherit;
+
   text-decoration: none;
+
 }
 
 button.corporate-company-tile-action {
+
   cursor: pointer;
+
 }
 
 .corporate-company-tile::after {
+
   content: "";
+
   position: absolute;
+
   inset: 0;
+
   background: #fafafa;
+
   opacity: 0;
+
   transition: opacity 0.32s ease;
+
   pointer-events: none;
+
 }
 
 .corporate-company-tile:hover::after,
+
 .corporate-company-tile.is-active::after {
+
   opacity: 1;
+
 }
 
 .corporate-company-logo-placeholder {
+
   position: relative;
+
   z-index: 2;
+
   max-width: 72%;
+
   color: #74747c;
+
   font-family: var(--sans);
+
   font-size: 13px;
+
   font-weight: 600;
+
   letter-spacing: -0.02em;
+
   text-align: center;
+
   transition: color 0.25s ease,transform 0.35s cubic-bezier(0.22,1,0.36,1);
+
 }
 
 .corporate-company-logo {
+
   position: relative;
+
   z-index: 2;
+
   display: block;
+
   width: auto;
+
   max-width: 94%;
+
   max-height: 80px;
+
   object-fit: contain;
+
   transition: filter 0.25s ease,transform 0.35s cubic-bezier(0.22,1,0.36,1);
+
 }
 
 .corporate-company-tile:hover .corporate-company-logo-placeholder,
+
 .corporate-company-tile.is-active .corporate-company-logo-placeholder {
+
   color: #111;
+
   transform: scale(1.04);
+
 }
 
 .corporate-company-tile:hover .corporate-company-logo,
+
 .corporate-company-tile.is-active .corporate-company-logo {
+
   filter: contrast(1.08);
+
   transform: scale(1.025);
+
 }
 
 .corporate-company-plus {
+
   position: absolute;
+
   top: 8px;
+
   right: 8px;
+
   z-index: 3;
+
   width: 22px;
+
   height: 22px;
+
   display: grid;
+
   place-items: center;
+
   color: #d2008b;
+
   pointer-events: none;
+
   transition: opacity 0.3s ease,transform 0.38s cubic-bezier(0.22,1,0.36,1);
+
 }
 
-.corporate-company-tile:hover .corporate-company-plus,
-.corporate-company-tile.is-active .corporate-company-plus {
-  opacity: 0.72;
-  transform: rotate(45deg) scale(0.94);
-}
-
-.corporate-company-preview {
-  position: absolute;
-  z-index: 10;
-  min-width: 0;
-  min-height: 0;
-  display: block;
-  color: #fff;
-  text-decoration: none;
-  overflow: hidden;
-  background: #123b32;
-  opacity: 0;
-  transform-origin: center;
-  will-change: left,width,clip-path,transform,opacity;
-}
-
-.corporate-company-preview-fallback,
-.corporate-company-preview-image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.corporate-company-preview-fallback {
-  background:
-    radial-gradient(circle at 76% 28%,rgba(255,255,255,0.18),transparent 24%),
-    linear-gradient(120deg,#12463b 0%,#315f50 48%,#111d1a 100%);
-  transform: scale(1.025);
-  transition: transform 1s cubic-bezier(0.22,1,0.36,1);
-}
-
-.corporate-company-preview-image {
-  object-fit: cover;
-  transform: scale(1.025);
-  transition: transform 1s cubic-bezier(0.22,1,0.36,1);
-}
-
-.corporate-company-preview:hover .corporate-company-preview-fallback,
-.corporate-company-preview:hover .corporate-company-preview-image {
-  transform: scale(1.06);
-}
-
-.corporate-company-preview-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg,rgba(0,43,34,0.82) 0%,rgba(0,43,34,0.48) 44%,rgba(0,20,18,0.05) 100%);
-}
-
-.corporate-company-preview-content {
-  position: absolute;
-  left: 26px;
-  bottom: 25px;
+.corporate-company-plus svg {
+  position: relative;
   z-index: 2;
-  width: min(74%,310px);
 }
 
-.corporate-company-preview-content strong {
-  display: block;
-  margin-bottom: 4px;
-  color: #fff;
-  font-family: var(--sans);
-  font-size: clamp(37px,3.2vw,48px);
-  font-weight: 500;
-  line-height: 0.95;
-  letter-spacing: -2px;
-}
-
-.corporate-company-preview-content span {
-  display: block;
-  color: rgba(255,255,255,0.95);
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.corporate-company-preview-content small {
-  display: block;
-  margin-top: 4px;
-  color: rgba(255,255,255,0.76);
-  font-family: var(--sans);
-  font-size: 11px;
-}
-
-.corporate-company-preview-content p {
-  margin: 6px 0 0;
-  color: rgba(255,255,255,0.65);
-  font-family: var(--sans);
-  font-size: 11px;
-  line-height: 1.45;
-}
-
-.corporate-company-preview-arrow {
-  position: absolute;
-  right: 22px;
-  bottom: 23px;
-  z-index: 3;
-  width: 38px;
-  height: 38px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 50%;
-  color: #fff;
-  transition: transform 0.35s ease,background 0.35s ease;
-}
-
-.corporate-company-preview:hover .corporate-company-preview-arrow {
-  transform: translate(3px,-3px);
-  background: rgba(255,255,255,0.12);
-}
-
-.corporate-company-mobile-preview {
+.corporate-company-plus-pulse,
+.corporate-company-inline-preview-shell {
   display: none;
 }
 
+.corporate-company-tile:hover .corporate-company-plus,
+
+.corporate-company-tile.is-active .corporate-company-plus {
+
+  opacity: 0.72;
+
+  transform: rotate(45deg) scale(0.94);
+
+}
+
+.corporate-company-preview {
+
+  position: absolute;
+
+  z-index: 10;
+
+  min-width: 0;
+
+  min-height: 0;
+
+  display: block;
+
+  color: #fff;
+
+  text-decoration: none;
+
+  overflow: hidden;
+
+  background: #123b32;
+
+  opacity: 0;
+
+  transform-origin: center;
+
+  will-change: left,width,clip-path,transform,opacity;
+
+}
+
+.corporate-company-preview-fallback,
+
+.corporate-company-preview-image {
+
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+}
+
+.corporate-company-preview-fallback {
+
+  background:
+
+    radial-gradient(circle at 76% 28%,rgba(255,255,255,0.18),transparent 24%),
+
+    linear-gradient(120deg,#12463b 0%,#315f50 48%,#111d1a 100%);
+
+  transform: scale(1.025);
+
+  transition: transform 1s cubic-bezier(0.22,1,0.36,1);
+
+}
+
+.corporate-company-preview-image {
+
+  object-fit: cover;
+
+  transform: scale(1.025);
+
+  transition: transform 1s cubic-bezier(0.22,1,0.36,1);
+
+}
+
+.corporate-company-preview:hover .corporate-company-preview-fallback,
+
+.corporate-company-preview:hover .corporate-company-preview-image {
+
+  transform: scale(1.06);
+
+}
+
+.corporate-company-preview-overlay {
+
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(90deg,rgba(0,43,34,0.82) 0%,rgba(0,43,34,0.48) 44%,rgba(0,20,18,0.05) 100%);
+
+}
+
+.corporate-company-preview-content {
+
+  position: absolute;
+
+  left: 26px;
+
+  bottom: 25px;
+
+  z-index: 2;
+
+  width: min(74%,310px);
+
+}
+
+.corporate-company-preview-content strong {
+
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #fff;
+
+  font-family: var(--sans);
+
+  font-size: clamp(37px,3.2vw,48px);
+
+  font-weight: 500;
+
+  line-height: 0.95;
+
+  letter-spacing: -2px;
+
+}
+
+.corporate-company-preview-content span {
+
+  display: block;
+
+  color: rgba(255,255,255,0.95);
+
+  font-family: var(--sans);
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+}
+
+.corporate-company-preview-content small {
+
+  display: block;
+
+  margin-top: 4px;
+
+  color: rgba(255,255,255,0.76);
+
+  font-family: var(--sans);
+
+  font-size: 11px;
+
+}
+
+.corporate-company-preview-content p {
+
+  margin: 6px 0 0;
+
+  color: rgba(255,255,255,0.65);
+
+  font-family: var(--sans);
+
+  font-size: 11px;
+
+  line-height: 1.45;
+
+}
+
+.corporate-company-preview-arrow {
+
+  position: absolute;
+
+  right: 22px;
+
+  bottom: 23px;
+
+  z-index: 3;
+
+  width: 38px;
+
+  height: 38px;
+
+  display: grid;
+
+  place-items: center;
+
+  border: 1px solid rgba(255,255,255,0.3);
+
+  border-radius: 50%;
+
+  color: #fff;
+
+  transition: transform 0.35s ease,background 0.35s ease;
+
+}
+
+.corporate-company-preview:hover .corporate-company-preview-arrow {
+
+  transform: translate(3px,-3px);
+
+  background: rgba(255,255,255,0.12);
+
+}
+
 @media (max-width: 1100px) {
+
   .corporate-companies {
+
     padding: 90px 25px 100px;
+
   }
 
   .corporate-company-grid {
+
     grid-template-rows: repeat(3,100px);
+
   }
 
   .corporate-company-logo-placeholder {
+
     font-size: 11px;
+
   }
+
 }
 
 @media (max-width: 900px) {
+
   .corporate-companies {
+
     padding: 82px 22px 90px;
+
   }
 
   .corporate-companies-heading {
+
     margin-bottom: 34px;
+
   }
 
   .corporate-company-grid {
+
     grid-template-columns: repeat(3,minmax(0,1fr));
+
     grid-template-rows: none;
-    grid-auto-rows: 112px;
+
+    grid-auto-rows: auto;
+
   }
 
   .corporate-company-tile {
+
     min-height: 112px;
+
+    touch-action: manipulation;
+
   }
 
-  .corporate-company-mobile-preview {
-    margin-top: 18px;
-    padding: 26px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 24px;
-    min-height: 190px;
-    background: linear-gradient(125deg,#0b3d35,#082721);
-    color: #fff;
-    text-decoration: none;
+  .corporate-company-tile::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    padding: 1.5px;
+    border-radius: inherit;
+    background: linear-gradient(135deg,var(--company-accent-from,#d2008b),var(--company-accent-to,#0b3d35));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.32s ease;
+  }
+
+  .corporate-company-tile.is-active {
+    box-shadow: inset 0 0 18px color-mix(in srgb,var(--company-accent-from,#d2008b) 9%,transparent);
+  }
+
+  .corporate-company-tile.is-active::before {
+    opacity: 1;
+  }
+
+  .corporate-company-tile.is-active::after {
+    background: #fff;
+    opacity: 0.55;
+  }
+
+  .corporate-company-tile.is-active .corporate-company-logo {
+    filter: none;
+    transform: scale(1.015);
+  }
+
+  .corporate-company-tile:hover .corporate-company-plus {
+    opacity: 1;
+    transform: none;
+  }
+
+  .corporate-company-tile.is-active .corporate-company-plus {
+    opacity: 1;
+    transform: rotate(45deg) scale(0.96);
+  }
+
+  .corporate-company-plus {
+    top: 7px;
+    right: 7px;
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+
+  .corporate-company-plus-pulse {
+    position: absolute;
+    inset: 1px;
+    z-index: 1;
+    display: block;
+    border: 1.25px solid rgba(210,0,139,0.38);
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(210,0,139,0.12);
+    opacity: 0;
+    transform: scale(0.75);
+    will-change: transform,opacity;
+  }
+
+  .corporate-company-inline-preview-shell {
+    position: relative;
+    z-index: 5;
+    grid-column: 1 / -1;
+    width: 100%;
+    height: 0;
+    display: block;
     overflow: hidden;
   }
 
-  .corporate-company-mobile-preview > a {
-    width: 42px;
-    height: 42px;
-    flex: 0 0 auto;
-    display: grid;
-    place-items: center;
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 50%;
+  .corporate-company-inline-preview {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background: #123b32;
+    color: #fff;
+    overflow: hidden;
+    transform-origin: top center;
+    will-change: transform,opacity,clip-path;
+  }
+
+  .corporate-company-inline-preview-fallback,
+  .corporate-company-inline-preview-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .corporate-company-inline-preview-fallback {
+    background: linear-gradient(120deg,#12463b 0%,#315f50 48%,#111d1a 100%);
+  }
+
+  .corporate-company-inline-preview-image {
+    object-fit: cover;
+  }
+
+  .corporate-company-inline-preview-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,rgba(0,25,22,0.88) 0%,rgba(0,30,25,0.63) 55%,rgba(0,15,12,0.18) 100%);
+  }
+
+  .corporate-company-inline-preview-content {
+    position: absolute;
+    left: 26px;
+    right: 82px;
+    bottom: 25px;
+    z-index: 2;
     color: #fff;
   }
 
-  .corporate-company-mobile-preview strong {
+  .corporate-company-inline-preview-content strong {
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
     font-family: var(--sans);
-    font-size: 38px;
+    font-size: clamp(36px,6vw,48px);
     font-weight: 500;
-    line-height: 1;
-    letter-spacing: -1.5px;
+    line-height: 0.95;
+    letter-spacing: -2px;
   }
 
-  .corporate-company-mobile-preview span {
+  .corporate-company-inline-preview-content span {
+    display: block;
     font-family: var(--sans);
     font-size: 14px;
     font-weight: 500;
   }
 
-  .corporate-company-mobile-preview p {
-    max-width: 420px;
+  .corporate-company-inline-preview-content small {
+    display: block;
+    margin-top: 4px;
+    color: rgba(255,255,255,0.78);
+    font-family: var(--sans);
+    font-size: 11px;
+  }
+
+  .corporate-company-inline-preview-content p {
+    max-width: 520px;
     margin: 7px 0 0;
-    color: rgba(255,255,255,0.67);
+    color: rgba(255,255,255,0.72);
+    font-family: var(--sans);
     font-size: 12px;
     line-height: 1.55;
   }
+
+  .corporate-company-inline-preview-arrow {
+    position: absolute;
+    right: 22px;
+    bottom: 22px;
+    z-index: 3;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255,255,255,0.38);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+    text-decoration: none;
+    touch-action: manipulation;
+    transition: background 0.3s ease,transform 0.3s ease;
+  }
+
+  .corporate-company-inline-preview-arrow:active {
+    background: rgba(255,255,255,0.16);
+    transform: scale(0.96);
+  }
+
 }
 
 @media (max-width: 600px) {
+
   .corporate-companies {
+
     padding: 70px 18px 78px;
+
   }
 
   .corporate-companies-heading h2 {
+
     font-size: clamp(38px,11vw,52px);
+
     letter-spacing: -1.5px;
+
   }
 
   .corporate-company-grid {
+
     grid-template-columns: repeat(2,minmax(0,1fr));
-    grid-auto-rows: 102px;
+
+    grid-auto-rows: auto;
+
   }
 
   .corporate-company-tile {
+
     min-height: 102px;
+
   }
 
   .corporate-company-logo-placeholder {
+
     max-width: 76%;
+
     font-size: 10px;
+
   }
 
   .corporate-company-plus {
+
     top: 6px;
+
     right: 6px;
+
   }
 
-  .corporate-company-mobile-preview {
-    min-height: 175px;
-    padding: 22px;
+  .corporate-company-inline-preview {
+    height: clamp(260px,78vw,310px);
+  }
+
+  .corporate-company-inline-preview-content {
+    left: 18px;
+    right: 72px;
+    bottom: 18px;
+  }
+
+  .corporate-company-inline-preview-content strong {
+    font-size: clamp(32px,10vw,42px);
+  }
+
+  .corporate-company-inline-preview-content p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
+
+  .corporate-company-inline-preview-arrow {
+    right: 16px;
+    bottom: 16px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .corporate-company-plus-pulse {
+    display: none;
+  }
+
+  .corporate-company-tile,
+  .corporate-company-tile::before,
+  .corporate-company-plus,
+  .corporate-company-inline-preview-arrow {
+    transition: none;
   }
 }

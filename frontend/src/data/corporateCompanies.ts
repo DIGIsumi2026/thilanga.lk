@@ -15,6 +15,10 @@ export type CorporateCompany = {
   logoText?:string;
   href?:string | null;
   preview?:CorporateCompanyPreview | null;
+  accent?:{
+    from:string;
+    to:string;
+  };
 };
 
 export const corporateCompanies:CorporateCompany[] = [
@@ -23,6 +27,7 @@ export const corporateCompanies:CorporateCompany[] = [
     name:'Company01',
     logo:imageAssets.corporate.companies.company01.logo,
     href:'https://octagonforce.com/',
+    accent:{from:'#c79a2b',to:'#10182d'},
     preview:{
       image:imageAssets.corporate.companies.company01.preview,
       metric:'06+',
@@ -35,6 +40,7 @@ export const corporateCompanies:CorporateCompany[] = [
     name:'Company2',
     logo:imageAssets.corporate.companies.company02.logo,
     href:'https://thi.lk/',
+    accent:{from:'#d2008b',to:'#34236f'},
     preview:{
       image:imageAssets.corporate.companies.company02.preview,
       metric:'THi.lk',
@@ -69,6 +75,7 @@ export const corporateCompanies:CorporateCompany[] = [
     name:'Company06',
     logo:imageAssets.corporate.companies.company06.logo,
     href:'https://octagon.lk/',
+    accent:{from:'#b68b3a',to:'#173957'},
     preview:{
       image:imageAssets.corporate.companies.company06.preview,
       metric:'70+',
@@ -88,6 +95,7 @@ export const corporateCompanies:CorporateCompany[] = [
     name:'Company08',
     logo:imageAssets.corporate.companies.company08.logo,
     href:'https://napco.lk/',
+    accent:{from:'#d42b36',to:'#17385b'},
     preview:{
       image:imageAssets.corporate.companies.company08.preview,
       metric:'17+',
@@ -107,6 +115,7 @@ export const corporateCompanies:CorporateCompany[] = [
     name:'Company10',
     logo:imageAssets.corporate.companies.company10.logo,
     href:'https://www.sumathiprinters.lk/',
+    accent:{from:'#b62632',to:'#153c62'},
     preview:{
       image:imageAssets.corporate.companies.company10.preview,
       metric:'Since 1984',
@@ -140,6 +149,7 @@ export const corporateCompanies:CorporateCompany[] = [
     name:'Company14',
     logo:imageAssets.corporate.companies.company14.logo,
     href:'https://sumathiawards.lk/',
+    accent:{from:'#d2a24c',to:'#6c1731'},
     preview:{
       image:imageAssets.corporate.companies.company14.preview,
       metric:'Sumathi Awards',
@@ -152,6 +162,7 @@ export const corporateCompanies:CorporateCompany[] = [
     name:'Company15',
     logo:imageAssets.corporate.companies.company15.logo,
     href:'https://sumathiventures.com/',
+    accent:{from:'#118b8d',to:'#18334d'},
     preview:{
       image:imageAssets.corporate.companies.company15.preview,
       metric:'Sumathi Ventures',
