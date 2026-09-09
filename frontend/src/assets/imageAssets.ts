@@ -66,6 +66,21 @@ import company14Preview from "../assets/images/corporate/companies/previews/comp
 import company15Logo from "../assets/images/corporate/companies/company-15-logo.webp";
 import company15Preview from "../assets/images/corporate/companies/previews/company-15-preview.webp";
 
+//corporate gallery
+import corporateGallery01 from '../assets/images/corporate/gallery/gallery-01.jpg';
+import corporateGallery02 from '../assets/images/corporate/gallery/gallery-02.jpeg';
+import corporateGallery03 from '../assets/images/corporate/gallery/gallery-03.webp';
+import corporateGallery04 from '../assets/images/corporate/gallery/gallery-04.jpg';
+import corporateGallery05 from '../assets/images/corporate/gallery/gallery-05.jpeg';
+import corporateGallery06 from '../assets/images/corporate/gallery/gallery-06.jpg';
+import corporateGallery07 from '../assets/images/corporate/gallery/gallery-07.jpg';
+import corporateGallery08 from '../assets/images/corporate/gallery/gallery-08.webp';
+import corporateGallery09 from '../assets/images/corporate/gallery/gallery-09.jpg';
+import corporateGallery10 from '../assets/images/corporate/gallery/gallery-10.webp';
+import corporateGallery11 from '../assets/images/corporate/gallery/gallery-11.jpg';
+import corporateGallery12 from '../assets/images/corporate/gallery/gallery-12.jpeg';
+
+
 
 
 import about from "./images/about.jpg";
@@ -194,6 +209,21 @@ export const imageAssets = {
       preview: company15Preview,
     },
   },
+   gallery: {
+    image01:corporateGallery01,
+    image02:corporateGallery02,
+    image03:corporateGallery03,
+    image04:corporateGallery04,
+    image05:corporateGallery05,
+    image06:corporateGallery06,
+    image07:corporateGallery07,
+    image08:corporateGallery08,
+    image09:corporateGallery09,
+    image10:corporateGallery10,
+    image11:corporateGallery11,
+    image12:corporateGallery12,
+  },
+  
   },
 
   practice: {

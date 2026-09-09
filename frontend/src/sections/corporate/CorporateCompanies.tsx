@@ -703,7 +703,7 @@ export default function CorporateCompanies() {
                   }}
                   className={`corporate-company-tile ${
                     isActive ? 'is-active' : ''
-                  }`}
+                  } ${hasLink ? 'is-linked' : ''}`}
                   style={accentStyle}
                   onPointerEnter={(event) => {
                     if (hasPreview && event.pointerType !== 'touch') {
