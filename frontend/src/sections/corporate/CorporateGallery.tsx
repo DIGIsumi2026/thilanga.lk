@@ -6,7 +6,7 @@ import {
 } from 'react';
 import {ChevronLeft,ChevronRight,X} from 'lucide-react';
 import {AnimatePresence,motion} from 'framer-motion';
-import {animate} from 'animejs';
+import {animate, type JSAnimation} from 'animejs';
 import {gsap} from 'gsap';
 import {imageAssets} from '../../assets/imageAssets';
 
@@ -91,7 +91,41 @@ export default function CorporateGallery() {
   const bottomTrackRef = useRef<HTMLDivElement | null>(null);
   const bottomSequenceRef = useRef<HTMLDivElement | null>(null);
 
+  const topAnimationRef = useRef<JSAnimation | null>(null);
+  const bottomAnimationRef = useRef<JSAnimation | null>(null);
+
   const [activeIndex,setActiveIndex] = useState<number | null>(null);
+
+  const topDragState = useRef({ x: 0, isHovered: false, isDragging: false, startX: 0, lastX: 0, velocity: 0 });
+  const bottomDragState = useRef({ x: 0, isHovered: false, isDragging: false, startX: 0, lastX: 0, velocity: 0 });
+
+  const handlePointerDown = (e: React.PointerEvent, stateRef: React.MutableRefObject<any>) => {
+    stateRef.current.isDragging = true;
+    stateRef.current.startX = e.clientX;
+    stateRef.current.lastX = e.clientX;
+    stateRef.current.velocity = 0;
+    (e.target as HTMLElement).setPointerCapture(e.pointerId);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent, stateRef: React.MutableRefObject<any>) => {
+    if (!stateRef.current.isDragging) return;
+    const dx = e.clientX - stateRef.current.lastX;
+    stateRef.current.lastX = e.clientX;
+    stateRef.current.velocity = dx;
+  };
+
+  const handlePointerUp = (e: React.PointerEvent, stateRef: React.MutableRefObject<any>) => {
+    stateRef.current.isDragging = false;
+    (e.target as HTMLElement).releasePointerCapture(e.pointerId);
+  };
+
+  const handleClickCapture = (e: React.MouseEvent, stateRef: React.MutableRefObject<any>) => {
+    // If the user dragged more than 5 pixels, prevent click
+    if (Math.abs(e.clientX - stateRef.current.startX) > 5) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+  };
 
   useLayoutEffect(() => {
     const topTrack = topTrackRef.current;
@@ -99,80 +133,79 @@ export default function CorporateGallery() {
     const bottomTrack = bottomTrackRef.current;
     const bottomSequence = bottomSequenceRef.current;
 
-    if (
-      !topTrack ||
-      !topSequence ||
-      !bottomTrack ||
-      !bottomSequence
-    ) return;
+    if (!topTrack || !topSequence || !bottomTrack || !bottomSequence) return;
 
-    const reducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)',
-    ).matches;
-
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reducedMotion) return;
 
-    let topTween:gsap.core.Tween | null = null;
-    let bottomTween:gsap.core.Tween | null = null;
+    let rafId: number;
+    let topDistance = 0;
+    let bottomDistance = 0;
 
-    const startMarquee = () => {
-      topTween?.kill();
-      bottomTween?.kill();
-
-      const topGap = parseFloat(
-        getComputedStyle(topTrack).gap || '0',
-      );
-
-      const bottomGap = parseFloat(
-        getComputedStyle(bottomTrack).gap || '0',
-      );
-
-      const topDistance =
-        topSequence.offsetWidth + topGap;
-
-      const bottomDistance =
-        bottomSequence.offsetWidth + bottomGap;
-
-      const speed = 30;
-
-      gsap.set(topTrack,{
-        x:0,
-      });
-
-      topTween = gsap.to(topTrack,{
-        x:-topDistance,
-        duration:topDistance / speed,
-        repeat:-1,
-        ease:'none',
-      });
-
-      gsap.set(bottomTrack,{
-        x:-bottomDistance,
-      });
-
-      bottomTween = gsap.to(bottomTrack,{
-        x:0,
-        duration:bottomDistance / speed,
-        repeat:-1,
-        ease:'none',
-      });
+    const measure = () => {
+      const topGap = parseFloat(getComputedStyle(topTrack).gap || '0');
+      const bottomGap = parseFloat(getComputedStyle(bottomTrack).gap || '0');
+      topDistance = topSequence.offsetWidth + topGap;
+      bottomDistance = bottomSequence.offsetWidth + bottomGap;
     };
 
-    startMarquee();
-
-    const resizeObserver = new ResizeObserver(() => {
-      window.requestAnimationFrame(startMarquee);
-    });
-
+    measure();
+    const resizeObserver = new ResizeObserver(measure);
     resizeObserver.observe(topSequence);
     resizeObserver.observe(bottomSequence);
 
+    const topState = topDragState.current;
+    const bottomState = bottomDragState.current;
+
+    const speed = 0.6; // Base pixels per frame
+    const friction = 0.92;
+
+    const animateMarquee = () => {
+      if (topDistance === 0 || bottomDistance === 0) {
+        rafId = requestAnimationFrame(animateMarquee);
+        return;
+      }
+
+      // TOP ROW LOGIC
+      if (!topState.isDragging) {
+        if (!topState.isHovered) {
+          topState.velocity += (-speed - topState.velocity) * 0.1;
+        } else {
+          topState.velocity *= friction;
+        }
+      }
+      
+      topState.x += topState.velocity;
+      if (topState.x <= -topDistance) topState.x += topDistance;
+      if (topState.x > 0) topState.x -= topDistance;
+
+      gsap.set(topTrack, { x: topState.x });
+
+      // BOTTOM ROW LOGIC
+      if (!bottomState.isDragging) {
+        if (!bottomState.isHovered) {
+          bottomState.velocity += (speed - bottomState.velocity) * 0.1;
+        } else {
+          bottomState.velocity *= friction;
+        }
+      }
+
+      bottomState.x += bottomState.velocity;
+      if (bottomState.x >= 0) bottomState.x -= bottomDistance;
+      if (bottomState.x < -bottomDistance) bottomState.x += bottomDistance;
+
+      gsap.set(bottomTrack, { x: bottomState.x });
+
+      rafId = requestAnimationFrame(animateMarquee);
+    };
+
+    animateMarquee();
+
     return () => {
       resizeObserver.disconnect();
-      topTween?.kill();
-      bottomTween?.kill();
+      cancelAnimationFrame(rafId);
     };
-  },[]);
+  }, []);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -372,7 +405,16 @@ export default function CorporateGallery() {
         </div>
 
         <div className="corporate-gallery-marquee">
-          <div className="corporate-gallery-row">
+          <div
+            className="corporate-gallery-row"
+            onMouseEnter={() => { topDragState.current.isHovered = true; }}
+            onMouseLeave={() => { topDragState.current.isHovered = false; }}
+            onPointerDown={(e) => handlePointerDown(e, topDragState)}
+            onPointerMove={(e) => handlePointerMove(e, topDragState)}
+            onPointerUp={(e) => handlePointerUp(e, topDragState)}
+            onPointerCancel={(e) => handlePointerUp(e, topDragState)}
+            onClickCapture={(e) => handleClickCapture(e, topDragState)}
+          >
             <div
               ref={topTrackRef}
               className="corporate-gallery-track"
@@ -393,7 +435,16 @@ export default function CorporateGallery() {
             </div>
           </div>
 
-          <div className="corporate-gallery-row">
+          <div
+            className="corporate-gallery-row"
+            onMouseEnter={() => { bottomDragState.current.isHovered = true; }}
+            onMouseLeave={() => { bottomDragState.current.isHovered = false; }}
+            onPointerDown={(e) => handlePointerDown(e, bottomDragState)}
+            onPointerMove={(e) => handlePointerMove(e, bottomDragState)}
+            onPointerUp={(e) => handlePointerUp(e, bottomDragState)}
+            onPointerCancel={(e) => handlePointerUp(e, bottomDragState)}
+            onClickCapture={(e) => handleClickCapture(e, bottomDragState)}
+          >
             <div
               ref={bottomTrackRef}
               className="corporate-gallery-track"
