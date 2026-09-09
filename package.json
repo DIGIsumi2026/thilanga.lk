@@ -1,5 +1,5 @@
 {
-  "name": "lawyer-demo-clone",
+  "name": "thilanga-lk",
   "private": true,
   "scripts": {
     "dev": "concurrently \"npm --prefix frontend run dev\" \"npm --prefix backend run dev\"",

@@ -448,9 +448,6 @@ export default function CorporateCompanies() {
     >
       <div className="corporate-companies-container">
         <header className="corporate-companies-heading">
-          <span className="corporate-companies-kicker">
-            Corporate Portfolio
-          </span>
 
           <h2>Companies</h2>
 
@@ -500,7 +497,7 @@ export default function CorporateCompanies() {
                       className="corporate-company-plus"
                       aria-hidden="true"
                     >
-                      <Plus size={13} strokeWidth={1.6} />
+                      <Plus size={18} strokeWidth={2.5} />
                     </span>
                   </button>
                 ) : hasLink ? (

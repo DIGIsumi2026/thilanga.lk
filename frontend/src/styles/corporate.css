@@ -437,7 +437,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(5,minmax(0,1fr));
-  grid-template-rows: repeat(3,96px);
+  grid-template-rows: repeat(3,110px);
   border-top: 1px solid #e5e5e5;
   border-left: 1px solid #e5e5e5;
   background: #fff;
@@ -515,8 +515,8 @@ button.corporate-company-tile-action {
   z-index: 2;
   display: block;
   width: auto;
-  max-width: 88%;
-  max-height: 68px;
+  max-width: 94%;
+  max-height: 80px;
   object-fit: contain;
   transition: filter 0.25s ease,transform 0.35s cubic-bezier(0.22,1,0.36,1);
 }
@@ -538,8 +538,8 @@ button.corporate-company-tile-action {
   top: 8px;
   right: 8px;
   z-index: 3;
-  width: 16px;
-  height: 16px;
+  width: 22px;
+  height: 22px;
   display: grid;
   place-items: center;
   color: #d2008b;
@@ -674,7 +674,7 @@ button.corporate-company-tile-action {
   }
 
   .corporate-company-grid {
-    grid-template-rows: repeat(3,88px);
+    grid-template-rows: repeat(3,100px);
   }
 
   .corporate-company-logo-placeholder {
@@ -694,11 +694,11 @@ button.corporate-company-tile-action {
   .corporate-company-grid {
     grid-template-columns: repeat(3,minmax(0,1fr));
     grid-template-rows: none;
-    grid-auto-rows: 100px;
+    grid-auto-rows: 112px;
   }
 
   .corporate-company-tile {
-    min-height: 100px;
+    min-height: 112px;
   }
 
   .corporate-company-mobile-preview {
@@ -763,11 +763,11 @@ button.corporate-company-tile-action {
 
   .corporate-company-grid {
     grid-template-columns: repeat(2,minmax(0,1fr));
-    grid-auto-rows: 92px;
+    grid-auto-rows: 102px;
   }
 
   .corporate-company-tile {
-    min-height: 92px;
+    min-height: 102px;
   }
 
   .corporate-company-logo-placeholder {
