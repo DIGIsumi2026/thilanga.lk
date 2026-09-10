@@ -84,6 +84,17 @@ import corporateGallery12 from '../assets/images/corporate/gallery/gallery-12.jp
 import cricketLeadership from '../assets/images/corporate/cricket-leadership.jpg'
 import cricketPlaying from '../assets/images/corporate/cricket-playing.jpg';
 
+//dambulla-images
+import dambulla01 from "../assets/images/corporate/dambulla/dambulla-01.jpeg";
+import dambulla02 from "../assets/images/corporate/dambulla/dambulla-02.jpeg";
+import dambulla03 from "../assets/images/corporate/dambulla/dambulla-03.jpg";
+import dambulla04 from "../assets/images/corporate/dambulla/dambulla-04.jpg";
+import dambulla05 from "../assets/images/corporate/dambulla/dambulla-05.jpg";
+import dambulla06 from "../assets/images/corporate/dambulla/dambulla-06.jpg";
+
+
+
+
 
 import about from "./images/about.jpg";
 import innerAbout from "./images/inner-about.jpg";
@@ -229,7 +240,15 @@ export const imageAssets = {
       leadership: cricketLeadership,
       playing: cricketPlaying,
     },
-  
+  dambulla:{
+    image01:dambulla01,
+    image02:dambulla02,
+    image03:dambulla03,
+    image04:dambulla04,
+    image05:dambulla05,
+    image06:dambulla06,
+  },
+
   },
 
   practice: {

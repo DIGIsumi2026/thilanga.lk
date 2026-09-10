@@ -1,4 +1,5 @@
 import corporateHero from "../assets/videos/corporate-hero.mp4";
+import  dambullaTimelapse  from "../assets/videos/dambulla-stadium-timelapse.mp4";
 
 
 
@@ -9,6 +10,10 @@ import corporateHero from "../assets/videos/corporate-hero.mp4";
 export const videoAssets = {
     corporate: {
     hero: corporateHero,
+  },
+  
+  dambulla: {
+    timelapse:dambullaTimelapse,
   },
 } as const;
 

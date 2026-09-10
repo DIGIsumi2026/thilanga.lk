@@ -1775,3 +1775,456 @@ button.corporate-company-tile-action {
     height: 280px;
   }
 }
+
+/* =========================================================
+   DAMBULLA STADIUM LEGACY
+   ========================================================= */
+
+.dambulla-legacy {
+  position: relative;
+  width: 100%;
+  padding: 110px 30px 120px;
+  background:
+    radial-gradient(circle at 80% 10%,rgba(31,53,68,0.75) 0%,transparent 34%),
+    radial-gradient(circle at 12% 85%,rgba(173,126,48,0.12) 0%,transparent 30%),
+    linear-gradient(180deg,#08141d 0%,#03080d 58%,#000 100%);
+  color: #fff;
+  overflow: hidden;
+}
+
+.dambulla-legacy-container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.dambulla-legacy-heading {
+  max-width: 900px;
+  margin-bottom: 42px;
+  opacity: 0;
+}
+
+.dambulla-legacy-kicker {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--gold);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.dambulla-legacy-heading h2 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--serif);
+  font-size: clamp(48px,3.5vw,76px);
+  font-weight: 400;
+  line-height: 1.13;
+  letter-spacing: -0.005px;
+}
+
+.dambulla-legacy-video-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #000;
+  opacity: 0;
+}
+
+.dambulla-legacy-video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  background: #000;
+}
+
+.dambulla-legacy-video-label {
+  position: absolute;
+  left: 26px;
+  bottom: 22px;
+  z-index: 2;
+  padding: 8px 13px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(3,10,15,0.44);
+  color: rgba(255,255,255,0.82);
+  font-family: var(--sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+  pointer-events: none;
+}
+
+.dambulla-legacy-story {
+  width: min(100%,940px);
+  margin-top: 42px;
+}
+
+.dambulla-legacy-story p {
+  margin: 0;
+  color: rgba(255,255,255,0.72);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.95;
+}
+
+.dambulla-legacy-intro {
+  opacity: 0;
+}
+
+.dambulla-legacy-expandable {
+  height: 0;
+  display: none;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.dambulla-legacy-expandable-inner {
+  padding-top: 22px;
+}
+
+.dambulla-legacy-expandable-inner p {
+  margin-bottom: 20px;
+}
+
+.dambulla-legacy-expandable-inner p:last-child {
+  margin-bottom: 0;
+}
+
+.dambulla-see-more {
+  margin-top: 28px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.dambulla-see-more-icon {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 50%;
+  transition: transform 0.45s cubic-bezier(0.22,1,0.36,1),background 0.3s ease;
+}
+
+.dambulla-see-more:hover .dambulla-see-more-icon {
+  background: rgba(255,255,255,0.08);
+}
+
+.dambulla-see-more.is-expanded .dambulla-see-more-icon {
+  transform: rotate(180deg);
+}
+
+/* =========================================================
+   DAMBULLA ONE-ROW GALLERY
+   ========================================================= */
+
+.dambulla-gallery {
+  margin-top: 72px;
+  opacity: 0;
+}
+
+.dambulla-gallery-meta {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dambulla-gallery-meta span,
+.dambulla-gallery-meta small {
+  color: rgba(255,255,255,0.6);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dambulla-gallery-meta i {
+  width: 55px;
+  height: 1px;
+  display: block;
+  background: var(--gold);
+}
+
+.dambulla-gallery-row {
+  position: relative;
+  width: 100%;
+  height: 205px;
+  overflow: hidden;
+}
+
+.dambulla-gallery-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: max-content;
+  display: flex;
+  gap: 6px;
+  will-change: transform;
+}
+
+.dambulla-gallery-sequence {
+  height: 100%;
+  display: flex;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
+.dambulla-gallery-item {
+  position: relative;
+  height: 100%;
+  width: auto;
+  min-width: 190px;
+  max-width: 390px;
+  padding: 0;
+  border: 0;
+  background: #101820;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.dambulla-gallery-item img {
+  width: auto;
+  height: 100%;
+  min-width: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.65s cubic-bezier(0.22,1,0.36,1),filter 0.4s ease;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .dambulla-gallery-item:hover img {
+    transform: scale(1.04);
+    filter: brightness(1.06);
+  }
+}
+
+/* =========================================================
+   DAMBULLA LIGHTBOX
+   ========================================================= */
+
+.dambulla-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1600;
+  padding: 36px 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,5,9,0.76);
+  backdrop-filter: blur(20px);
+}
+
+.dambulla-lightbox-stage {
+  position: relative;
+  z-index: 2;
+  width: min(1160px,82vw);
+  height: min(760px,80vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dambulla-lightbox-stage img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: contain;
+  box-shadow: 0 30px 90px rgba(0,0,0,0.45);
+}
+
+.dambulla-lightbox-close,
+.dambulla-lightbox-nav {
+  position: absolute;
+  z-index: 5;
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,0.24);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.07);
+  color: #fff;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.dambulla-lightbox-close {
+  top: 28px;
+  right: 30px;
+}
+
+.dambulla-lightbox-nav {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.dambulla-lightbox-nav.is-prev {
+  left: 28px;
+}
+
+.dambulla-lightbox-nav.is-next {
+  right: 28px;
+}
+
+.dambulla-lightbox-counter {
+  position: absolute;
+  right: 0;
+  bottom: -32px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.62);
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.dambulla-lightbox-counter i {
+  width: 26px;
+  height: 1px;
+  display: block;
+  background: var(--gold);
+}
+
+@media (max-width: 900px) {
+  .dambulla-legacy {
+    padding: 88px 22px 95px;
+  }
+
+  .dambulla-legacy-heading h2 {
+    font-size: clamp(43px,7vw,60px);
+  }
+
+  .dambulla-legacy-story {
+    margin-top: 34px;
+  }
+
+  .dambulla-gallery {
+    margin-top: 58px;
+  }
+
+  .dambulla-gallery-row {
+    height: 175px;
+  }
+
+  .dambulla-lightbox {
+    padding: 70px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dambulla-legacy {
+    padding: 72px 18px 80px;
+  }
+
+  .dambulla-legacy-heading {
+    margin-bottom: 28px;
+  }
+
+  .dambulla-legacy-heading h2 {
+    font-size: clamp(37px,10vw,49px);
+    line-height: 1;
+    letter-spacing: -1.5px;
+  }
+
+  .dambulla-legacy-video-wrap {
+    width: calc(100% + 36px);
+    margin-left: -18px;
+  }
+
+  .dambulla-legacy-video-label {
+    left: 18px;
+    bottom: 15px;
+    font-size: 8px;
+  }
+
+  .dambulla-legacy-story {
+    margin-top: 28px;
+  }
+
+  .dambulla-legacy-story p {
+    font-size: 13px;
+    line-height: 1.85;
+  }
+
+  .dambulla-see-more {
+    margin-top: 23px;
+    font-size: 10px;
+  }
+
+  .dambulla-gallery {
+    margin-top: 50px;
+  }
+
+  .dambulla-gallery-row {
+    width: calc(100% + 36px);
+    height: 140px;
+    margin-left: -18px;
+  }
+
+  .dambulla-gallery-item {
+    min-width: 135px;
+    max-width: 260px;
+  }
+
+  .dambulla-lightbox {
+    padding: 70px 18px 95px;
+    backdrop-filter: blur(8px);
+  }
+
+  .dambulla-lightbox-stage {
+    width: 100%;
+    height: 67vh;
+  }
+
+  .dambulla-lightbox-close {
+    top: 18px;
+    right: 18px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .dambulla-lightbox-nav {
+    top: auto;
+    bottom: 24px;
+    width: 46px;
+    height: 46px;
+    transform: none;
+  }
+
+  .dambulla-lightbox-nav.is-prev {
+    left: calc(50% - 58px);
+  }
+
+  .dambulla-lightbox-nav.is-next {
+    right: calc(50% - 58px);
+  }
+
+  .dambulla-lightbox-counter {
+    right: 50%;
+    bottom: -27px;
+    transform: translateX(50%);
+  }
+}
