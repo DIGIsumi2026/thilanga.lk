@@ -3,6 +3,7 @@ import CorporateHero from '../sections/corporate/CorporateHero';
 import CorporateChairman from '../sections/corporate/CorporateChairman';
 import CorporateCompanies from '../sections/corporate/CorporateCompanies';
 import CorporateGallery from '../sections/corporate/CorporateGallery';
+import CricketLegacy from '../sections/corporate/CricketLegacy';
 import '../styles/corporate.css';
 
 export default function Corporate() {
@@ -16,6 +17,7 @@ export default function Corporate() {
       <CorporateChairman/>
       <CorporateCompanies/>
       <CorporateGallery/>
+      <CricketLegacy/>
     </motion.main>
   );
 }

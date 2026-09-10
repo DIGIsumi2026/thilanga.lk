@@ -80,7 +80,9 @@ import corporateGallery10 from '../assets/images/corporate/gallery/gallery-10.we
 import corporateGallery11 from '../assets/images/corporate/gallery/gallery-11.jpg';
 import corporateGallery12 from '../assets/images/corporate/gallery/gallery-12.jpeg';
 
-
+//thilanga-cricket
+import cricketLeadership from '../assets/images/corporate/cricket-leadership.jpg'
+import cricketPlaying from '../assets/images/corporate/cricket-playing.jpg';
 
 
 import about from "./images/about.jpg";
@@ -223,6 +225,10 @@ export const imageAssets = {
     image11:corporateGallery11,
     image12:corporateGallery12,
   },
+  cricketLegacy: {
+      leadership: cricketLeadership,
+      playing: cricketPlaying,
+    },
   
   },
 
