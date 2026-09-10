@@ -717,7 +717,7 @@ export default function DambullaLegacy() {
       <button
         key={`${image.id}-${duplicate ? 'duplicate' : 'original'}`}
         type="button"
-        className="dambulla-gallery-item"
+        className="corporate-gallery-item"
         aria-hidden={duplicate || undefined}
         tabIndex={duplicate ? -1 : 0}
         aria-label={duplicate ? undefined : `Open ${image.alt}`}
@@ -730,6 +730,8 @@ export default function DambullaLegacy() {
           decoding="async"
           draggable="false"
         />
+
+        <span className="corporate-gallery-item-overlay" />
       </button>
     ));
 
@@ -1050,7 +1052,7 @@ export default function DambullaLegacy() {
       <AnimatePresence>
         {activeImage !== null && (
           <motion.div
-            className="dambulla-lightbox"
+            className="corporate-gallery-lightbox"
             initial={{opacity:0}}
             animate={{opacity:1}}
             exit={{opacity:0}}
@@ -1059,28 +1061,28 @@ export default function DambullaLegacy() {
           >
             <button
               type="button"
-              className="dambulla-lightbox-close"
+              className="corporate-gallery-lightbox-close"
               onClick={() => setActiveImage(null)}
               aria-label="Close image"
             >
-              <X size={22} />
+              <X size={22} strokeWidth={1.7} />
             </button>
 
             <button
               type="button"
-              className="dambulla-lightbox-nav is-prev"
+              className="corporate-gallery-lightbox-nav is-prev"
               onClick={(event) => {
                 event.stopPropagation();
                 previousImage();
               }}
               aria-label="Previous image"
             >
-              <ChevronLeft size={28} />
+              <ChevronLeft size={26} strokeWidth={1.5} />
             </button>
 
             <motion.div
               key={stadiumGallery[activeImage].id}
-              className="dambulla-lightbox-stage"
+              className="corporate-gallery-lightbox-stage"
               initial={{opacity:0,scale:0.96}}
               animate={{opacity:1,scale:1}}
               transition={{
@@ -1094,7 +1096,7 @@ export default function DambullaLegacy() {
                 alt={stadiumGallery[activeImage].alt}
               />
 
-              <span className="dambulla-lightbox-counter">
+              <span className="corporate-gallery-lightbox-counter">
                 {String(activeImage + 1).padStart(2,'0')}
                 <i />
                 {String(stadiumGallery.length).padStart(2,'0')}
@@ -1103,14 +1105,14 @@ export default function DambullaLegacy() {
 
             <button
               type="button"
-              className="dambulla-lightbox-nav is-next"
+              className="corporate-gallery-lightbox-nav is-next"
               onClick={(event) => {
                 event.stopPropagation();
                 nextImage();
               }}
               aria-label="Next image"
             >
-              <ChevronRight size={28} />
+              <ChevronRight size={26} strokeWidth={1.5} />
             </button>
           </motion.div>
         )}
