@@ -1607,10 +1607,10 @@ button.corporate-company-tile-action {
   margin: 0;
   color: var(--ink);
   font-family: var(--serif);
-  font-size: clamp(44px,4.6vw,68px);
+  font-size: clamp(44px,3.6vw,68px);
   font-weight: 400;
-  line-height: 1;
-  letter-spacing: -2px;
+  line-height: 1.13;
+  letter-spacing: -0.005px;
 }
 
 .cricket-legacy-list {
@@ -1666,7 +1666,7 @@ button.corporate-company-tile-action {
   font-size: clamp(28px,2.8vw,38px);
   font-weight: 400;
   line-height: 1.08;
-  letter-spacing: -0.8px;
+  letter-spacing: -0.05px;
 }
 
 .cricket-legacy-copy-body {

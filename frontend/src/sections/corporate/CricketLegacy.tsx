@@ -96,7 +96,6 @@ export default function CricketLegacy() {
     >
       <div className="cricket-legacy-container">
         <div className="cricket-legacy-heading">
-          <span className="cricket-legacy-kicker">SPORTS LEADERSHIP</span>
           <h2>A Legacy in Sri Lankan Cricket</h2>
         </div>
 
@@ -106,30 +105,49 @@ export default function CricketLegacy() {
               key={block.id}
               className="cricket-legacy-row"
             >
-              <div className="cricket-legacy-copy">
-                <span className="cricket-legacy-step">
-                  {String(index + 1).padStart(2,'0')}
-                </span>
+              {index === 1 ? (
+                <>
+                  <div className="cricket-legacy-media">
+                    <img
+                      src={block.image}
+                      alt={block.alt}
+                    />
+                  </div>
+                  <div className="cricket-legacy-copy">
 
-                <h3>
-                  {index === 0
-                    ? 'Leadership, governance and execution'
-                    : 'Identity, reform and wider institutional impact'}
-                </h3>
+                    <h3>
+                      Identity, reform and wider institutional impact
+                    </h3>
 
-                <div className="cricket-legacy-copy-body">
-                  {block.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
-                </div>
-              </div>
+                    <div className="cricket-legacy-copy-body">
+                      {block.paragraphs.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="cricket-legacy-copy">
+                    <h3>
+                      Leadership, governance and execution
+                    </h3>
 
-              <div className="cricket-legacy-media">
-                <img
-                  src={block.image}
-                  alt={block.alt}
-                />
-              </div>
+                    <div className="cricket-legacy-copy-body">
+                      {block.paragraphs.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="cricket-legacy-media">
+                    <img
+                      src={block.image}
+                      alt={block.alt}
+                    />
+                  </div>
+                </>
+              )}
             </article>
           ))}
         </div>
