@@ -748,8 +748,7 @@ export default function DambullaLegacy() {
             </span>
 
             <h2>
-              Rangiri Dambulla
-              <br />
+              Rangiri Dambulla <br/>
               International Cricket Stadium
             </h2>
           </header>

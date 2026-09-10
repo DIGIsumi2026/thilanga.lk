@@ -1819,7 +1819,7 @@ button.corporate-company-tile-action {
   margin: 0;
   color: #fff;
   font-family: var(--serif);
-  font-size: clamp(48px,3.5vw,76px);
+  font-size: clamp(48px,3.2vw,76px);
   font-weight: 400;
   line-height: 1.13;
   letter-spacing: -0.005px;
