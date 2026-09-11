@@ -185,3 +185,284 @@
     letter-spacing: -0.7px;
   }
 }
+
+/* =========================================================
+   PARLIAMENTARY LEADERSHIP
+   ========================================================= */
+
+.political-parliament-section {
+  position: relative;
+  width: 100%;
+  min-height: 780px;
+  padding: 105px 30px 115px;
+  background-position: center right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  overflow: hidden;
+}
+
+.political-parliament-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg,rgba(2,9,15,0.98) 0%,rgba(3,11,18,0.94) 34%,rgba(3,11,18,0.76) 58%,rgba(3,11,18,0.4) 78%,rgba(3,11,18,0.18) 100%),
+    linear-gradient(180deg,rgba(2,8,14,0.38) 0%,rgba(2,8,14,0.12) 35%,rgba(2,8,14,0.65) 100%);
+  pointer-events: none;
+}
+
+.political-parliament-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.political-parliament-content {
+  width: min(760px,66%);
+}
+
+.political-parliament-heading {
+  margin-bottom: 34px;
+}
+
+.political-parliament-kicker {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--gold);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.political-parliament-heading h2 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--serif);
+  font-size: clamp(46px,3.3vw,70px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.005px;
+}
+
+.political-parliament-body {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.political-parliament-paragraph,
+.political-parliament-final {
+  margin: 0;
+  max-width: 720px;
+  color: rgba(255,255,255,0.76);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.political-parliament-milestone {
+  padding: 24px 26px;
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr);
+  gap: 22px;
+  align-items: start;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.055);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.political-parliament-year {
+  color: var(--gold);
+  font-family: var(--serif);
+  font-size: clamp(40px,4vw,56px);
+  line-height: 0.9;
+}
+
+.political-parliament-milestone strong {
+  display: block;
+  margin-bottom: 7px;
+  color: #fff;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.political-parliament-milestone p {
+  margin: 0;
+  color: rgba(255,255,255,0.7);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.political-parliament-roles {
+  margin-top: 2px;
+}
+
+.political-parliament-roles-heading {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.political-parliament-roles-heading span {
+  color: rgba(255,255,255,0.92);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.political-parliament-roles-heading i {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg,var(--gold),transparent);
+}
+
+.political-parliament-roles ul {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 10px 24px;
+  list-style: none;
+}
+
+.political-parliament-role {
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr);
+  gap: 10px;
+  align-items: start;
+  color: rgba(255,255,255,0.72);
+  font-family: var(--sans);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.political-parliament-role-marker {
+  width: 5px;
+  height: 5px;
+  margin-top: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px rgba(201,155,59,0.09);
+}
+
+.political-parliament-final {
+  padding-top: 4px;
+  color: rgba(255,255,255,0.82);
+}
+
+/* =========================================================
+   PARLIAMENTARY LEADERSHIP TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+  .political-parliament-section {
+    min-height: auto;
+    padding: 90px 25px 100px;
+    background-position: 62% center;
+  }
+
+  .political-parliament-content {
+    width: min(720px,80%);
+  }
+
+  .political-parliament-overlay {
+    background:
+      linear-gradient(90deg,rgba(2,9,15,0.98) 0%,rgba(2,9,15,0.94) 45%,rgba(2,9,15,0.72) 74%,rgba(2,9,15,0.34) 100%),
+      linear-gradient(180deg,rgba(2,8,14,0.25),rgba(2,8,14,0.7));
+  }
+}
+
+@media (max-width: 760px) {
+  .political-parliament-content {
+    width: 100%;
+  }
+
+  .political-parliament-roles ul {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* =========================================================
+   PARLIAMENTARY LEADERSHIP MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .political-parliament-section {
+    padding: 72px 18px 80px;
+    background-position: 66% center;
+  }
+
+  .political-parliament-overlay {
+    background:
+      linear-gradient(180deg,rgba(2,9,15,0.84) 0%,rgba(2,9,15,0.9) 40%,rgba(2,9,15,0.97) 100%),
+      linear-gradient(90deg,rgba(2,9,15,0.88),rgba(2,9,15,0.6));
+  }
+
+  .political-parliament-heading {
+    margin-bottom: 28px;
+  }
+
+  .political-parliament-heading h2 {
+    font-size: clamp(39px,10.8vw,52px);
+    line-height: 1;
+    letter-spacing: -1.2px;
+  }
+
+  .political-parliament-body {
+    gap: 24px;
+  }
+
+  .political-parliament-paragraph,
+  .political-parliament-final {
+    font-size: 13px;
+    line-height: 1.82;
+  }
+
+  .political-parliament-milestone {
+    padding: 20px;
+    grid-template-columns: 1fr;
+    gap: 13px;
+    -webkit-backdrop-filter: blur(7px);
+    backdrop-filter: blur(7px);
+  }
+
+  .political-parliament-year {
+    font-size: 42px;
+  }
+
+  .political-parliament-milestone strong {
+    font-size: 20px;
+  }
+
+  .political-parliament-milestone p {
+    font-size: 12px;
+  }
+
+  .political-parliament-role {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .political-parliament-heading,
+  .political-parliament-paragraph,
+  .political-parliament-milestone,
+  .political-parliament-role,
+  .political-parliament-final {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

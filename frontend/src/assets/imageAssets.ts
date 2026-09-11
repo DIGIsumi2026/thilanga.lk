@@ -99,10 +99,11 @@ import dambulla06 from "../assets/images/corporate/dambulla/dambulla-06.jpg";
 import telecomPortrait from '../assets/images/corporate/telecommunications/telecom-portrait.jpg';
 import sltMobitelImage from '../assets/images/corporate/telecommunications/slt-mobitel.png';
 
-//politica- page 
+//political- page 
 import politicalHeroThumbnail from '../assets/images/political/political-hero-thumbnail.png';
 
-
+//political-intro
+import parliamentLeadershipBg from '../assets/images/political/parliament/parliament-leadership-bg.png';
 
 import about from "./images/about.jpg";
 import innerAbout from "./images/inner-about.jpg";
@@ -268,6 +269,9 @@ export const imageAssets = {
   political:{
   hero:{
     thumbnail:politicalHeroThumbnail,
+  },
+  parliament:{
+    background:parliamentLeadershipBg,
   },
 },
 
