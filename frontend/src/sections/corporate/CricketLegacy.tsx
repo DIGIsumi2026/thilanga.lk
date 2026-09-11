@@ -304,9 +304,6 @@ export default function CricketLegacy() {
                       <div className="cricket-legacy-archive-head">
                         <span>Archive</span>
                         <i />
-                        <small>
-                          Click to view
-                        </small>
                       </div>
 
                       <div className="cricket-legacy-archive-grid">

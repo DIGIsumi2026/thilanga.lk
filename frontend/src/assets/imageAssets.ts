@@ -95,6 +95,10 @@ import dambulla04 from "../assets/images/corporate/dambulla/dambulla-04.jpg";
 import dambulla05 from "../assets/images/corporate/dambulla/dambulla-05.jpg";
 import dambulla06 from "../assets/images/corporate/dambulla/dambulla-06.jpg";
 
+//slt-corporate
+import telecomPortrait from '../assets/images/corporate/telecommunications/telecom-portrait.jpg';
+import sltMobitelImage from '../assets/images/corporate/telecommunications/slt-mobitel.png';
+
 
 
 
@@ -253,6 +257,11 @@ export const imageAssets = {
     image05:dambulla05,
     image06:dambulla06,
   },
+
+  telecommunications: {
+  portrait:telecomPortrait,
+  sltMobitel:sltMobitelImage,
+},
 
   },
 

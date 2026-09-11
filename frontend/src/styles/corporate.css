@@ -2466,7 +2466,7 @@ button.corporate-company-tile-action {
    ========================================================= */
 
 .dambulla-gallery {
-  margin-top: 72px;
+  margin-top: 24px;
   opacity: 0;
 }
 
@@ -2497,7 +2497,7 @@ button.corporate-company-tile-action {
 .dambulla-gallery-row {
   position: relative;
   width: 100%;
-  height: 205px;
+  height: 280px;
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: none;
@@ -2581,11 +2581,11 @@ button.corporate-company-tile-action {
   }
 
   .dambulla-gallery {
-    margin-top: 58px;
+    margin-top: 24px;
   }
 
   .dambulla-gallery-row {
-    height: 175px;
+    height: 240px;
   }
 
   .dambulla-gallery-hint .is-desktop {
@@ -2664,12 +2664,12 @@ button.corporate-company-tile-action {
   }
 
   .dambulla-gallery {
-    margin-top: 50px;
+    margin-top: 20px;
   }
 
   .dambulla-gallery-row {
     width: calc(100% + 36px);
-    height: 140px;
+    height: 200px;
     margin-left: -18px;
   }
 
@@ -2684,5 +2684,228 @@ button.corporate-company-tile-action {
   .dambulla-video-progress span,
   .dambulla-video-control {
     transition: none;
+  }
+}
+
+/* =========================================================
+   TELECOMMUNICATIONS LEGACY
+   ========================================================= */
+
+.telecom-legacy-section {
+  position: relative;
+  width: 100%;
+  padding: 105px 30px 115px;
+  background: #fff;
+  color: var(--ink);
+  overflow: hidden;
+}
+
+.telecom-legacy-container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.telecom-legacy-heading {
+  max-width: 820px;
+  margin-bottom: 42px;
+}
+
+.telecom-legacy-kicker {
+  display: block;
+  margin-bottom: 13px;
+  color: var(--gold);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.telecom-legacy-heading h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(44px,3.6vw,68px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.005px;
+}
+
+.telecom-legacy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+
+.telecom-legacy-row {
+  display: grid;
+  grid-template-columns: minmax(0,1.02fr) minmax(0,0.98fr);
+  align-items: stretch;
+  gap: 34px;
+}
+
+.telecom-legacy-copy,
+.telecom-legacy-media {
+  min-height: 470px;
+  height: 100%;
+}
+
+.telecom-legacy-copy {
+  position: relative;
+  padding: 38px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(13,41,51,0.08);
+  background: linear-gradient(180deg,#fbfaf7 0%,#f5f2eb 100%);
+  box-shadow: 0 16px 45px rgba(13,41,51,0.05);
+}
+
+.telecom-legacy-row-1 .telecom-legacy-copy {
+  justify-content: center;
+}
+
+.telecom-legacy-row-2 .telecom-legacy-copy {
+  justify-content: flex-start;
+  padding-top: 34px;
+}
+
+.telecom-legacy-copy h3 {
+  margin: 0 0 18px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(28px,2.7vw,38px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.05px;
+}
+
+.telecom-legacy-copy-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.telecom-legacy-copy-body p {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.telecom-legacy-media {
+  position: relative;
+  overflow: hidden;
+  background: #101820;
+  box-shadow: 0 16px 45px rgba(13,41,51,0.08);
+}
+
+.telecom-legacy-media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.8s cubic-bezier(0.22,1,0.36,1);
+}
+
+.telecom-legacy-row-1 .telecom-legacy-media img {
+  object-position: center 32%;
+}
+
+.telecom-legacy-row-2 .telecom-legacy-media img {
+  object-position: center;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .telecom-legacy-row:hover .telecom-legacy-media img {
+    transform: scale(1.03);
+  }
+}
+
+@media (max-width: 1100px) {
+  .telecom-legacy-section {
+    padding: 90px 25px 100px;
+  }
+
+  .telecom-legacy-copy,
+  .telecom-legacy-media {
+    min-height: 430px;
+  }
+
+  .telecom-legacy-copy {
+    padding: 34px 32px;
+  }
+}
+
+@media (max-width: 900px) {
+  .telecom-legacy-section {
+    padding: 82px 22px 90px;
+  }
+
+  .telecom-legacy-heading {
+    margin-bottom: 34px;
+  }
+
+  .telecom-legacy-row {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .telecom-legacy-copy,
+  .telecom-legacy-media {
+    min-height: auto;
+  }
+
+  .telecom-legacy-row-1 .telecom-legacy-copy {
+    order: 1;
+  }
+
+  .telecom-legacy-row-1 .telecom-legacy-media {
+    order: 2;
+    height: 420px;
+  }
+
+  .telecom-legacy-row-2 .telecom-legacy-media {
+    order: 1;
+    height: 350px;
+  }
+
+  .telecom-legacy-row-2 .telecom-legacy-copy {
+    order: 2;
+    padding-top: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .telecom-legacy-section {
+    padding: 70px 18px 78px;
+  }
+
+  .telecom-legacy-heading h2 {
+    font-size: clamp(38px,10vw,52px);
+    letter-spacing: -1.5px;
+  }
+
+  .telecom-legacy-copy {
+    padding: 26px 22px;
+  }
+
+  .telecom-legacy-copy h3 {
+    font-size: 26px;
+  }
+
+  .telecom-legacy-copy-body p {
+    font-size: 13px;
+    line-height: 1.82;
+  }
+
+  .telecom-legacy-row-1 .telecom-legacy-media {
+    height: 360px;
+  }
+
+  .telecom-legacy-row-2 .telecom-legacy-media {
+    height: 255px;
   }
 }
