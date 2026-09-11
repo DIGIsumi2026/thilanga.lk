@@ -1629,18 +1629,49 @@ button.corporate-company-tile-action {
 .cricket-legacy-copy,
 .cricket-legacy-media {
   height: 100%;
-  min-height: 430px;
+  min-height: clamp(540px,47vw,610px);
 }
 
 .cricket-legacy-copy {
   position: relative;
-  padding: 42px 42px 38px;
+  padding: 38px 38px 28px;
   border: 1px solid rgba(13,41,51,0.08);
   background: linear-gradient(180deg,#fbfaf7 0%,#f5f2eb 100%);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   box-shadow: 0 16px 45px rgba(13,41,51,0.05);
+}
+
+.cricket-legacy-row-1 .cricket-legacy-copy {
+  grid-column: 1;
+  grid-row: 1;
+  justify-content: center;
+}
+
+.cricket-legacy-row-1 .cricket-legacy-media {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.cricket-legacy-row-2 .cricket-legacy-media {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.cricket-legacy-row-2 .cricket-legacy-copy {
+  grid-column: 2;
+  grid-row: 1;
+  justify-content: flex-start;
+  padding: 30px 36px 26px;
+}
+
+.cricket-legacy-copy-main {
+  width: 100%;
+}
+
+.cricket-legacy-copy.has-archive {
+  padding-bottom: 26px;
 }
 
 .cricket-legacy-step {
@@ -1680,7 +1711,7 @@ button.corporate-company-tile-action {
   color: var(--muted);
   font-family: var(--sans);
   font-size: 14px;
-  line-height: 1.9;
+  line-height: 1.82;
 }
 
 .cricket-legacy-media {
@@ -1694,13 +1725,220 @@ button.corporate-company-tile-action {
 .cricket-legacy-media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
   display: block;
+  object-fit: cover;
+  object-position: center;
   transition: transform 0.8s cubic-bezier(0.22,1,0.36,1);
 }
 
-.cricket-legacy-row:hover .cricket-legacy-media img {
-  transform: scale(1.03);
+@media (hover:hover) and (pointer:fine) {
+  .cricket-legacy-row:hover .cricket-legacy-media img {
+    transform: scale(1.03);
+  }
+}
+
+/* =========================================================
+   CRICKET LEGACY ARCHIVE
+   ========================================================= */
+
+.cricket-legacy-archive {
+  width: 100%;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.cricket-legacy-archive-head {
+  margin-bottom: 11px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cricket-legacy-archive-head span,
+.cricket-legacy-archive-head small {
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cricket-legacy-archive-head i {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg,var(--gold),rgba(201,155,59,0.08));
+}
+
+.cricket-legacy-archive-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.cricket-legacy-archive-item {
+  position: relative;
+  height: 96px;
+  padding: 0;
+  border: 1px solid rgba(13,41,51,0.1);
+  background: #fff;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.cricket-legacy-archive-item img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  background: #fff;
+  transition: transform 0.5s cubic-bezier(0.22,1,0.36,1),filter 0.35s ease;
+}
+
+.cricket-legacy-archive-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(6,20,27,0.32);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cricket-legacy-archive-overlay svg {
+  width: 38px;
+  height: 38px;
+  padding: 9px;
+  border: 1px solid rgba(255,255,255,0.45);
+  border-radius: 50%;
+  background: rgba(4,15,20,0.28);
+  backdrop-filter: blur(8px);
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .cricket-legacy-archive-item:hover img {
+    transform: scale(1.025);
+    filter: brightness(0.92);
+  }
+
+  .cricket-legacy-archive-item:hover .cricket-legacy-archive-overlay {
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   CRICKET ARCHIVE LIGHTBOX
+   ========================================================= */
+
+.cricket-archive-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1700;
+  padding: 38px 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(1,7,11,0.78);
+  -webkit-backdrop-filter: blur(20px) saturate(80%);
+  backdrop-filter: blur(20px) saturate(80%);
+}
+
+.cricket-archive-lightbox-stage {
+  position: relative;
+  z-index: 2;
+  width: min(1100px,80vw);
+  height: min(760px,82vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cricket-archive-lightbox-stage img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: contain;
+  background: #fff;
+  box-shadow: 0 30px 100px rgba(0,0,0,0.5);
+}
+
+.cricket-archive-lightbox-close,
+.cricket-archive-lightbox-nav {
+  position: absolute;
+  z-index: 5;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.07);
+  color: #fff;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: background 0.3s ease,border-color 0.3s ease,transform 0.3s ease;
+}
+
+.cricket-archive-lightbox-close {
+  top: 28px;
+  right: 30px;
+}
+
+.cricket-archive-lightbox-nav {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.cricket-archive-lightbox-nav.is-prev {
+  left: 28px;
+}
+
+.cricket-archive-lightbox-nav.is-next {
+  right: 28px;
+}
+
+.cricket-archive-lightbox-counter {
+  position: absolute;
+  right: 0;
+  bottom: -32px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.64);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+
+.cricket-archive-lightbox-counter i {
+  width: 25px;
+  height: 1px;
+  display: block;
+  background: var(--gold);
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .cricket-archive-lightbox-close:hover {
+    background: rgba(255,255,255,0.14);
+    transform: rotate(90deg);
+  }
+
+  .cricket-archive-lightbox-nav.is-prev:hover {
+    background: rgba(255,255,255,0.14);
+    transform: translate(-3px,-50%);
+  }
+
+  .cricket-archive-lightbox-nav.is-next:hover {
+    background: rgba(255,255,255,0.14);
+    transform: translate(3px,-50%);
+  }
 }
 
 @media (max-width: 1100px) {
@@ -1710,11 +1948,15 @@ button.corporate-company-tile-action {
 
   .cricket-legacy-copy,
   .cricket-legacy-media {
-    min-height: 400px;
+    min-height: 540px;
   }
 
   .cricket-legacy-copy {
-    padding: 36px 34px;
+    padding: 34px 32px 26px;
+  }
+
+  .cricket-legacy-archive-item {
+    height: 96px;
   }
 }
 
@@ -1734,17 +1976,65 @@ button.corporate-company-tile-action {
 
   .cricket-legacy-copy,
   .cricket-legacy-media {
+    height: auto;
     min-height: auto;
   }
 
   .cricket-legacy-copy {
     order: 1;
-    padding: 30px 26px;
+    grid-column: 1;
+    grid-row: auto;
+    padding: 30px 26px 26px;
   }
 
   .cricket-legacy-media {
     order: 2;
+    grid-column: 1;
+    grid-row: auto;
     height: 360px;
+  }
+
+  .cricket-legacy-row-1 .cricket-legacy-copy {
+    order: 1;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .cricket-legacy-row-1 .cricket-legacy-media {
+    order: 2;
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .cricket-legacy-row-2 .cricket-legacy-media {
+    order: 1;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .cricket-legacy-row-2 .cricket-legacy-copy {
+    order: 2;
+    grid-column: 1;
+    grid-row: 2;
+    padding: 30px 26px 26px;
+  }
+
+  .cricket-legacy-archive {
+    margin-top: 28px;
+    padding-top: 0;
+  }
+
+  .cricket-legacy-archive-item {
+    height: 150px;
+  }
+
+  .cricket-archive-lightbox {
+    padding: 34px 68px;
+  }
+
+  .cricket-archive-lightbox-stage {
+    width: min(100%,86vw);
+    height: 78vh;
   }
 }
 
@@ -1759,7 +2049,7 @@ button.corporate-company-tile-action {
   }
 
   .cricket-legacy-copy {
-    padding: 26px 22px;
+    padding: 26px 22px 24px;
   }
 
   .cricket-legacy-copy h3 {
@@ -1773,6 +2063,65 @@ button.corporate-company-tile-action {
 
   .cricket-legacy-media {
     height: 280px;
+  }
+
+  .cricket-legacy-archive-grid {
+    gap: 8px;
+  }
+
+  .cricket-legacy-archive-item {
+    height: 120px;
+  }
+
+  .cricket-archive-lightbox {
+    padding: 70px 15px 92px;
+    background: rgba(1,7,11,0.9);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+
+  .cricket-archive-lightbox-stage {
+    width: 100%;
+    height: 72vh;
+  }
+
+  .cricket-archive-lightbox-close {
+    top: 18px;
+    right: 18px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .cricket-archive-lightbox-nav {
+    top: auto;
+    bottom: 22px;
+    width: 46px;
+    height: 46px;
+    transform: none;
+  }
+
+  .cricket-archive-lightbox-nav.is-prev {
+    left: calc(50% - 58px);
+  }
+
+  .cricket-archive-lightbox-nav.is-next {
+    right: calc(50% - 58px);
+  }
+
+  .cricket-archive-lightbox-counter {
+    right: 50%;
+    bottom: -28px;
+    transform: translateX(50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cricket-legacy-media img,
+  .cricket-legacy-archive-item img,
+  .cricket-legacy-archive-overlay,
+  .cricket-archive-lightbox-close,
+  .cricket-archive-lightbox-nav {
+    transition: none;
   }
 }
 
