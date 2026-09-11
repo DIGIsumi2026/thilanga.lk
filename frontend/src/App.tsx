@@ -13,8 +13,8 @@ import CustomScrollbar from './components/common/CustomScrollbar';
 
 import Home from './pages/Home';
 import About from './pages/About';
-import PracticeAreas from './pages/corporate';
-import Attorneys from './pages/Attorneys';
+import Corporate from './pages/corporate';
+import Political from './pages/Political';
 import Journal from './pages/Journal';
 import Contact from './pages/Contact';
 
@@ -35,8 +35,8 @@ export default function App() {
 
           <Route path="/" element={<Home />} />
           <Route path="/about-me" element={<About />}/>
-          <Route path="/corporate" element={<PracticeAreas />} />
-          <Route path="/political" element={<Attorneys />}/>
+          <Route path="/corporate" element={<Corporate/>} />
+          <Route path="/political" element={<Political/>} />
 
           <Route path="/public-relations" element={<Journal />}/>
 
@@ -45,8 +45,8 @@ export default function App() {
           {/* temporary legacy routes */}
 
           <Route path="/about" element={<About />}/>
-          <Route path="/practice-areas"element={<PracticeAreas />}/>
-          <Route path="/attorneys" element={<Attorneys />}/>
+          <Route path="/corporate" element={<Corporate/>} />
+          <Route path="/political" element={<Political/>} />
           <Route path="/journal" element={<Journal />}/>
 
         </Routes>
