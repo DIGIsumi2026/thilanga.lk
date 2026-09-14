@@ -540,3 +540,758 @@
     transform: none !important;
   }
 }
+
+/* =========================================================
+   POLITICAL GOVERNANCE
+   ========================================================= */
+
+.political-governance {
+  position: relative;
+  width: 100%;
+  padding: 110px 0 115px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: repeat;
+  color: #fff;
+  overflow: hidden;
+}
+
+.political-governance-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,0.12),rgba(0,0,0,0.48)),
+    linear-gradient(90deg,rgba(255,255,255,0.018),transparent 40%,rgba(255,255,255,0.012));
+  pointer-events: none;
+}
+
+.political-governance-container {
+  position: relative;
+  z-index: 2;
+  width: min(calc(100% - 60px),var(--container));
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.political-governance-heading {
+  max-width: 850px;
+  margin-bottom: 30px;
+}
+
+.political-governance-kicker {
+  display: block;
+  margin-bottom: 13px;
+  color: var(--gold);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.political-governance-heading h2 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--serif);
+  font-size: clamp(46px,3.8vw,70px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.005px;
+}
+
+.political-governance-intro {
+  max-width: 760px;
+  margin: 0;
+  color: rgba(255,255,255,0.66);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.political-governance-block {
+  margin-top: 48px;
+}
+
+.political-governance-block-heading {
+  margin-bottom: 22px;
+  display: grid;
+  grid-template-columns: minmax(40px,1fr) auto minmax(40px,1fr);
+  align-items: center;
+  gap: 18px;
+}
+
+.political-governance-block-heading span {
+  color: rgba(255,255,255,0.9);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.political-governance-block-heading i {
+  height: 1px;
+}
+
+.political-governance-block-heading i:first-child {
+  background: linear-gradient(90deg,transparent,var(--gold));
+}
+
+.political-governance-block-heading i:last-child {
+  background: linear-gradient(90deg,var(--gold),transparent);
+}
+
+.political-governance-role-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 12px;
+}
+
+.political-governance-role {
+  min-height: 150px;
+  padding: 24px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.035);
+}
+
+.political-governance-role-number {
+  display: block;
+  margin-bottom: 23px;
+  color: var(--gold);
+  font-family: var(--serif);
+  font-size: 30px;
+  line-height: 1;
+}
+
+.political-governance-role p {
+  margin: 0;
+  color: rgba(255,255,255,0.72);
+  font-family: var(--sans);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.political-governance-state {
+  margin-top: 34px;
+  padding: 28px;
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr);
+  gap: 26px;
+  align-items: start;
+  border: 1px solid rgba(255,255,255,0.11);
+  background: rgba(255,255,255,0.04);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.political-governance-state-year {
+  color: var(--gold);
+  font-family: var(--serif);
+  font-size: clamp(46px,4vw,62px);
+  line-height: 0.9;
+}
+
+.political-governance-state-label {
+  display: block;
+  margin-bottom: 7px;
+  color: rgba(255,255,255,0.45);
+  font-family: var(--sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.political-governance-state h3 {
+  margin: 0 0 9px;
+  color: #fff;
+  font-family: var(--serif);
+  font-size: clamp(24px,2vw,32px);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.political-governance-state p {
+  max-width: 680px;
+  margin: 0;
+  color: rgba(255,255,255,0.64);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.political-governance-continuing {
+  margin-top: 34px;
+}
+
+.political-governance-continuing-heading {
+  margin-bottom: 17px;
+}
+
+.political-governance-continuing-heading span {
+  color: rgba(255,255,255,0.9);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.political-governance-continuing-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 12px 28px;
+}
+
+.political-governance-continuing-role {
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr);
+  gap: 11px;
+  align-items: start;
+}
+
+.political-governance-continuing-role > span {
+  width: 5px;
+  height: 5px;
+  margin-top: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px rgba(201,155,59,0.08);
+}
+
+.political-governance-continuing-role p {
+  margin: 0;
+  color: rgba(255,255,255,0.64);
+  font-family: var(--sans);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   POLITICAL GOVERNANCE GALLERY
+   CorporateGallery-style single row
+   ========================================================= */
+
+.political-governance-gallery {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  margin-top: 76px;
+}
+
+.political-governance-gallery-meta {
+  width: min(calc(100% - 60px),var(--container));
+  max-width: 1180px;
+  margin: 0 auto 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255,255,255,0.46);
+  font-family: var(--sans);
+  text-transform: uppercase;
+}
+
+.political-governance-gallery-meta span {
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.political-governance-gallery-meta i {
+  height: 1px;
+  flex: 1;
+  background: rgba(255,255,255,0.16);
+}
+
+.political-governance-gallery-meta small {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+
+.political-governance-gallery-row {
+  position: relative;
+  width: 100%;
+  height: clamp(155px,16vw,230px);
+  overflow: hidden;
+  opacity: 0;
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.political-governance-gallery-row:active {
+  cursor: grabbing;
+}
+
+.political-governance-gallery-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: flex;
+  gap: 6px;
+  width: max-content;
+  animation: political-governance-gallery-left 42s linear infinite;
+  will-change: transform;
+}
+
+.political-governance-gallery-row:hover .political-governance-gallery-track {
+  animation-play-state: paused;
+}
+
+.political-governance-gallery-sequence {
+  height: 100%;
+  display: flex;
+  flex: 0 0 auto;
+  gap: 6px;
+}
+
+.political-governance-gallery-item {
+  position: relative;
+  height: 100%;
+  width: auto;
+  min-width: 150px;
+  max-width: 430px;
+  padding: 0;
+  flex: 0 0 auto;
+  display: block;
+  border: 0;
+  background: #101820;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.political-governance-gallery-item img {
+  width: auto;
+  height: 100%;
+  min-width: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.65s cubic-bezier(0.22,1,0.36,1),filter 0.45s ease;
+}
+
+.political-governance-gallery-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,transparent 50%,rgba(0,0,0,0.16) 100%);
+  opacity: 0.25;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.political-governance-gallery-swipe-hint {
+  display: none;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .political-governance-gallery-item:hover img {
+    transform: scale(1.045);
+    filter: brightness(1.06);
+  }
+
+  .political-governance-gallery-item:hover .political-governance-gallery-item-overlay {
+    opacity: 0;
+  }
+}
+
+@keyframes political-governance-gallery-left {
+  from {
+    transform: translate3d(0,0,0);
+  }
+
+  to {
+    transform: translate3d(-50%,0,0);
+  }
+}
+
+/* =========================================================
+   POLITICAL GOVERNANCE GALLERY LIGHTBOX
+   ========================================================= */
+
+.political-governance-gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  padding: 34px 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,5,9,0.7);
+  -webkit-backdrop-filter: blur(22px) saturate(85%);
+  backdrop-filter: blur(22px) saturate(85%);
+}
+
+.political-governance-gallery-lightbox::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center,rgba(25,42,54,0.18),transparent 55%),
+    linear-gradient(180deg,rgba(0,0,0,0.08),rgba(0,0,0,0.28));
+  pointer-events: none;
+}
+
+.political-governance-gallery-lightbox-stage {
+  position: relative;
+  z-index: 2;
+  width: min(1180px,82vw);
+  height: min(760px,80vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.political-governance-gallery-lightbox-stage img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: contain;
+  box-shadow: 0 34px 90px rgba(0,0,0,0.45);
+}
+
+.political-governance-gallery-lightbox-close {
+  position: absolute;
+  top: 28px;
+  right: 32px;
+  z-index: 5;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: transform 0.3s ease,background 0.3s ease,border-color 0.3s ease;
+}
+
+.political-governance-gallery-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  width: 54px;
+  height: 54px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.07);
+  color: #fff;
+  transform: translateY(-50%);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: background 0.3s ease,border-color 0.3s ease,transform 0.3s ease;
+}
+
+.political-governance-gallery-lightbox-nav.is-prev {
+  left: 30px;
+}
+
+.political-governance-gallery-lightbox-nav.is-next {
+  right: 30px;
+}
+
+.political-governance-gallery-lightbox-counter {
+  position: absolute;
+  right: 0;
+  bottom: -34px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.64);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+
+.political-governance-gallery-lightbox-counter i {
+  width: 26px;
+  height: 1px;
+  display: block;
+  background: var(--gold);
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .political-governance-gallery-lightbox-close:hover {
+    transform: rotate(90deg);
+    background: rgba(255,255,255,0.14);
+    border-color: rgba(255,255,255,0.38);
+  }
+
+  .political-governance-gallery-lightbox-nav.is-prev:hover {
+    transform: translate(-4px,-50%);
+    background: rgba(255,255,255,0.14);
+    border-color: rgba(255,255,255,0.38);
+  }
+
+  .political-governance-gallery-lightbox-nav.is-next:hover {
+    transform: translate(4px,-50%);
+    background: rgba(255,255,255,0.14);
+    border-color: rgba(255,255,255,0.38);
+  }
+}
+
+/* =========================================================
+   POLITICAL GOVERNANCE TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .political-governance {
+    padding: 90px 0 95px;
+  }
+
+  .political-governance-container {
+    width: calc(100% - 44px);
+  }
+
+  .political-governance-heading h2 {
+    font-size: clamp(42px,7vw,60px);
+  }
+
+  .political-governance-role-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .political-governance-role {
+    min-height: auto;
+  }
+
+  .political-governance-continuing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .political-governance-gallery {
+    margin-top: 62px;
+  }
+
+  .political-governance-gallery-meta {
+    width: calc(100% - 44px);
+  }
+
+  .political-governance-gallery-row {
+    height: clamp(155px,21vw,185px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    cursor: default;
+    scrollbar-width: none;
+    touch-action: pan-x pan-y;
+    contain: paint;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .political-governance-gallery-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .political-governance-gallery-track {
+    position: relative;
+    gap: 0;
+    animation: none;
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .political-governance-gallery-sequence {
+    gap: 5px;
+    padding-right: 5px;
+  }
+
+  .political-governance-gallery-sequence[aria-hidden="true"] {
+    display: none;
+  }
+
+  .political-governance-gallery-item {
+    min-width: 0;
+    max-width: none;
+    scroll-snap-align: start;
+  }
+
+  .political-governance-gallery-item img {
+    min-width: 0;
+  }
+
+  .political-governance-gallery-row {
+    scroll-snap-type: x proximity;
+  }
+
+  .political-governance-gallery-swipe-hint {
+    margin: 24px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    color: rgba(255,255,255,0.45);
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .political-governance-gallery-lightbox {
+    padding: 30px 72px;
+  }
+
+  .political-governance-gallery-lightbox-stage {
+    width: min(100%,86vw);
+    height: 78vh;
+  }
+
+  .political-governance-gallery-lightbox-nav {
+    width: 48px;
+    height: 48px;
+  }
+
+  .political-governance-gallery-lightbox-nav.is-prev {
+    left: 18px;
+  }
+
+  .political-governance-gallery-lightbox-nav.is-next {
+    right: 18px;
+  }
+}
+
+/* =========================================================
+   POLITICAL GOVERNANCE MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .political-governance {
+    padding: 74px 0 80px;
+  }
+
+  .political-governance-container {
+    width: calc(100% - 36px);
+  }
+
+  .political-governance-heading {
+    margin-bottom: 25px;
+  }
+
+  .political-governance-heading h2 {
+    font-size: clamp(38px,10.5vw,50px);
+    line-height: 1;
+    letter-spacing: -1.3px;
+  }
+
+  .political-governance-intro {
+    font-size: 13px;
+    line-height: 1.78;
+  }
+
+  .political-governance-block {
+    margin-top: 38px;
+  }
+
+  .political-governance-block-heading {
+    grid-template-columns: minmax(18px,1fr) minmax(150px,auto) minmax(18px,1fr);
+    gap: 9px;
+  }
+
+  .political-governance-block-heading span {
+    font-size: 8px;
+    line-height: 1.45;
+  }
+
+  .political-governance-role {
+    padding: 20px;
+  }
+
+  .political-governance-state {
+    padding: 22px;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .political-governance-state-year {
+    font-size: 46px;
+  }
+
+  .political-governance-state p {
+    font-size: 12px;
+  }
+
+  .political-governance-gallery {
+    margin-top: 52px;
+  }
+
+  .political-governance-gallery-meta {
+    width: calc(100% - 36px);
+    gap: 10px;
+  }
+
+  .political-governance-gallery-meta small {
+    max-width: 65%;
+    text-align: right;
+  }
+
+  .political-governance-gallery-row {
+    height: clamp(120px,36vw,145px);
+  }
+
+  .political-governance-gallery-lightbox {
+    padding: 72px 18px 90px;
+    background: rgba(0,5,9,0.88);
+    -webkit-backdrop-filter: blur(8px) saturate(85%);
+    backdrop-filter: blur(8px) saturate(85%);
+  }
+
+  .political-governance-gallery-lightbox-stage {
+    width: 100%;
+    height: 70vh;
+    touch-action: pan-y;
+    user-select: none;
+  }
+
+  .political-governance-gallery-lightbox-close {
+    top: 18px;
+    right: 18px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .political-governance-gallery-lightbox-nav {
+    top: 50%;
+    width: 46px;
+    height: 46px;
+    transform: translateY(-50%);
+  }
+
+  .political-governance-gallery-lightbox-nav.is-prev {
+    left: 14px;
+  }
+
+  .political-governance-gallery-lightbox-nav.is-next {
+    right: 14px;
+  }
+
+  .political-governance-gallery-lightbox-counter {
+    right: 50%;
+    bottom: -26px;
+    transform: translateX(50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .political-governance-gallery-track {
+    animation: none !important;
+  }
+
+  .political-governance-gallery-item img,
+  .political-governance-gallery-item-overlay,
+  .political-governance-gallery-lightbox-close,
+  .political-governance-gallery-lightbox-nav {
+    transition: none;
+  }
+}

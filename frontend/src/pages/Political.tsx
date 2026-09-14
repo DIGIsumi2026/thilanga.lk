@@ -1,6 +1,7 @@
 import {motion} from 'framer-motion';
 import PoliticalHero from '../sections/political/PoliticalHero';
 import PoliticalParliament from '../sections/political/PoliticalParliament';
+import PoliticalGovernance from '../sections/political/PoliticalGovernance';
 import '../styles/political.css';
 
 export default function Political() {
@@ -12,6 +13,7 @@ export default function Political() {
     >
       <PoliticalHero />
       <PoliticalParliament/>
+      <PoliticalGovernance/>
     </motion.main>
   );
 }

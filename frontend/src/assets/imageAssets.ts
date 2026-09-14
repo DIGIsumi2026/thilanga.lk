@@ -105,6 +105,18 @@ import politicalHeroThumbnail from '../assets/images/political/political-hero-th
 //political-intro
 import parliamentLeadershipBg from '../assets/images/political/parliament/parliament-leadership-bg.png';
 
+//governance
+import politicalGovernanceBg from '../assets/images/political/governance-bg.png';
+
+import  politicalGovernance1 from '../assets/images/political/governance-gallery/image1.jpg';
+import  politicalGovernance2 from '../assets/images/political/governance-gallery/image2.png';
+import  politicalGovernance3 from '../assets/images/political/governance-gallery/image3.jpg';
+import  politicalGovernance4 from '../assets/images/political/governance-gallery/image4.jpg';
+import  politicalGovernance5 from '../assets/images/political/governance-gallery/image5.jpg';
+import  politicalGovernance6 from '../assets/images/political/governance-gallery/image6.jpg';
+
+
+
 import about from "./images/about.jpg";
 import innerAbout from "./images/inner-about.jpg";
 import consultancy from "./images/consultancy.jpg";
@@ -272,6 +284,16 @@ export const imageAssets = {
   },
   parliament:{
     background:parliamentLeadershipBg,
+  },
+  governance:{
+    background:politicalGovernanceBg,
+    gallery:{
+      image1:politicalGovernance1,
+      image2:politicalGovernance2,
+      image3:politicalGovernance3,
+      image4:politicalGovernance4,
+      image5:politicalGovernance5,
+    },
   },
 },
 
