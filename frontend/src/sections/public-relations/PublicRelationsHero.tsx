@@ -75,7 +75,7 @@ export default function PublicRelationsHero() {
           <span className="public-relations-hero-quote-line" />
 
           <p>
-            Leadership finds its highest purpose in service —
+            Leadership finds its highest purpose in service,
             turning compassion into meaningful action for
             people and communities.
           </p>

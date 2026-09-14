@@ -65,11 +65,11 @@
   margin: 0;
   color: #fff;
   font-family: var(--serif);
-  font-size: clamp(27px,1.45vw,40px);
+  font-size: clamp(30px,1.45vw,40px);
   font-weight: 400;
   font-style: italic;
-  line-height: 1.13;
-  letter-spacing: -0.005px;
+  line-height: 1.23;
+  letter-spacing: 0.15px;
   text-shadow: 0 3px 24px rgba(0,0,0,0.3);
 }
 
