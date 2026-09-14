@@ -302,30 +302,70 @@
   line-height: 1.75;
 }
 
+/* =========================================================
+   PARLIAMENTARY & INTERNATIONAL ROLES
+   ========================================================= */
+
 .political-parliament-roles {
+  width: 100%;
   margin-top: 2px;
 }
 
 .political-parliament-roles-heading {
-  margin-bottom: 16px;
-  display: flex;
+  width: 100%;
+  margin-bottom: 22px;
+  display: grid;
+  grid-template-columns: minmax(50px,1fr) auto minmax(50px,1fr);
   align-items: center;
-  gap: 15px;
+  gap: 18px;
 }
 
 .political-parliament-roles-heading span {
-  color: rgba(255,255,255,0.92);
+  position: relative;
+  z-index: 2;
+  color: rgba(255,255,255,0.94);
   font-family: var(--sans);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-align: center;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.political-parliament-roles-heading i {
+.political-parliament-roles-line {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-width: 40px;
   height: 1px;
-  flex: 1;
-  background: linear-gradient(90deg,var(--gold),transparent);
+  display: block;
+  opacity: 1;
+  pointer-events: none;
+  will-change: transform,opacity;
+}
+
+.political-parliament-roles-line.is-left {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201,155,59,0.08) 25%,
+    rgba(201,155,59,0.35) 60%,
+    rgba(201,155,59,0.8) 84%,
+    var(--gold) 100%
+  );
+}
+
+.political-parliament-roles-line.is-right {
+  background: linear-gradient(
+    90deg,
+    var(--gold) 0%,
+    rgba(201,155,59,0.8) 16%,
+    rgba(201,155,59,0.35) 40%,
+    rgba(201,155,59,0.08) 75%,
+    transparent 100%
+  );
 }
 
 .political-parliament-roles ul {
@@ -333,7 +373,7 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 10px 24px;
+  gap: 12px 28px;
   list-style: none;
 }
 
@@ -387,6 +427,16 @@
 @media (max-width: 760px) {
   .political-parliament-content {
     width: 100%;
+  }
+
+  .political-parliament-roles-heading {
+    grid-template-columns: minmax(28px,1fr) auto minmax(28px,1fr);
+    gap: 12px;
+  }
+
+  .political-parliament-roles-heading span {
+    max-width: 280px;
+    white-space: normal;
   }
 
   .political-parliament-roles ul {
@@ -451,17 +501,41 @@
     font-size: 12px;
   }
 
+  .political-parliament-roles-heading {
+    grid-template-columns: minmax(18px,1fr) minmax(165px,auto) minmax(18px,1fr);
+    gap: 9px;
+    margin-bottom: 20px;
+  }
+
+  .political-parliament-roles-heading span {
+    max-width: 210px;
+    margin: 0 auto;
+    font-size: 8px;
+    line-height: 1.45;
+    letter-spacing: 0.11em;
+    white-space: normal;
+  }
+
+  .political-parliament-roles ul {
+    gap: 13px;
+  }
+
   .political-parliament-role {
     font-size: 12px;
   }
 }
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
   .political-parliament-heading,
   .political-parliament-paragraph,
   .political-parliament-milestone,
   .political-parliament-role,
-  .political-parliament-final {
+  .political-parliament-final,
+  .political-parliament-roles-line {
     opacity: 1 !important;
     transform: none !important;
   }

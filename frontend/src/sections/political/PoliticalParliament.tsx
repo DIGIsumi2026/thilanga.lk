@@ -29,10 +29,14 @@ export default function PoliticalParliament() {
       '(prefers-reduced-motion: reduce)',
     ).matches;
 
+    const rolesLines = section.querySelectorAll<HTMLElement>(
+      '.political-parliament-roles-line',
+    );
+
     if (reducedMotion) {
       section
         .querySelectorAll<HTMLElement>(
-          '.political-parliament-heading, .political-parliament-paragraph, .political-parliament-milestone, .political-parliament-role, .political-parliament-final',
+          '.political-parliament-heading, .political-parliament-paragraph, .political-parliament-milestone, .political-parliament-role, .political-parliament-final, .political-parliament-roles-line',
         )
         .forEach((element) => {
           element.style.opacity = '1';
@@ -86,6 +90,19 @@ export default function PoliticalParliament() {
         y:22,
       });
 
+      gsap.set(rolesLines,{
+        autoAlpha:0,
+        scaleX:0,
+      });
+
+      rolesLines.forEach((line) => {
+        gsap.set(line,{
+          transformOrigin:line.classList.contains('is-left')
+            ? 'right center'
+            : 'left center',
+        });
+      });
+
       ScrollTrigger.create({
         trigger:section,
         start:'top 76%',
@@ -115,6 +132,15 @@ export default function PoliticalParliament() {
             scale:1,
             duration:0.8,
             delay:0.42,
+            ease:'power3.out',
+          });
+
+          gsap.to(rolesLines,{
+            autoAlpha:1,
+            scaleX:1,
+            duration:0.8,
+            stagger:0.08,
+            delay:0.48,
             ease:'power3.out',
           });
 
@@ -195,8 +221,19 @@ export default function PoliticalParliament() {
 
             <div className="political-parliament-roles">
               <div className="political-parliament-roles-heading">
-                <span>Parliamentary & International Roles</span>
-                <i />
+                <i
+                  className="political-parliament-roles-line is-left"
+                  aria-hidden="true"
+                />
+
+                <span>
+                  Parliamentary & International Roles
+                </span>
+
+                <i
+                  className="political-parliament-roles-line is-right"
+                  aria-hidden="true"
+                />
               </div>
 
               <ul>
@@ -206,7 +243,10 @@ export default function PoliticalParliament() {
                     className="political-parliament-role"
                   >
                     <span className="political-parliament-role-marker" />
-                    <span>{role}</span>
+
+                    <span>
+                      {role}
+                    </span>
                   </li>
                 ))}
               </ul>
