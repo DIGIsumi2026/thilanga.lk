@@ -115,7 +115,8 @@ import  politicalGovernance4 from '../assets/images/political/governance-gallery
 import  politicalGovernance5 from '../assets/images/political/governance-gallery/image5.jpg';
 import  politicalGovernance6 from '../assets/images/political/governance-gallery/image6.jpg';
 
-
+//public-relations page
+import publicRelationsHero  from '../assets/images/public-relations/hero/public-relations-hero.png';
 
 import about from "./images/about.jpg";
 import innerAbout from "./images/inner-about.jpg";
@@ -293,7 +294,14 @@ export const imageAssets = {
       image3:politicalGovernance3,
       image4:politicalGovernance4,
       image5:politicalGovernance5,
+      image6:politicalGovernance6
     },
+  },
+},
+
+publicRelations:{
+  hero:{
+    image:publicRelationsHero,
   },
 },
 

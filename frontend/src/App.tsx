@@ -15,7 +15,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Corporate from './pages/corporate';
 import Political from './pages/Political';
-import Journal from './pages/Journal';
+import Journal from './pages/PublicRelations';
 import Contact from './pages/Contact';
 
 export default function App() {
