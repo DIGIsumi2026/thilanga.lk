@@ -81,8 +81,12 @@ export default function PublicRelationsFoundation() {
       '.public-relations-foundation-carousel',
     );
 
+    const progressLine = section.querySelector<HTMLElement>(
+      '.public-relations-foundation-progress',
+    );
+
     const sinhalaDescription = section.querySelector<HTMLElement>(
-      '.public-relations-foundation-sinhala',
+      '.public-relations-foundation-sinhala p',
     );
 
     if (reducedMotion) {
@@ -90,6 +94,7 @@ export default function PublicRelationsFoundation() {
         header,
         description,
         carousel,
+        progressLine,
         sinhalaDescription,
       ].forEach((element) => {
         if (!element) return;
@@ -117,6 +122,14 @@ export default function PublicRelationsFoundation() {
         x:34,
         scale:0.98,
       });
+
+      if (progressLine) {
+        gsap.set(progressLine,{
+          autoAlpha:0,
+          scaleX:0,
+          transformOrigin:'center center',
+        });
+      }
 
       gsap.set(sinhalaDescription,{
         autoAlpha:0,
@@ -152,6 +165,16 @@ export default function PublicRelationsFoundation() {
             ease:'power4.out',
           });
 
+          if (progressLine) {
+            gsap.to(progressLine,{
+              autoAlpha:1,
+              scaleX:1,
+              duration:1.15,
+              delay:0.32,
+              ease:'power3.out',
+            });
+          }
+
           gsap.to(sinhalaDescription,{
             autoAlpha:1,
             y:0,
@@ -174,7 +197,7 @@ export default function PublicRelationsFoundation() {
         visibleCards:2,
         blur:2,
         cardWidth:270,
-        cardHeight:195,
+        cardHeight:190,
         radius:14,
         autoplayDelay:3600,
       }
@@ -191,13 +214,13 @@ export default function PublicRelationsFoundation() {
           autoplayDelay:3400,
         }
       : {
-          depth:125,
-          spread:74,
-          tilt:11,
+          depth:120,
+          spread:70,
+          tilt:10,
           visibleCards:3,
           blur:4,
-          cardWidth:350,
-          cardHeight:235,
+          cardWidth:340,
+          cardHeight:225,
           radius:16,
           autoplayDelay:3200,
         };
@@ -271,6 +294,11 @@ export default function PublicRelationsFoundation() {
         </div>
 
         <div className="public-relations-foundation-sinhala">
+          <div
+            className="public-relations-foundation-progress"
+            aria-hidden="true"
+          />
+
           <p>
             හෝමාගම, හොරගල දිරිය කාන්තාවන්ගේ දරුවන්ට තිලංග සුමතිපාල
             පදනමෙන් පාසල් උපකරණ තිලංග සුමතිපාල පදනම විසින් ක්‍රියාත්මක

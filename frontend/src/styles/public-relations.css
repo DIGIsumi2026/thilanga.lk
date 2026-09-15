@@ -410,7 +410,7 @@
   position: relative;
   width: 100%;
   min-height: auto;
-  padding: 50px 30px 82px;
+  padding: 44px 30px 78px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -440,14 +440,14 @@
 
 .public-relations-foundation-header {
   width: 100%;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   gap: 18px;
 }
 
 .public-relations-foundation-logo {
-  width: clamp(62px,5.2vw,82px);
+  width: clamp(100px,7vw,122px);
   height: auto;
   flex: 0 0 auto;
   display: block;
@@ -456,9 +456,10 @@
 
 .public-relations-foundation-header h2 {
   margin: 0;
+  min-width: 0;
   color: #142a36;
   font-family: var(--serif);
-  font-size: clamp(32px,3vw,48px);
+  font-size: clamp(32px,2.9vw,46px);
   font-weight: 400;
   line-height: 1;
   letter-spacing: -0.012em;
@@ -473,7 +474,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: minmax(0,0.95fr) minmax(0,1.05fr);
-  gap: clamp(30px,4.5vw,62px);
+  gap: clamp(28px,4vw,58px);
   align-items: center;
 }
 
@@ -498,7 +499,7 @@
 .public-relations-foundation-carousel {
   position: relative;
   width: 100%;
-  height: 340px;
+  height: 320px;
   min-width: 0;
   background: transparent;
 }
@@ -575,19 +576,29 @@
 .public-relations-foundation-sinhala {
   position: relative;
   width: 100%;
-  margin-top: 34px;
-  padding-top: 28px;
-  border-top: 1px solid rgba(20,42,54,0.12);
+  margin-top: 0;
 }
 
-.public-relations-foundation-sinhala::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: 0;
-  width: 92px;
+.public-relations-foundation-progress {
+  width: 100%;
   height: 2px;
-  background: linear-gradient(90deg,#e66c32 0%,#356cac 60%,transparent 100%);
+  margin: 34px 0 28px;
+  opacity: 1;
+  transform: scaleX(1);
+  transform-origin: center center;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(53,108,172,0.1) 12%,
+    rgba(53,108,172,0.65) 30%,
+    #356cac 40%,
+    #e66c32 50%,
+    #356cac 60%,
+    rgba(53,108,172,0.65) 70%,
+    rgba(53,108,172,0.1) 88%,
+    transparent 100%
+  );
+  will-change: transform,opacity;
 }
 
 .public-relations-foundation-sinhala p {
@@ -604,22 +615,23 @@
    LARGE TABLET
    ========================================================= */
 
-@media (max-width: 1100px) {
+@media (max-width: 1050px) {
   .public-relations-foundation {
-    padding: 48px 25px 76px;
+    padding: 44px 25px 74px;
   }
 
   .public-relations-foundation-header {
-    margin-bottom: 22px;
+    margin-bottom: 20px;
     gap: 16px;
   }
 
   .public-relations-foundation-logo {
-    width: 68px;
+    width: 86px;
   }
 
   .public-relations-foundation-header h2 {
-    font-size: clamp(30px,3.7vw,42px);
+    font-size: clamp(27px,3.5vw,38px);
+    white-space: nowrap;
   }
 
   .public-relations-foundation-main {
@@ -633,11 +645,7 @@
   }
 
   .public-relations-foundation-carousel {
-    height: 315px;
-  }
-
-  .public-relations-foundation-sinhala {
-    margin-top: 30px;
+    height: 295px;
   }
 }
 
@@ -655,7 +663,7 @@
   }
 
   .public-relations-foundation-header h2 {
-    font-size: clamp(28px,4.2vw,38px);
+    font-size: clamp(27px,3.5vw,38px);
   }
 
   .public-relations-foundation-main {
@@ -664,7 +672,7 @@
   }
 
   .public-relations-foundation-carousel {
-    height: 290px;
+    height: 285px;
   }
 }
 
@@ -683,24 +691,26 @@
   }
 
   .public-relations-foundation-header {
-    margin-bottom: 24px;
-    gap: 12px;
+    margin-bottom: 22px;
+    gap: 10px;
   }
 
   .public-relations-foundation-logo {
-    width: 56px;
+    width: 58px;
   }
 
   .public-relations-foundation-header h2 {
-    font-size: clamp(23px,6.9vw,32px);
-    line-height: 1.05;
+    flex: 1;
+    min-width: 0;
+    font-size: clamp(17px,5vw,23px);
+    line-height: 1;
     letter-spacing: -0.01em;
-    white-space: normal;
+    white-space: nowrap;
   }
 
   .public-relations-foundation-main {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 26px;
   }
 
   .public-relations-foundation-copy {
@@ -714,9 +724,9 @@
   }
 
   .public-relations-foundation-carousel {
-    width: calc(100% + 10px);
-    height: 285px;
-    margin-left: -5px;
+    width: 100%;
+    height: 270px;
+    margin-left: 0;
   }
 
   .foundation-depth-carousel .depth-carousel__arrow {
@@ -737,12 +747,12 @@
   }
 
   .public-relations-foundation-sinhala {
-    margin-top: 28px;
-    padding-top: 24px;
+    margin-top: 0;
   }
 
-  .public-relations-foundation-sinhala::before {
-    width: 72px;
+  .public-relations-foundation-progress {
+    margin-top: 26px;
+    margin-bottom: 22px;
   }
 
   .public-relations-foundation-sinhala p {
@@ -766,11 +776,11 @@
   }
 
   .public-relations-foundation-logo {
-    width: 50px;
+    width: 58px;
   }
 
   .public-relations-foundation-header h2 {
-    font-size: clamp(21px,6.4vw,27px);
+    font-size: clamp(16px,4.25vw,19px);
   }
 
   .public-relations-foundation-main {
@@ -781,8 +791,15 @@
     height: 265px;
   }
 
-  .public-relations-foundation-sinhala {
-    margin-top: 25px;
+}
+
+@media (max-width: 340px) {
+  .public-relations-foundation-logo {
+    width: 52px;
+  }
+
+  .public-relations-foundation-header h2 {
+    font-size: 15px;
   }
 }
 
@@ -794,7 +811,9 @@
   .public-relations-foundation-header,
   .public-relations-foundation-description,
   .public-relations-foundation-carousel,
-  .public-relations-foundation-sinhala {
+  .public-relations-foundation-progress,
+  .public-relations-foundation-sinhala,
+  .public-relations-foundation-sinhala p {
     opacity: 1 !important;
     transform: none !important;
   }
