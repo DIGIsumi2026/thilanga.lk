@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -5,6 +6,7 @@ import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import { heroSlides } from "../../data/site";
 import gsap from "gsap";
 import type { Swiper as SwiperType } from "swiper";
+import { usePageLoad } from "../../components/common/page-loader/PageLoadContext";
 
 import "swiper/css";
 import "swiper/css/effect-fade";
@@ -12,7 +14,12 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 export default function HeroSection() {
+  const { isLoaderComplete } = usePageLoad();
+  const swiperRef = useRef<SwiperType | null>(null);
+
   const handleSlideChange = (swiper: SwiperType) => {
+    if (!isLoaderComplete) return;
+
     const activeSlide = swiper.slides[swiper.activeIndex];
     if (!activeSlide) return;
 
@@ -31,9 +38,22 @@ export default function HeroSection() {
     });
   };
 
+  useEffect(() => {
+    if (isLoaderComplete && swiperRef.current) {
+      handleSlideChange(swiperRef.current);
+      swiperRef.current.autoplay.start();
+    } else if (swiperRef.current) {
+      swiperRef.current.autoplay.stop();
+    }
+  }, [isLoaderComplete]);
+
   return (
     <section className="hero-section">
       <Swiper
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+          if (!isLoaderComplete) swiper.autoplay.stop();
+        }}
         className="hero-swiper"
         modules={[Autoplay, EffectFade, Navigation, Pagination]}
         slidesPerView={1}

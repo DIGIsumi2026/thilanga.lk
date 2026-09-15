@@ -2,6 +2,7 @@ import {useEffect,useRef,useState} from 'react';
 import {animate} from 'animejs';
 import {imageAssets} from '../../assets/imageAssets';
 import {videoAssets} from '../../assets/videoAssets';
+import {usePageLoad} from '../../components/common/page-loader/PageLoadContext';
 
 const DESKTOP_BREAKPOINT = 900;
 
@@ -16,6 +17,7 @@ const PoliticalHero = () => {
   );
 
   const [videoEnded,setVideoEnded] = useState(false);
+  const { isLoaderComplete } = usePageLoad();
 
   useEffect(() => {
     const handleResize = () => {
@@ -40,7 +42,7 @@ const PoliticalHero = () => {
   useEffect(() => {
     const quote = quoteRef.current;
 
-    if (!quote) return;
+    if (!quote || !isLoaderComplete) return;
 
     const reducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
@@ -56,19 +58,19 @@ const PoliticalHero = () => {
 
     const quoteAnimation = animate(quote,{
       translateX:['115%',0],
-      duration:6000,
+      duration:5800,
       ease:'linear',
     });
 
     return () => {
       quoteAnimation.pause();
     };
-  },[isDesktop]);
+  },[isDesktop,isLoaderComplete]);
 
   useEffect(() => {
     const video = videoRef.current;
 
-    if (!video || !isDesktop) return;
+    if (!video || !isDesktop || !isLoaderComplete) return;
 
     setVideoEnded(false);
 
@@ -88,7 +90,7 @@ const PoliticalHero = () => {
     return () => {
       video.pause();
     };
-  },[isDesktop]);
+  },[isDesktop,isLoaderComplete]);
 
   const handleVideoEnded = () => {
     const video = videoRef.current;
@@ -136,7 +138,6 @@ const PoliticalHero = () => {
               videoEnded ? 'is-ended' : ''
             }`}
             src={videoAssets.political.hero}
-            autoPlay
             muted
             playsInline
             preload="auto"

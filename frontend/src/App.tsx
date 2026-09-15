@@ -10,6 +10,8 @@ import FloatingContact from './components/common/FloatingContact';
 import ScrollToTop from './components/common/ScrollToTop';
 import SmoothScroll from './components/common/SmoothScroll';
 import CustomScrollbar from './components/common/CustomScrollbar';
+import { PageLoadProvider } from './components/common/page-loader/PageLoadContext';
+import { PageReloadTransition } from './components/common/page-loader/PageReloadTransition';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -22,39 +24,43 @@ export default function App() {
   const location = useLocation();
 
   return (
-    <SmoothScroll>
-      <ScrollToTop />
-      <CustomScrollbar />
+    <PageLoadProvider>
+      <PageReloadTransition>
+        <SmoothScroll>
+          <ScrollToTop />
+          <CustomScrollbar />
 
-      <Navbar />
+          <Navbar />
 
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname} >
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname} >
 
-          {/* navigation routes */}
+              {/* navigation routes */}
 
-          <Route path="/" element={<Home />} />
-          <Route path="/about-me" element={<About />}/>
-          <Route path="/corporate" element={<Corporate/>} />
-          <Route path="/political" element={<Political/>} />
+              <Route path="/" element={<Home />} />
+              <Route path="/about-me" element={<About />}/>
+              <Route path="/corporate" element={<Corporate/>} />
+              <Route path="/political" element={<Political/>} />
 
-          <Route path="/public-relations" element={<Journal />}/>
+              <Route path="/public-relations" element={<Journal />}/>
 
-          <Route path="/contact" element={<Contact />}/>
+              <Route path="/contact" element={<Contact />}/>
 
-          {/* temporary legacy routes */}
+              {/* temporary legacy routes */}
 
-          <Route path="/about" element={<About />}/>
-          <Route path="/corporate" element={<Corporate/>} />
-          <Route path="/political" element={<Political/>} />
-          <Route path="/journal" element={<Journal />}/>
+              <Route path="/about" element={<About />}/>
+              <Route path="/corporate" element={<Corporate/>} />
+              <Route path="/political" element={<Political/>} />
+              <Route path="/journal" element={<Journal />}/>
 
-        </Routes>
-      </AnimatePresence>
+            </Routes>
+          </AnimatePresence>
 
-      <Footer />
+          <Footer />
 
-      {/*<FloatingContact /> */}
-    </SmoothScroll>
+          {/*<FloatingContact /> */}
+        </SmoothScroll>
+      </PageReloadTransition>
+    </PageLoadProvider>
   );
 }

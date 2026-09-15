@@ -1,7 +1,10 @@
 import {motion} from 'framer-motion';
 import {imageAssets} from '../../assets/imageAssets';
+import {usePageLoad} from '../../components/common/page-loader/PageLoadContext';
 
 const AboutIntro = () => {
+  const { isLoaderComplete } = usePageLoad();
+
   return (
     <section className="about-intro">
       <div className="about-intro-media">
@@ -18,7 +21,10 @@ const AboutIntro = () => {
         <motion.div
           className="about-intro-content"
           initial={{opacity:0,y:30}}
-          animate={{opacity:1,y:0}}
+          animate={{
+            opacity: isLoaderComplete ? 1 : 0,
+            y: isLoaderComplete ? 0 : 30
+          }}
           transition={{
             duration:0.9,
             ease:[0.22,1,0.36,1],

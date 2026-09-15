@@ -1,18 +1,20 @@
 import {useEffect,useRef} from 'react';
 import {animate} from 'animejs';
 import {imageAssets} from '../../assets/imageAssets';
+import {usePageLoad} from '../../components/common/page-loader/PageLoadContext';
 
 const DESKTOP_BREAKPOINT = 900;
 
 export default function PublicRelationsHero() {
   const imageRef = useRef<HTMLImageElement | null>(null);
   const quoteRef = useRef<HTMLDivElement | null>(null);
+  const { isLoaderComplete } = usePageLoad();
 
   useEffect(() => {
     const image = imageRef.current;
     const quote = quoteRef.current;
 
-    if (!image || !quote) return;
+    if (!image || !quote || !isLoaderComplete) return;
 
     const reducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
@@ -54,7 +56,7 @@ export default function PublicRelationsHero() {
       imageAnimation.pause();
       quoteAnimation.pause();
     };
-  },[]);
+  },[isLoaderComplete]);
 
   return (
     <section className="public-relations-hero">

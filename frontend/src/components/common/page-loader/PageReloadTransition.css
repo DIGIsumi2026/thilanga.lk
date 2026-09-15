@@ -1,0 +1,62 @@
+.page-reload-content {
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.page-reload-content.is-loading {
+  opacity: 0;
+}
+
+.page-reload-content.is-ready {
+  opacity: 1;
+}
+
+.page-reload-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  overflow: hidden;
+  background: #071015;
+  pointer-events: auto;
+}
+
+.page-reload-skeleton {
+  position: fixed;
+  overflow: hidden;
+  background: rgba(38, 49, 51, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.035);
+  pointer-events: none;
+}
+
+.page-reload-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.025) 38%,
+    rgba(255, 255, 255, 0.09) 50%,
+    rgba(255, 255, 255, 0.025) 62%,
+    transparent 100%
+  );
+  transform: translateX(-110%);
+  animation: page-reload-shimmer 1.35s linear infinite;
+}
+
+@keyframes page-reload-shimmer {
+  to {
+    transform: translateX(110%);
+  }
+}
+
+.page-reload-skeleton.is-revealing::after {
+  animation: none;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+@media (max-width: 700px) {
+  .page-reload-skeleton::after {
+    animation: page-reload-shimmer 1.55s linear infinite;
+  }
+}

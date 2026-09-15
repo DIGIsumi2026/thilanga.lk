@@ -2,6 +2,7 @@ import {useEffect,useRef,useState} from 'react';
 import {animate} from 'animejs';
 import {imageAssets} from '../../assets/imageAssets';
 import {videoAssets} from '../../assets/videoAssets';
+import {usePageLoad} from '../../components/common/page-loader/PageLoadContext';
 
 const DESKTOP_BREAKPOINT = 900;
 
@@ -37,10 +38,12 @@ const CorporateHero = () => {
     };
   },[]);
 
+  const { isLoaderComplete } = usePageLoad();
+
   useEffect(() => {
     const quote = quoteRef.current;
 
-    if (!quote) return;
+    if (!quote || !isLoaderComplete) return;
 
     const reducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
@@ -63,12 +66,12 @@ const CorporateHero = () => {
     return () => {
       quoteAnimation.pause();
     };
-  },[isDesktop]);
+  },[isDesktop, isLoaderComplete]);
 
   useEffect(() => {
     const video = videoRef.current;
 
-    if (!video || !isDesktop) return;
+    if (!video || !isDesktop || !isLoaderComplete) return;
 
     setVideoEnded(false);
 
@@ -89,7 +92,7 @@ const CorporateHero = () => {
     return () => {
       video.pause();
     };
-  },[isDesktop]);
+  },[isDesktop, isLoaderComplete]);
 
   const handleVideoEnded = () => {
     const video = videoRef.current;
@@ -137,7 +140,6 @@ const CorporateHero = () => {
               videoEnded ? 'is-ended' : ''
             }`}
             src={videoAssets.corporate.hero}
-            autoPlay
             muted
             playsInline
             preload="auto"
