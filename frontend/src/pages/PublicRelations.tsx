@@ -2,6 +2,7 @@ import {motion} from 'framer-motion';
 import PublicRelationsHero from '../sections/public-relations/PublicRelationsHero';
 import PublicRelationsSocialService from '../sections/public-relations/PublicRelationsSocialService';
 import PublicRelationsFoundation from '../sections/public-relations/PublicRelationsFoundation';
+import PublicRelationsMilinaMatha from '../sections/public-relations/PublicRelationsMilinaMatha';
 import '../styles/public-relations.css';
 
 export default function PublicRelations() {
@@ -14,6 +15,7 @@ export default function PublicRelations() {
       <PublicRelationsHero />
       <PublicRelationsSocialService/>
       <PublicRelationsFoundation/>
+      <PublicRelationsMilinaMatha/>
     </motion.main>
   );
 }

@@ -130,6 +130,12 @@ import publicRelationsFoundation3 from '../assets/images/public-relations/social
 import publicRelationsFoundation4 from '../assets/images/public-relations/social-service/foundation/image4.jpg';
 import publicRelationsFoundation5 from '../assets/images/public-relations/social-service/foundation/image5.jpg';
 
+//milina-matha
+import publicRelationsMilinaBg  from '../assets/images/public-relations/social-service/milina-matha/milina-matha-bg.png';
+import publicRelationsMilinaLogo  from '../assets/images/public-relations/social-service/milina-matha/milina-matha-logo.png';
+import publicRelationsMilina1  from '../assets/images/public-relations/social-service/milina-matha/image1.webp';
+import publicRelationsMilina2  from '../assets/images/public-relations/social-service/milina-matha/image2.webp';
+
 
 import about from "./images/about.jpg";
 import innerAbout from "./images/inner-about.jpg";
@@ -331,6 +337,15 @@ publicRelations:{
       image5:publicRelationsFoundation5
     },
   },
+
+  milinaMatha:{
+  background:publicRelationsMilinaBg,
+  logo:publicRelationsMilinaLogo,
+  gallery:{
+    image1:publicRelationsMilina1,
+    image2:publicRelationsMilina2
+  },
+},
 },
 
   practice: {

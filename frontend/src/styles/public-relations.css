@@ -461,8 +461,8 @@
   font-family: var(--serif);
   font-size: clamp(32px,2.9vw,46px);
   font-weight: 400;
-  line-height: 1;
-  letter-spacing: -0.012em;
+  line-height: 1.13;
+  letter-spacing: -0.005em;
   white-space: nowrap;
 }
 
@@ -814,6 +814,300 @@
   .public-relations-foundation-progress,
   .public-relations-foundation-sinhala,
   .public-relations-foundation-sinhala p {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* =========================================================
+   MILINA MATHA FOUNDATION
+   ========================================================= */
+
+.public-relations-milina {
+  position: relative;
+  width: 100%;
+  padding: 44px 30px 76px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--ink);
+  overflow: hidden;
+}
+
+.public-relations-milina-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg,rgba(255,255,255,0.88) 0%,rgba(255,255,255,0.7) 45%,rgba(255,255,255,0.26) 76%,rgba(255,255,255,0.06) 100%);
+  pointer-events: none;
+}
+
+.public-relations-milina-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.public-relations-milina-header {
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.public-relations-milina-logo {
+  width: clamp(98px,7vw,120px);
+  height: auto;
+  flex: 0 0 auto;
+  display: block;
+  object-fit: contain;
+}
+
+.public-relations-milina-header h2 {
+  margin: 0;
+  min-width: 0;
+  color: #155f9f;
+  font-family: var(--serif);
+  font-size: clamp(32px,2.9vw,46px);
+  font-weight: 400;
+  line-height: 1.13;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   MAIN ROW
+   ========================================================= */
+
+.public-relations-milina-main {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0,0.95fr) minmax(0,1.05fr);
+  gap: clamp(28px,4vw,58px);
+  align-items: center;
+}
+
+.public-relations-milina-copy {
+  min-width: 0;
+}
+
+.public-relations-milina-description {
+  max-width: 620px;
+  margin: 0;
+  color: #63737d;
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+/* =========================================================
+   DEPTH CAROUSEL
+   ========================================================= */
+
+.public-relations-milina-carousel {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  min-width: 0;
+  background: transparent;
+}
+
+.milina-depth-carousel {
+  background: transparent !important;
+}
+
+.milina-depth-carousel .depth-carousel__stage {
+  background: transparent;
+}
+
+.milina-depth-carousel .depth-carousel__card {
+  border: 1px solid rgba(21,95,159,0.09);
+  background: #fff;
+  box-shadow:
+    0 28px 58px -26px rgba(21,95,159,0.22),
+    0 9px 24px -16px rgba(21,95,159,0.15);
+}
+
+.milina-depth-carousel .depth-carousel__img {
+  object-fit: cover;
+}
+
+.milina-depth-carousel .depth-carousel__arrow {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(21,95,159,0.16);
+  background: rgba(255,255,255,0.8);
+  color: #155f9f;
+  box-shadow: 0 9px 28px rgba(21,95,159,0.08);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.milina-depth-carousel .depth-carousel__arrow:hover {
+  border-color: rgba(21,95,159,0.42);
+  background: rgba(255,255,255,0.96);
+}
+
+.milina-depth-carousel .depth-carousel__arrow--prev {
+  left: 3px;
+}
+
+.milina-depth-carousel .depth-carousel__arrow--next {
+  right: 3px;
+}
+
+.milina-depth-carousel .depth-carousel__dots {
+  bottom: 3px;
+  padding: 6px 10px;
+  background: rgba(255,255,255,0.75);
+  box-shadow: 0 8px 24px rgba(21,95,159,0.06);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.milina-depth-carousel .depth-carousel__dot {
+  background: rgba(21,95,159,0.2);
+}
+
+.milina-depth-carousel .depth-carousel__dot.is-active {
+  background: #2878bd;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  .public-relations-milina {
+    padding: 44px 24px 70px;
+  }
+
+  .public-relations-milina-logo {
+    width: 86px;
+  }
+
+  .public-relations-milina-header {
+    gap: 15px;
+  }
+
+  .public-relations-milina-header h2 {
+    font-size: clamp(27px,3.5vw,38px);
+    white-space: nowrap;
+  }
+
+  .public-relations-milina-main {
+    gap: 28px;
+  }
+
+  .public-relations-milina-description {
+    font-size: 13px;
+    line-height: 1.84;
+  }
+
+  .public-relations-milina-carousel {
+    height: 290px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .public-relations-milina {
+    padding: 38px 18px 64px;
+    background-position: center;
+  }
+
+  .public-relations-milina-overlay {
+    background: rgba(255,255,255,0.58);
+  }
+
+  .public-relations-milina-header {
+    margin-bottom: 22px;
+    gap: 10px;
+  }
+
+  .public-relations-milina-logo {
+    width: 58px;
+  }
+
+  .public-relations-milina-header h2 {
+    flex: 1;
+    min-width: 0;
+    font-size: clamp(18px,5.2vw,24px);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .public-relations-milina-main {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .public-relations-milina-description {
+    max-width: none;
+    font-size: 13px;
+    line-height: 1.82;
+  }
+
+  .public-relations-milina-carousel {
+    width: calc(100% + 10px);
+    height: 270px;
+    margin-left: -5px;
+  }
+
+  .milina-depth-carousel .depth-carousel__arrow {
+    width: 38px;
+    height: 38px;
+  }
+
+  .milina-depth-carousel .depth-carousel__arrow--prev {
+    left: 2px;
+  }
+
+  .milina-depth-carousel .depth-carousel__arrow--next {
+    right: 2px;
+  }
+
+  .milina-depth-carousel .depth-carousel__dots {
+    bottom: 2px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+  .public-relations-milina-logo {
+    width: 52px;
+  }
+
+  .public-relations-milina-header h2 {
+    font-size: 17px;
+  }
+
+  .public-relations-milina-carousel {
+    height: 255px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .public-relations-milina-header,
+  .public-relations-milina-description,
+  .public-relations-milina-carousel {
     opacity: 1 !important;
     transform: none !important;
   }
