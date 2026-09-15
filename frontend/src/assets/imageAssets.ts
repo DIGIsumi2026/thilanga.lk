@@ -122,6 +122,7 @@ import publicRelationsHero  from '../assets/images/public-relations/hero/public-
 import publicRelationsSocialServiceBg  from '../assets/images/public-relations/social-service/social-service-bg.png';
 
 //foundadtion
+import publicRelationsFoundationLogo  from '../assets/images/public-relations/social-service/foundation/foundation-logo.png';
 import publicRelationsFoundationBg from '../assets/images/public-relations/social-service/foundation/foundation-bg.png';
 import publicRelationsFoundation1 from '../assets/images/public-relations/social-service/foundation/image1.jpg';
 import publicRelationsFoundation2 from '../assets/images/public-relations/social-service/foundation/image2.jpg';
@@ -318,15 +319,16 @@ publicRelations:{
    socialService:{
     background:publicRelationsSocialServiceBg,
   },
-  
+
   foundation:{
     background:publicRelationsFoundationBg,
+      logo:publicRelationsFoundationLogo,
     gallery:{
       image1:publicRelationsFoundation1,
       image2:publicRelationsFoundation2,
       image3:publicRelationsFoundation3,
       image4:publicRelationsFoundation4,
-      image5:publicRelationsFoundation5,
+      image5:publicRelationsFoundation5
     },
   },
 },

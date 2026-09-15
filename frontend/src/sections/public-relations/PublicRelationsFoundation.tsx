@@ -69,11 +69,11 @@ export default function PublicRelationsFoundation() {
       '(prefers-reduced-motion: reduce)',
     ).matches;
 
-    const heading = section.querySelector<HTMLElement>(
-      '.public-relations-foundation-heading',
+    const header = section.querySelector<HTMLElement>(
+      '.public-relations-foundation-header',
     );
 
-    const paragraph = section.querySelector<HTMLElement>(
+    const description = section.querySelector<HTMLElement>(
       '.public-relations-foundation-description',
     );
 
@@ -81,8 +81,17 @@ export default function PublicRelationsFoundation() {
       '.public-relations-foundation-carousel',
     );
 
+    const sinhalaDescription = section.querySelector<HTMLElement>(
+      '.public-relations-foundation-sinhala',
+    );
+
     if (reducedMotion) {
-      [heading,paragraph,carousel].forEach((element) => {
+      [
+        header,
+        description,
+        carousel,
+        sinhalaDescription,
+      ].forEach((element) => {
         if (!element) return;
 
         element.style.opacity = '1';
@@ -93,39 +102,44 @@ export default function PublicRelationsFoundation() {
     }
 
     const ctx = gsap.context(() => {
-      gsap.set(heading,{
+      gsap.set(header,{
         autoAlpha:0,
-        y:30,
+        y:24,
       });
 
-      gsap.set(paragraph,{
+      gsap.set(description,{
         autoAlpha:0,
         y:24,
       });
 
       gsap.set(carousel,{
         autoAlpha:0,
-        x:40,
+        x:34,
         scale:0.98,
+      });
+
+      gsap.set(sinhalaDescription,{
+        autoAlpha:0,
+        y:26,
       });
 
       ScrollTrigger.create({
         trigger:section,
-        start:'top 75%',
+        start:'top 78%',
         once:true,
         onEnter:() => {
-          gsap.to(heading,{
-            autoAlpha:1,
-            y:0,
-            duration:0.9,
-            ease:'power3.out',
-          });
-
-          gsap.to(paragraph,{
+          gsap.to(header,{
             autoAlpha:1,
             y:0,
             duration:0.85,
-            delay:0.14,
+            ease:'power3.out',
+          });
+
+          gsap.to(description,{
+            autoAlpha:1,
+            y:0,
+            duration:0.8,
+            delay:0.12,
             ease:'power3.out',
           });
 
@@ -133,9 +147,17 @@ export default function PublicRelationsFoundation() {
             autoAlpha:1,
             x:0,
             scale:1,
-            duration:1,
-            delay:0.22,
+            duration:0.95,
+            delay:0.18,
             ease:'power4.out',
+          });
+
+          gsap.to(sinhalaDescription,{
+            autoAlpha:1,
+            y:0,
+            duration:0.85,
+            delay:0.4,
+            ease:'power3.out',
           });
         },
       });
@@ -146,37 +168,37 @@ export default function PublicRelationsFoundation() {
 
   const carouselConfig = isMobile
     ? {
-        depth:90,
-        spread:54,
-        tilt:8,
+        depth:80,
+        spread:48,
+        tilt:7,
         visibleCards:2,
         blur:2,
-        cardWidth:290,
-        cardHeight:215,
+        cardWidth:270,
+        cardHeight:195,
         radius:14,
         autoplayDelay:3600,
       }
     : isTablet
       ? {
-          depth:120,
-          spread:70,
-          tilt:10,
+          depth:105,
+          spread:62,
+          tilt:9,
           visibleCards:3,
-          blur:4,
-          cardWidth:360,
-          cardHeight:260,
-          radius:16,
+          blur:3,
+          cardWidth:310,
+          cardHeight:215,
+          radius:15,
           autoplayDelay:3400,
         }
       : {
-          depth:150,
-          spread:88,
-          tilt:13,
+          depth:125,
+          spread:74,
+          tilt:11,
           visibleCards:3,
-          blur:5,
-          cardWidth:420,
-          cardHeight:300,
-          radius:18,
+          blur:4,
+          cardWidth:350,
+          cardHeight:235,
+          radius:16,
           autoplayDelay:3200,
         };
 
@@ -192,58 +214,78 @@ export default function PublicRelationsFoundation() {
       <div className="public-relations-foundation-overlay" />
 
       <div className="public-relations-foundation-container">
-        <div className="public-relations-foundation-copy">
-          <header className="public-relations-foundation-heading">
-            <span>
-              Service for Human Needs
-            </span>
+        <header className="public-relations-foundation-header">
+          <img
+            src={imageAssets.publicRelations.foundation.logo}
+            alt="Thilanga Sumathipala Foundation"
+            className="public-relations-foundation-logo"
+          />
 
-            <h2>
-              Thilanga Sumathipala
-              <br />
-              Foundation
-            </h2>
-          </header>
+          <h2>
+            Thilanga Sumathipala Foundation
+          </h2>
+        </header>
 
-          <p className="public-relations-foundation-description">
-            In 2006, he established the "Thilanga Sumathipala Foundation"
-            with the primary mission of "Service for Human Needs" through
-            which he initiates and extends projects across a sphere of
-            societal needs such as humanitarian and medical assistance,
-            poverty alleviation, disaster assistance, urban and
-            environmental development, rehabilitation and more. Currently,
-            and over the next several years, the Foundation will focus its
-            attention on initiatives designed to benefit vulnerable
-            sections of society such as Women, Children and the Elderly.
-            The Foundation, rooted in Buddhist principles, also conduct
-            regular religious, meditational and meritorious activities.
-          </p>
+        <div className="public-relations-foundation-main">
+          <div className="public-relations-foundation-copy">
+            <p className="public-relations-foundation-description">
+              In 2006, he established the "Thilanga Sumathipala Foundation"
+              with the primary mission of "Service for Human Needs" through
+              which he initiates and extends projects across a sphere of
+              societal needs such as humanitarian and medical assistance,
+              poverty alleviation, disaster assistance, urban and environmental
+              development, rehabilitation and more. Currently, and over the
+              next several years, the Foundation will focus its attention on
+              initiatives designed to benefit vulnerable sections of society
+              such as Women, Children and the Elderly. The Foundation, rooted
+              in Buddhist principles, also conduct regular religious,
+              meditational and meritorious activities.
+            </p>
+          </div>
+
+          <div className="public-relations-foundation-carousel">
+            <DepthCarousel
+              items={foundationGallery}
+              depth={carouselConfig.depth}
+              spread={carouselConfig.spread}
+              tilt={carouselConfig.tilt}
+              tiltDirection="right"
+              perspective={1400}
+              visibleCards={carouselConfig.visibleCards}
+              falloff={0.18}
+              blur={carouselConfig.blur}
+              autoplay
+              loop
+              cardWidth={carouselConfig.cardWidth}
+              cardHeight={carouselConfig.cardHeight}
+              radius={carouselConfig.radius}
+              tint="#ffffff"
+              duration={850}
+              ease="power3.out"
+              autoplayDelay={carouselConfig.autoplayDelay}
+              showControls
+              showIndicators
+              className="foundation-depth-carousel"
+            />
+          </div>
         </div>
 
-        <div className="public-relations-foundation-carousel">
-          <DepthCarousel
-            items={foundationGallery}
-            depth={carouselConfig.depth}
-            spread={carouselConfig.spread}
-            tilt={carouselConfig.tilt}
-            tiltDirection="right"
-            perspective={1400}
-            visibleCards={carouselConfig.visibleCards}
-            falloff={0.18}
-            blur={carouselConfig.blur}
-            autoplay
-            loop
-            cardWidth={carouselConfig.cardWidth}
-            cardHeight={carouselConfig.cardHeight}
-            radius={carouselConfig.radius}
-            tint="#ffffff"
-            duration={900}
-            ease="power3.out"
-            autoplayDelay={carouselConfig.autoplayDelay}
-            showControls
-            showIndicators
-            className="foundation-depth-carousel"
-          />
+        <div className="public-relations-foundation-sinhala">
+          <p>
+            හෝමාගම, හොරගල දිරිය කාන්තාවන්ගේ දරුවන්ට තිලංග සුමතිපාල
+            පදනමෙන් පාසල් උපකරණ තිලංග සුමතිපාල පදනම විසින් ක්‍රියාත්මක
+            කරනු ලබන "කාන්තා දිරිය" වැඩසටහන යටතේ පාසල් උපකරණ බෙදාදීමේ
+            තවත් වැඩසටහනක් පසුගියදා (2024-06-24) හෝමාගම මැතිවරණ
+            ප්‍රදේශයේ, හොරගල කොට්ඨාසයේ ශ්‍රී සුධර්මාරාම විහාරස්ථානයේදී
+            සාර්ථක ලෙස ක්‍රියාවට නැංවුණි. "කාන්තා දිරිය" වැඩසටහන යටතේ
+            එහි සාමාජික කාන්තාවන්ගේ පවුල්වල දූ දරුවන්ට ඔවුන්ගේ අධ්‍යාපන
+            කටයුතු සාර්ථකව කරගෙන යාම සඳහා පොත්පත් ඇතුළු පාසල් උපකරණ
+            ලබාදීම සිදු කරනු ලබයි. හොරගල සුධර්මාරාම විහාරාධිපති පූජ්‍ය
+            විදාගම පඤ්ඤාසෝම ස්වාමීන් වහන්සේ, තිලංග සුමතිපාල පදනමේ
+            කාන්තා දිරිය වැඩසටහනේ හෝමාගම මැතිවරණ ප්‍රදේශ සම්බන්ධීකාරක
+            මහේෂි කසුන්දිකා, කාන්තා දිරිය වැඩසටහනේ හොරගල කොට්ඨාස
+            සම්බන්ධීකාරක චමිලා ශාමලී මහත්මීන්ද මේ අවස්ථාව සඳහා එක්වූහ.
+          </p>
         </div>
       </div>
     </section>

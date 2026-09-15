@@ -409,10 +409,8 @@
 .public-relations-foundation {
   position: relative;
   width: 100%;
-  min-height: 720px;
-  padding: 110px 30px;
-  display: flex;
-  align-items: center;
+  min-height: auto;
+  padding: 50px 30px 82px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -424,7 +422,7 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(90deg,rgba(255,255,255,0.96) 0%,rgba(255,255,255,0.85) 42%,rgba(255,255,255,0.35) 72%,rgba(255,255,255,0.12) 100%);
+  background: linear-gradient(90deg,rgba(255,255,255,0.9) 0%,rgba(255,255,255,0.76) 42%,rgba(255,255,255,0.34) 72%,rgba(255,255,255,0.08) 100%);
   pointer-events: none;
 }
 
@@ -434,43 +432,58 @@
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
+}
+
+/* =========================================================
+   FOUNDATION HEADER
+   ========================================================= */
+
+.public-relations-foundation-header {
+  width: 100%;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.public-relations-foundation-logo {
+  width: clamp(62px,5.2vw,82px);
+  height: auto;
+  flex: 0 0 auto;
+  display: block;
+  object-fit: contain;
+}
+
+.public-relations-foundation-header h2 {
+  margin: 0;
+  color: #142a36;
+  font-family: var(--serif);
+  font-size: clamp(32px,3vw,48px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.012em;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   FOUNDATION MAIN CONTENT
+   ========================================================= */
+
+.public-relations-foundation-main {
+  width: 100%;
   display: grid;
-  grid-template-columns: minmax(0,0.9fr) minmax(0,1.1fr);
-  gap: clamp(42px,5vw,80px);
+  grid-template-columns: minmax(0,0.95fr) minmax(0,1.05fr);
+  gap: clamp(30px,4.5vw,62px);
   align-items: center;
 }
 
 .public-relations-foundation-copy {
   min-width: 0;
-}
-
-.public-relations-foundation-heading {
-  margin-bottom: 30px;
-}
-
-.public-relations-foundation-heading > span {
-  display: block;
-  margin-bottom: 13px;
-  color: #e66c32;
-  font-family: var(--sans);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.17em;
-  text-transform: uppercase;
-}
-
-.public-relations-foundation-heading h2 {
-  margin: 0;
-  color: #142a36;
-  font-family: var(--serif);
-  font-size: clamp(48px,4vw,70px);
-  font-weight: 400;
-  line-height: 0.98;
-  letter-spacing: -0.01em;
+  align-self: center;
 }
 
 .public-relations-foundation-description {
-  max-width: 590px;
+  max-width: 620px;
   margin: 0;
   color: #66737a;
   font-family: var(--sans);
@@ -478,18 +491,17 @@
   line-height: 1.9;
 }
 
+/* =========================================================
+   FOUNDATION DEPTH CAROUSEL
+   ========================================================= */
+
 .public-relations-foundation-carousel {
   position: relative;
   width: 100%;
-  height: 500px;
+  height: 340px;
   min-width: 0;
   background: transparent;
 }
-
-/* =========================================================
-   DEPTH CAROUSEL FOUNDATION OVERRIDES
-   IMPORTANT: TRANSPARENT BACKGROUND
-   ========================================================= */
 
 .foundation-depth-carousel {
   background: transparent !important;
@@ -503,8 +515,8 @@
   border: 1px solid rgba(20,42,54,0.08);
   background: #fff;
   box-shadow:
-    0 32px 70px -28px rgba(19,42,55,0.26),
-    0 10px 28px -18px rgba(19,42,55,0.18);
+    0 28px 58px -26px rgba(19,42,55,0.24),
+    0 9px 24px -16px rgba(19,42,55,0.16);
 }
 
 .foundation-depth-carousel .depth-carousel__img {
@@ -516,40 +528,40 @@
 }
 
 .foundation-depth-carousel .depth-carousel__arrow {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border: 1px solid rgba(20,42,54,0.14);
-  background: rgba(255,255,255,0.72);
+  background: rgba(255,255,255,0.78);
   color: #173843;
-  box-shadow: 0 10px 32px rgba(15,37,49,0.08);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-}
-
-.foundation-depth-carousel .depth-carousel__arrow:hover {
-  border-color: rgba(230,108,50,0.4);
-  background: rgba(255,255,255,0.94);
-}
-
-.foundation-depth-carousel .depth-carousel__arrow--prev {
-  left: 5px;
-}
-
-.foundation-depth-carousel .depth-carousel__arrow--next {
-  right: 5px;
-}
-
-.foundation-depth-carousel .depth-carousel__dots {
-  bottom: 14px;
-  padding: 7px 11px;
-  background: rgba(255,255,255,0.64);
-  box-shadow: 0 10px 30px rgba(15,37,49,0.08);
+  box-shadow: 0 9px 28px rgba(15,37,49,0.08);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
+.foundation-depth-carousel .depth-carousel__arrow:hover {
+  border-color: rgba(230,108,50,0.42);
+  background: rgba(255,255,255,0.96);
+}
+
+.foundation-depth-carousel .depth-carousel__arrow--prev {
+  left: 3px;
+}
+
+.foundation-depth-carousel .depth-carousel__arrow--next {
+  right: 3px;
+}
+
+.foundation-depth-carousel .depth-carousel__dots {
+  bottom: 3px;
+  padding: 6px 10px;
+  background: rgba(255,255,255,0.72);
+  box-shadow: 0 8px 24px rgba(15,37,49,0.06);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
 .foundation-depth-carousel .depth-carousel__dot {
-  background: rgba(23,56,67,0.2);
+  background: rgba(23,56,67,0.22);
 }
 
 .foundation-depth-carousel .depth-carousel__dot.is-active {
@@ -557,31 +569,102 @@
 }
 
 /* =========================================================
-   TABLET
+   FOUNDATION SINHALA UPDATE
    ========================================================= */
 
-@media (max-width: 1050px) {
+.public-relations-foundation-sinhala {
+  position: relative;
+  width: 100%;
+  margin-top: 34px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(20,42,54,0.12);
+}
+
+.public-relations-foundation-sinhala::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 92px;
+  height: 2px;
+  background: linear-gradient(90deg,#e66c32 0%,#356cac 60%,transparent 100%);
+}
+
+.public-relations-foundation-sinhala p {
+  max-width: 1180px;
+  margin: 0;
+  color: #596a72;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 2;
+}
+
+/* =========================================================
+   LARGE TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
   .public-relations-foundation {
-    min-height: auto;
-    padding: 90px 24px 100px;
+    padding: 48px 25px 76px;
   }
 
-  .public-relations-foundation-container {
-    grid-template-columns: minmax(0,0.9fr) minmax(0,1.1fr);
-    gap: 30px;
+  .public-relations-foundation-header {
+    margin-bottom: 22px;
+    gap: 16px;
   }
 
-  .public-relations-foundation-heading h2 {
-    font-size: clamp(42px,5.5vw,58px);
+  .public-relations-foundation-logo {
+    width: 68px;
+  }
+
+  .public-relations-foundation-header h2 {
+    font-size: clamp(30px,3.7vw,42px);
+  }
+
+  .public-relations-foundation-main {
+    grid-template-columns: minmax(0,0.95fr) minmax(0,1.05fr);
+    gap: 28px;
   }
 
   .public-relations-foundation-description {
     font-size: 13px;
-    line-height: 1.82;
+    line-height: 1.84;
   }
 
   .public-relations-foundation-carousel {
-    height: 430px;
+    height: 315px;
+  }
+
+  .public-relations-foundation-sinhala {
+    margin-top: 30px;
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .public-relations-foundation {
+    padding: 46px 22px 72px;
+  }
+
+  .public-relations-foundation-overlay {
+    background: linear-gradient(90deg,rgba(255,255,255,0.92),rgba(255,255,255,0.66));
+  }
+
+  .public-relations-foundation-header h2 {
+    font-size: clamp(28px,4.2vw,38px);
+  }
+
+  .public-relations-foundation-main {
+    grid-template-columns: minmax(0,0.9fr) minmax(0,1.1fr);
+    gap: 22px;
+  }
+
+  .public-relations-foundation-carousel {
+    height: 290px;
   }
 }
 
@@ -591,26 +674,37 @@
 
 @media (max-width: 700px) {
   .public-relations-foundation {
-    padding: 74px 18px 82px;
+    padding: 38px 18px 66px;
     background-position: center;
   }
 
   .public-relations-foundation-overlay {
-    background: rgba(255,255,255,0.82);
+    background: rgba(255,255,255,0.58);
   }
 
-  .public-relations-foundation-container {
-    grid-template-columns: 1fr;
-    gap: 46px;
-  }
-
-  .public-relations-foundation-heading {
+  .public-relations-foundation-header {
     margin-bottom: 24px;
+    gap: 12px;
   }
 
-  .public-relations-foundation-heading h2 {
-    font-size: clamp(39px,10.7vw,52px);
-    line-height: 1;
+  .public-relations-foundation-logo {
+    width: 56px;
+  }
+
+  .public-relations-foundation-header h2 {
+    font-size: clamp(23px,6.9vw,32px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    white-space: normal;
+  }
+
+  .public-relations-foundation-main {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .public-relations-foundation-copy {
+    width: 100%;
   }
 
   .public-relations-foundation-description {
@@ -620,14 +714,14 @@
   }
 
   .public-relations-foundation-carousel {
-    width: calc(100% + 16px);
-    height: 350px;
-    margin-left: -8px;
+    width: calc(100% + 10px);
+    height: 285px;
+    margin-left: -5px;
   }
 
   .foundation-depth-carousel .depth-carousel__arrow {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
   }
 
   .foundation-depth-carousel .depth-carousel__arrow--prev {
@@ -639,14 +733,68 @@
   }
 
   .foundation-depth-carousel .depth-carousel__dots {
-    bottom: 4px;
+    bottom: 2px;
+  }
+
+  .public-relations-foundation-sinhala {
+    margin-top: 28px;
+    padding-top: 24px;
+  }
+
+  .public-relations-foundation-sinhala::before {
+    width: 72px;
+  }
+
+  .public-relations-foundation-sinhala p {
+    font-size: 13px;
+    line-height: 1.9;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .public-relations-foundation-heading,
-  .public-relations-foundation-description,
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 440px) {
+  .public-relations-foundation {
+    padding-top: 32px;
+  }
+
+  .public-relations-foundation-header {
+    gap: 10px;
+    align-items: center;
+  }
+
+  .public-relations-foundation-logo {
+    width: 50px;
+  }
+
+  .public-relations-foundation-header h2 {
+    font-size: clamp(21px,6.4vw,27px);
+  }
+
+  .public-relations-foundation-main {
+    gap: 24px;
+  }
+
   .public-relations-foundation-carousel {
+    height: 265px;
+  }
+
+  .public-relations-foundation-sinhala {
+    margin-top: 25px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .public-relations-foundation-header,
+  .public-relations-foundation-description,
+  .public-relations-foundation-carousel,
+  .public-relations-foundation-sinhala {
     opacity: 1 !important;
     transform: none !important;
   }
