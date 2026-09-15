@@ -118,6 +118,11 @@ import  politicalGovernance6 from '../assets/images/political/governance-gallery
 //public-relations page
 import publicRelationsHero  from '../assets/images/public-relations/hero/public-relations-hero.png';
 
+//social-service
+import publicRelationsSocialServiceBg  from '../assets/images/public-relations/social-service/social-service-bg.png';
+
+
+
 import about from "./images/about.jpg";
 import innerAbout from "./images/inner-about.jpg";
 import consultancy from "./images/consultancy.jpg";
@@ -302,6 +307,9 @@ export const imageAssets = {
 publicRelations:{
   hero:{
     image:publicRelationsHero,
+  },
+   socialService:{
+    background:publicRelationsSocialServiceBg,
   },
 },
 

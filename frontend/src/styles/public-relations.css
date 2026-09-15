@@ -156,3 +156,247 @@
     transform: none !important;
   }
 }
+
+/* =========================================================
+   SOCIAL SERVICE & PHILANTHROPY
+   ========================================================= */
+
+.public-relations-social {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 820px;
+  padding: 110px 30px 120px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  overflow: hidden;
+}
+
+.public-relations-social-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg,rgba(3,9,13,0.98) 0%,rgba(3,9,13,0.94) 34%,rgba(3,9,13,0.75) 57%,rgba(3,9,13,0.34) 78%,rgba(3,9,13,0.22) 100%),
+    linear-gradient(180deg,rgba(2,7,11,0.2) 0%,rgba(2,7,11,0.08) 44%,rgba(2,7,11,0.58) 100%);
+  pointer-events: none;
+}
+
+.public-relations-social-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.public-relations-social-content {
+  width: min(760px,66%);
+  height: auto;
+  max-height: none;
+  overflow: visible;
+}
+
+.public-relations-social-kicker {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--gold);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.public-relations-social-heading {
+  margin: 0 0 34px;
+  color: #fff;
+  font-family: var(--serif);
+  font-size: clamp(48px,4vw,72px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.005px;
+}
+
+.public-relations-social-copy {
+  height: auto;
+  max-height: none;
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  overflow: visible;
+}
+
+.public-relations-social-paragraph {
+  display: block;
+  max-height: none;
+  margin: 0;
+  color: rgba(255,255,255,0.72);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.9;
+  overflow: visible;
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+}
+
+.public-relations-social-milestone {
+  position: relative;
+  padding: 28px;
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr);
+  gap: 28px;
+  align-items: start;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(5,12,16,0.42);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  overflow: visible;
+}
+
+.public-relations-social-milestone::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg,var(--gold),rgba(201,155,59,0.08));
+}
+
+.public-relations-social-year {
+  color: var(--gold);
+  font-family: var(--serif);
+  font-size: clamp(46px,4vw,62px);
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+.public-relations-social-milestone-copy {
+  min-width: 0;
+}
+
+.public-relations-social-milestone-label {
+  display: block;
+  margin-bottom: 7px;
+  color: rgba(255,255,255,0.5);
+  font-family: var(--sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.public-relations-social-milestone h3 {
+  max-width: 530px;
+  margin: 0 0 13px;
+  color: #fff;
+  font-family: var(--serif);
+  font-size: clamp(24px,2vw,32px);
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+.public-relations-social-milestone .public-relations-social-paragraph {
+  color: rgba(255,255,255,0.66);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   SOCIAL SERVICE TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+  .public-relations-social {
+    min-height: auto;
+    padding: 90px 25px 100px;
+    background-position: 62% center;
+  }
+
+  .public-relations-social-content {
+    width: min(730px,82%);
+  }
+
+  .public-relations-social-overlay {
+    background:
+      linear-gradient(90deg,rgba(3,9,13,0.98) 0%,rgba(3,9,13,0.94) 45%,rgba(3,9,13,0.7) 74%,rgba(3,9,13,0.38) 100%),
+      linear-gradient(180deg,rgba(2,7,11,0.22),rgba(2,7,11,0.66));
+  }
+}
+
+@media (max-width: 760px) {
+  .public-relations-social-content {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   SOCIAL SERVICE MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .public-relations-social {
+    padding: 74px 18px 82px;
+    background-position: 66% center;
+  }
+
+  .public-relations-social-overlay {
+    background:
+      linear-gradient(180deg,rgba(2,8,12,0.79) 0%,rgba(2,8,12,0.9) 40%,rgba(2,8,12,0.97) 100%),
+      linear-gradient(90deg,rgba(2,8,12,0.9),rgba(2,8,12,0.6));
+  }
+
+  .public-relations-social-heading {
+    margin-bottom: 28px;
+    font-size: clamp(40px,11vw,54px);
+    line-height: 0.98;
+    letter-spacing: -1.2px;
+  }
+
+  .public-relations-social-copy {
+    gap: 28px;
+  }
+
+  .public-relations-social-paragraph {
+    font-size: 13px;
+    line-height: 1.82;
+  }
+
+  .public-relations-social-milestone {
+    padding: 22px;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    -webkit-backdrop-filter: blur(7px);
+    backdrop-filter: blur(7px);
+  }
+
+  .public-relations-social-year {
+    font-size: 46px;
+  }
+
+  .public-relations-social-milestone h3 {
+    font-size: 23px;
+  }
+
+  .public-relations-social-milestone .public-relations-social-paragraph {
+    font-size: 12px;
+    line-height: 1.78;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .public-relations-social-kicker,
+  .public-relations-social-heading,
+  .public-relations-social-paragraph,
+  .public-relations-social-milestone {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
