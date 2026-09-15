@@ -14,6 +14,7 @@ import {AnimatePresence,motion} from 'framer-motion';
 import {gsap} from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import {imageAssets} from '../../assets/imageAssets';
+import {animateYearCounter} from '../../utils/animateYearCounter';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -108,6 +109,10 @@ export default function PoliticalGovernance() {
       '.political-governance-state',
     );
 
+    const yearElement = section.querySelector<HTMLElement>(
+      '.political-governance-state-year',
+    );
+
     const continuing = section.querySelectorAll<HTMLElement>(
       '.political-governance-continuing-role',
     );
@@ -128,6 +133,10 @@ export default function PoliticalGovernance() {
         element.style.opacity = '1';
         element.style.transform = 'none';
       });
+
+      if (yearElement) {
+        yearElement.textContent = '2019';
+      }
 
       [...roleCards,...continuing].forEach((element) => {
         element.style.opacity = '1';
@@ -218,6 +227,16 @@ export default function PoliticalGovernance() {
               duration:0.82,
               delay:0.5,
               ease:'power3.out',
+              onStart: () => {
+                if (yearElement) {
+                  animateYearCounter({
+                    element: yearElement,
+                    from: 1995,
+                    to: 2019,
+                    duration: 2.3,
+                  });
+                }
+              }
             });
           }
 
