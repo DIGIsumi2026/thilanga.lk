@@ -4,6 +4,7 @@ import PublicRelationsSocialService from '../sections/public-relations/PublicRel
 import PublicRelationsFoundation from '../sections/public-relations/PublicRelationsFoundation';
 import PublicRelationsMilinaMatha from '../sections/public-relations/PublicRelationsMilinaMatha';
 import PublicRelationsGautamaBuddhaMatha from '../sections/public-relations/PublicRelationsGautamaBuddhaMatha';
+import PublicRelationsSumathiAwards from '../sections/public-relations/PublicRelationsSumathiAwards';
 import '../styles/public-relations.css';
 
 export default function PublicRelations() {
@@ -18,6 +19,7 @@ export default function PublicRelations() {
       <PublicRelationsFoundation/>
       <PublicRelationsMilinaMatha/>
       <PublicRelationsGautamaBuddhaMatha/>
+      <PublicRelationsSumathiAwards/>
     </motion.main>
   );
 }

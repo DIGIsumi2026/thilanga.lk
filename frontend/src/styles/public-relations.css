@@ -1386,3 +1386,343 @@
     transform: none !important;
   }
 }
+
+/* =========================================================
+   SUMATHI AWARDS
+   ========================================================= */
+
+.public-relations-sumathi-awards {
+  position: relative;
+  width: 100%;
+  padding: 44px 30px 76px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--ink);
+  overflow: hidden;
+}
+
+.public-relations-sumathi-awards-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg,rgba(255,253,248,0.88) 0%,rgba(255,253,248,0.7) 45%,rgba(255,253,248,0.25) 76%,rgba(255,253,248,0.04) 100%);
+  pointer-events: none;
+}
+
+.public-relations-sumathi-awards-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.public-relations-sumathi-awards-header {
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.public-relations-sumathi-awards-logo {
+  width: clamp(105px,8vw,135px);
+  height: auto;
+  flex: 0 0 auto;
+  display: block;
+  object-fit: contain;
+}
+
+.public-relations-sumathi-awards-header h2 {
+  margin: 0;
+  min-width: 0;
+  color: #6d4721;
+  font-family: var(--serif);
+  font-size: clamp(32px,2.9vw,46px);
+  font-weight: 400;
+  line-height: 1.13;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   MAIN ROW
+   ========================================================= */
+
+.public-relations-sumathi-awards-main {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0,0.95fr) minmax(0,1.05fr);
+  gap: clamp(28px,4vw,58px);
+  align-items: center;
+}
+
+.public-relations-sumathi-awards-copy {
+  min-width: 0;
+}
+
+.public-relations-sumathi-awards-description {
+  max-width: 620px;
+  margin: 0;
+  color: #6b645c;
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+/* =========================================================
+   SEE MORE BUTTON
+   ========================================================= */
+
+.public-relations-sumathi-awards-more {
+  width: fit-content;
+  margin-top: 24px;
+  padding: 11px 18px 11px 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 1px solid rgba(138,90,37,0.22);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.58);
+  color: #70491f;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(95,60,27,0.06);
+  -webkit-backdrop-filter: blur(9px);
+  backdrop-filter: blur(9px);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.public-relations-sumathi-awards-more svg {
+  transition: transform 0.3s ease;
+}
+
+.public-relations-sumathi-awards-more:hover {
+  border-color: rgba(184,135,46,0.58);
+  background: rgba(255,255,255,0.88);
+  box-shadow: 0 13px 34px rgba(95,60,27,0.1);
+  transform: translateY(-2px);
+}
+
+.public-relations-sumathi-awards-more:hover svg {
+  transform: translate(2px,-2px);
+}
+
+/* =========================================================
+   DEPTH CAROUSEL
+   ========================================================= */
+
+.public-relations-sumathi-awards-carousel {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  min-width: 0;
+  background: transparent;
+}
+
+.sumathi-awards-depth-carousel {
+  background: transparent !important;
+}
+
+.sumathi-awards-depth-carousel .depth-carousel__stage {
+  background: transparent;
+}
+
+.sumathi-awards-depth-carousel .depth-carousel__card {
+  border: 1px solid rgba(138,90,37,0.1);
+  background: #fff;
+  box-shadow:
+    0 28px 58px -26px rgba(95,60,27,0.25),
+    0 9px 24px -16px rgba(95,60,27,0.16);
+}
+
+.sumathi-awards-depth-carousel .depth-carousel__img {
+  object-fit: cover;
+}
+
+.sumathi-awards-depth-carousel .depth-carousel__arrow {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(138,90,37,0.16);
+  background: rgba(255,255,255,0.8);
+  color: #754b20;
+  box-shadow: 0 9px 28px rgba(95,60,27,0.08);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.sumathi-awards-depth-carousel .depth-carousel__arrow:hover {
+  border-color: rgba(184,135,46,0.48);
+  background: rgba(255,255,255,0.96);
+}
+
+.sumathi-awards-depth-carousel .depth-carousel__arrow--prev {
+  left: 3px;
+}
+
+.sumathi-awards-depth-carousel .depth-carousel__arrow--next {
+  right: 3px;
+}
+
+.sumathi-awards-depth-carousel .depth-carousel__dots {
+  bottom: 3px;
+  padding: 6px 10px;
+  background: rgba(255,255,255,0.76);
+  box-shadow: 0 8px 24px rgba(95,60,27,0.06);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.sumathi-awards-depth-carousel .depth-carousel__dot {
+  background: rgba(138,90,37,0.2);
+}
+
+.sumathi-awards-depth-carousel .depth-carousel__dot.is-active {
+  background: #b8872e;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  .public-relations-sumathi-awards {
+    padding: 44px 24px 70px;
+  }
+
+  .public-relations-sumathi-awards-logo {
+    width: 90px;
+  }
+
+  .public-relations-sumathi-awards-header {
+    gap: 15px;
+  }
+
+  .public-relations-sumathi-awards-header h2 {
+    font-size: clamp(27px,3.5vw,38px);
+  }
+
+  .public-relations-sumathi-awards-main {
+    gap: 28px;
+  }
+
+  .public-relations-sumathi-awards-description {
+    font-size: 13px;
+    line-height: 1.84;
+  }
+
+  .public-relations-sumathi-awards-carousel {
+    height: 290px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .public-relations-sumathi-awards {
+    padding: 38px 18px 64px;
+    background-position: center;
+  }
+
+  .public-relations-sumathi-awards-overlay {
+    background: rgba(255,253,248,0.55);
+  }
+
+  .public-relations-sumathi-awards-header {
+    margin-bottom: 22px;
+    gap: 10px;
+  }
+
+  .public-relations-sumathi-awards-logo {
+    width: 68px;
+  }
+
+  .public-relations-sumathi-awards-header h2 {
+    flex: 1;
+    min-width: 0;
+    font-size: clamp(20px,5.8vw,27px);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .public-relations-sumathi-awards-main {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .public-relations-sumathi-awards-description {
+    max-width: none;
+    font-size: 13px;
+    line-height: 1.82;
+  }
+
+  .public-relations-sumathi-awards-more {
+    margin-top: 20px;
+    padding: 10px 16px 10px 18px;
+  }
+
+  .public-relations-sumathi-awards-carousel {
+    width: calc(100% + 10px);
+    height: 270px;
+    margin-left: -5px;
+  }
+
+  .sumathi-awards-depth-carousel .depth-carousel__arrow {
+    width: 38px;
+    height: 38px;
+  }
+
+  .sumathi-awards-depth-carousel .depth-carousel__arrow--prev {
+    left: 2px;
+  }
+
+  .sumathi-awards-depth-carousel .depth-carousel__arrow--next {
+    right: 2px;
+  }
+
+  .sumathi-awards-depth-carousel .depth-carousel__dots {
+    bottom: 2px;
+  }
+}
+
+@media (max-width: 380px) {
+  .public-relations-sumathi-awards-logo {
+    width: 60px;
+  }
+
+  .public-relations-sumathi-awards-header h2 {
+    font-size: 19px;
+  }
+
+  .public-relations-sumathi-awards-carousel {
+    height: 255px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .public-relations-sumathi-awards-header,
+  .public-relations-sumathi-awards-description,
+  .public-relations-sumathi-awards-more,
+  .public-relations-sumathi-awards-carousel {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

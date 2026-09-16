@@ -145,6 +145,19 @@ import gautamaBuddhaMatha3 from '../assets/images/public-relations/social-servic
 import gautamaBuddhaMatha4 from '../assets/images/public-relations/social-service/gautama-buddha-matha/image4.jpg';
 import gautamaBuddhaMatha5 from '../assets/images/public-relations/social-service/gautama-buddha-matha/image5.jpg';
 
+//sumathi-awards
+import sumathiAwardsBackground  from '../assets/images/public-relations/social-service/sumathi-awards/background.png';
+import sumathiAwardsLogo  from '../assets/images/public-relations/social-service/sumathi-awards/logo.png';
+import sumathiAwardsImage1 from '../assets/images/public-relations/social-service/sumathi-awards/image1.jpg';
+import sumathiAwardsImage2 from '../assets/images/public-relations/social-service/sumathi-awards/image2.webp';
+import sumathiAwardsImage3 from '../assets/images/public-relations/social-service/sumathi-awards/image3.jpg';
+import sumathiAwardsImage4 from '../assets/images/public-relations/social-service/sumathi-awards/image4.jpg';
+import sumathiAwardsImage5 from '../assets/images/public-relations/social-service/sumathi-awards/image5.jpg';
+import sumathiAwardsImage6 from '../assets/images/public-relations/social-service/sumathi-awards/image6.jpg';
+import sumathiAwardsImage7 from '../assets/images/public-relations/social-service/sumathi-awards/image7.jpg';
+import sumathiAwardsImage8 from '../assets/images/public-relations/social-service/sumathi-awards/image8.jpg';
+
+
 
 import about from "./images/about.jpg";
 import innerAbout from "./images/inner-about.jpg";
@@ -365,6 +378,21 @@ gautamaBuddhaMatha:{
     image3:gautamaBuddhaMatha3,
     image4:gautamaBuddhaMatha4,
     image5:gautamaBuddhaMatha5,
+  },
+},
+
+sumathiAwards:{
+  background:sumathiAwardsBackground,
+  logo:sumathiAwardsLogo,
+  gallery:{
+    image1:sumathiAwardsImage1,
+    image2:sumathiAwardsImage2,
+    image3:sumathiAwardsImage3,
+    image4:sumathiAwardsImage4,
+    image5:sumathiAwardsImage5,
+    image6:sumathiAwardsImage6,
+    image7:sumathiAwardsImage7,
+    image8:sumathiAwardsImage8
   },
 },
 
