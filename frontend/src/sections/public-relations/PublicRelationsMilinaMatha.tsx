@@ -2,6 +2,8 @@ import {useEffect,useLayoutEffect,useRef,useState} from 'react';
 import {gsap} from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import DepthCarousel from '../../components/common/DepthCarousel';
+import GalleryLightbox from '../../components/common/GalleryLightbox';
+import useSectionActive from '../../hooks/useSectionActive';
 import {imageAssets} from '../../assets/imageAssets';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -19,6 +21,9 @@ const milinaGallery = [
 
 export default function PublicRelationsMilinaMatha() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const [lightboxOpen,setLightboxOpen] = useState(false);
+  const [lightboxIndex,setLightboxIndex] = useState(0);
+  const isSectionActive = useSectionActive(sectionRef,{threshold:0.3});
 
   const [isMobile,setIsMobile] = useState(
     () => typeof window !== 'undefined' && window.innerWidth <= 700,
@@ -180,7 +185,8 @@ export default function PublicRelationsMilinaMatha() {
         };
 
   return (
-    <section
+    <>
+      <section
       ref={sectionRef}
       className="public-relations-milina"
       style={{
@@ -231,7 +237,7 @@ export default function PublicRelationsMilinaMatha() {
               visibleCards={carouselConfig.visibleCards}
               falloff={0.18}
               blur={carouselConfig.blur}
-              autoplay
+              autoplay={isSectionActive && !lightboxOpen}
               loop
               cardWidth={carouselConfig.cardWidth}
               cardHeight={carouselConfig.cardHeight}
@@ -242,11 +248,24 @@ export default function PublicRelationsMilinaMatha() {
               autoplayDelay={carouselConfig.autoplayDelay}
               showControls
               showIndicators
+              onItemClick={(index) => {
+                setLightboxIndex(index);
+                setLightboxOpen(true);
+              }}
               className="milina-depth-carousel"
             />
           </div>
         </div>
       </div>
-    </section>
+      </section>
+
+      <GalleryLightbox
+        items={milinaGallery}
+        activeIndex={lightboxIndex}
+        open={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        onChange={setLightboxIndex}
+      />
+    </>
   );
 }

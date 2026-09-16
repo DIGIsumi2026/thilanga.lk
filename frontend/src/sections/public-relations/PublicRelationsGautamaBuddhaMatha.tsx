@@ -2,6 +2,8 @@ import {useEffect,useLayoutEffect,useRef,useState} from 'react';
 import {gsap} from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import DepthCarousel from '../../components/common/DepthCarousel';
+import GalleryLightbox from '../../components/common/GalleryLightbox';
+import useSectionActive from '../../hooks/useSectionActive';
 import {imageAssets} from '../../assets/imageAssets';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -31,6 +33,9 @@ const galleryItems = [
 
 export default function PublicRelationsGautamaBuddhaMatha() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const [lightboxOpen,setLightboxOpen] = useState(false);
+  const [lightboxIndex,setLightboxIndex] = useState(0);
+  const isSectionActive = useSectionActive(sectionRef,{threshold:0.3});
 
   const [isMobile,setIsMobile] = useState(
     () => typeof window !== 'undefined' && window.innerWidth <= 700,
@@ -188,7 +193,8 @@ export default function PublicRelationsGautamaBuddhaMatha() {
         };
 
   return (
-    <section
+    <>
+      <section
       ref={sectionRef}
       className="public-relations-buddha-matha"
       style={{
@@ -276,7 +282,7 @@ export default function PublicRelationsGautamaBuddhaMatha() {
               visibleCards={carouselConfig.visibleCards}
               falloff={0.18}
               blur={carouselConfig.blur}
-              autoplay
+              autoplay={isSectionActive && !lightboxOpen}
               loop
               cardWidth={carouselConfig.cardWidth}
               cardHeight={carouselConfig.cardHeight}
@@ -287,11 +293,24 @@ export default function PublicRelationsGautamaBuddhaMatha() {
               autoplayDelay={carouselConfig.autoplayDelay}
               showControls
               showIndicators
+              onItemClick={(index) => {
+                setLightboxIndex(index);
+                setLightboxOpen(true);
+              }}
               className="buddha-matha-depth-carousel"
             />
           </div>
         </div>
       </div>
-    </section>
+      </section>
+
+      <GalleryLightbox
+        items={galleryItems}
+        activeIndex={lightboxIndex}
+        open={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        onChange={setLightboxIndex}
+      />
+    </>
   );
 }

@@ -42,6 +42,7 @@ export interface DepthCarouselProps {
   showControls?:boolean;
   showIndicators?:boolean;
   onChange?:(index:number,item:{image:string;alt?:string}) => void;
+  onItemClick?:(index:number,item:{image:string;alt?:string}) => void;
   className?:string;
 }
 
@@ -112,6 +113,7 @@ const DepthCarousel = ({
   showControls = true,
   showIndicators = true,
   onChange,
+  onItemClick,
   className = '',
 }:DepthCarouselProps) => {
   const data = useMemo(
@@ -147,7 +149,10 @@ const DepthCarousel = ({
   });
 
   const onChangeRef = useRef(onChange);
+  const onItemClickRef = useRef(onItemClick);
   const dragRef = useRef<DragState | null>(null);
+  const suppressClickRef = useRef(false);
+  const isInteractingRef = useRef(false);
   const wheelTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const autoTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const reducedRef = useRef(false);
@@ -155,6 +160,7 @@ const DepthCarousel = ({
   const [active,setActive] = useState(0);
 
   onChangeRef.current = onChange;
+  onItemClickRef.current = onItemClick;
 
   cfgRef.current = {
     count,
@@ -357,6 +363,8 @@ const DepthCarousel = ({
     if (config.count < 2) return;
 
     tweenRef.current?.kill();
+    suppressClickRef.current = false;
+    isInteractingRef.current = true;
     dragRef.current = {
       x:event.clientX,
       startPos:posRef.current,
@@ -393,9 +401,11 @@ const DepthCarousel = ({
 
   const onPointerEnd = useCallback(() => {
     const drag = dragRef.current;
+    isInteractingRef.current = false;
     if (!drag) return;
 
     dragRef.current = null;
+    suppressClickRef.current = drag.moved;
     if (!drag.moved) return;
 
     const config = cfgRef.current;
@@ -416,15 +426,26 @@ const DepthCarousel = ({
   },[navigateBy]);
 
   const onCardClick = useCallback((index:number) => {
-    if (dragRef.current?.moved) return;
+    if (suppressClickRef.current || dragRef.current?.moved) {
+      suppressClickRef.current = false;
+      return;
+    }
+
     setFocus(index,true);
-  },[setFocus]);
+
+    const item = data[index];
+    if (item) onItemClickRef.current?.(index,item);
+  },[data,setFocus]);
 
   useEffect(() => {
     reducedRef.current = typeof window !== 'undefined' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (!autoplay || reducedRef.current || count < 2) return;
+    if (!autoplay || reducedRef.current || count < 2) {
+      if (autoTimerRef.current) clearInterval(autoTimerRef.current);
+      autoTimerRef.current = null;
+      return;
+    }
 
     const root = rootRef.current;
     let hovered = false;
@@ -438,7 +459,7 @@ const DepthCarousel = ({
     const start = () => {
       stop();
       autoTimerRef.current = setInterval(() => {
-        if (!hovered && !focused) navigateBy(1);
+        if (!hovered && !focused && !isInteractingRef.current) navigateBy(1);
       },Math.max(cfgRef.current.autoplayDelay,600));
     };
 
