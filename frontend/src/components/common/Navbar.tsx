@@ -3,6 +3,7 @@ import {Link,NavLink,useLocation} from 'react-router-dom';
 import {Mail,Menu,Phone,X} from 'lucide-react';
 import {AnimatePresence,motion} from 'framer-motion';
 import { imageAssets } from '../../assets/imageAssets';
+import BorderGlow from './BorderGlow';
 
 const navLinks = [
   {
@@ -211,18 +212,44 @@ export default function Navbar() {
           className="desktop-nav"
           aria-label="Main navigation"
         >
-          {navLinks.map(({ label, path }) => (
-            <NavLink
-              key={path}
-              to={path}
-              end={path === '/'}
-              className={({ isActive }) =>
-                isActive ? 'active' : undefined
-              }
-            >
-              {label}
-            </NavLink>
-          ))}
+          {navLinks.map(({ label, path }) =>
+            path === '/contact' ? (
+              <BorderGlow
+                key={path}
+                borderOnly
+                className="navbar-contact-glow"
+                edgeSensitivity={22}
+                glowColor="40 90 72"
+                borderRadius={999}
+                glowRadius={28}
+                glowIntensity={1.15}
+                coneSpread={24}
+                animated={false}
+                fillOpacity={0}
+                colors={['#c99b3b','#ffd98a','#8bd3c7']}
+              >
+                <NavLink
+                  to={path}
+                  className={({isActive}) =>
+                    `nav-contact-link${isActive ? ' active' : ''}`
+                  }
+                >
+                  {label}
+                </NavLink>
+              </BorderGlow>
+            ) : (
+              <NavLink
+                key={path}
+                to={path}
+                end={path === '/'}
+                className={({ isActive }) =>
+                  isActive ? 'active' : undefined
+                }
+              >
+                {label}
+              </NavLink>
+            ),
+          )}
         </nav>
 
         {/* CONTACT */}
@@ -336,9 +363,7 @@ export default function Navbar() {
                       to={path}
                       end={path === '/'}
                       className={({ isActive }) =>
-                        isActive
-                          ? 'active'
-                          : undefined
+                        `${path === '/contact' ? 'mobile-contact-link' : ''}${isActive ? `${path === '/contact' ? ' ' : ''}active` : ''}` || undefined
                       }
                     >
                       <span className="mobile-link-number">

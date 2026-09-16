@@ -186,6 +186,16 @@ export default function PublicRelationsGautamaBuddhaMatha() {
           setIsExpanded(false);
           isAnimatingRef.current = false;
           ScrollTrigger.refresh();
+
+          if (readMoreButtonRef.current) {
+            const rect = readMoreButtonRef.current.getBoundingClientRect();
+            if (rect.top < 0 || rect.bottom > window.innerHeight) {
+              readMoreButtonRef.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+              });
+            }
+          }
         },
       });
     }
@@ -373,20 +383,6 @@ export default function PublicRelationsGautamaBuddhaMatha() {
 
               {isMobile && (
                 <>
-                  <button
-                    ref={readMoreButtonRef}
-                    type="button"
-                    className={`public-relations-buddha-matha-read-more ${
-                      isExpanded ? 'is-expanded' : ''
-                    }`}
-                    aria-expanded={isExpanded}
-                    aria-controls="buddha-matha-more-content"
-                    onClick={handleToggle}
-                  >
-                    <span>{isExpanded ? 'Show Less' : 'Read More'}</span>
-                    <ChevronDown size={14} strokeWidth={2.2} />
-                  </button>
-
                   <div
                     id="buddha-matha-more-content"
                     ref={mobileMoreRef}
@@ -401,6 +397,20 @@ export default function PublicRelationsGautamaBuddhaMatha() {
                       ))}
                     </div>
                   </div>
+
+                  <button
+                    ref={readMoreButtonRef}
+                    type="button"
+                    className={`public-relations-buddha-matha-read-more ${
+                      isExpanded ? 'is-expanded' : ''
+                    }`}
+                    aria-expanded={isExpanded}
+                    aria-controls="buddha-matha-more-content"
+                    onClick={handleToggle}
+                  >
+                    <span>{isExpanded ? 'Show Less' : 'Read More'}</span>
+                    <ChevronDown size={14} strokeWidth={2.2} />
+                  </button>
                 </>
               )}
             </div>

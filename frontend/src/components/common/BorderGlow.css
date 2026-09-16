@@ -1,0 +1,100 @@
+.border-glow-card {
+  position: relative;
+  isolation: isolate;
+  display: inline-grid;
+  width: fit-content;
+  height: fit-content;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--border-glow-radius);
+  background: rgba(13,41,51,var(--fill-opacity));
+}
+
+.border-glow-card::before,
+.border-glow-card::after,
+.border-glow-card .edge-light {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.border-glow-card::before {
+  z-index: 1;
+  padding: 1px;
+  background: radial-gradient(
+    circle var(--glow-radius) at var(--pointer-x) var(--pointer-y),
+    var(--glow-color-2) 0%,
+    var(--glow-color-1) 38%,
+    var(--glow-color-3) 62%,
+    transparent 82%
+  );
+  opacity: calc(var(--edge-proximity) * var(--glow-intensity));
+  -webkit-mask: linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  transition: opacity 0.22s ease;
+}
+
+.border-glow-card::after {
+  z-index: 0;
+  background:
+    radial-gradient(circle at 25% 20%,var(--glow-color-1),transparent 55%),
+    radial-gradient(circle at 80% 75%,var(--glow-color-3),transparent 55%);
+  opacity: var(--fill-opacity);
+}
+
+.border-glow-card .edge-light {
+  z-index: 0;
+  padding: 1px;
+  background: conic-gradient(
+    from calc(var(--cursor-angle) - var(--cone-spread)),
+    transparent 0deg,
+    var(--glow-color-1) var(--cone-spread),
+    var(--glow-color-2) var(--cone-spread-mid),
+    var(--glow-color-3) var(--cone-spread-end),
+    transparent var(--cone-spread-fade)
+  );
+  opacity: calc(var(--edge-proximity) * var(--glow-intensity) * 0.72);
+  filter: blur(calc(var(--glow-radius) * 0.38));
+  -webkit-mask: linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  transition: opacity 0.26s ease;
+}
+
+.border-glow-inner {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  min-height: 0;
+  border-radius: inherit;
+}
+
+.border-glow-card--light {
+  border-color: rgba(13,41,51,0.14);
+}
+
+.border-glow-card--border-only {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.border-glow-card--border-only::after {
+  display: none;
+}
+
+@media (hover:none), (pointer:coarse) {
+  .border-glow-card::before,
+  .border-glow-card .edge-light {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .border-glow-card::before,
+  .border-glow-card .edge-light {
+    transition-duration: 0.01ms;
+  }
+}
