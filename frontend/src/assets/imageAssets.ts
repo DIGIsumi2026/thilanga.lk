@@ -136,6 +136,15 @@ import publicRelationsMilinaLogo  from '../assets/images/public-relations/social
 import publicRelationsMilina1  from '../assets/images/public-relations/social-service/milina-matha/image1.webp';
 import publicRelationsMilina2  from '../assets/images/public-relations/social-service/milina-matha/image2.webp';
 
+//buddha-matha
+import gautamaBuddhaMathaBackground  from '../assets/images/public-relations/social-service/gautama-buddha-matha/background.png';
+import gautamaBuddhaMathaLogo  from '../assets/images/public-relations/social-service/gautama-buddha-matha/logo.png';
+import gautamaBuddhaMatha1 from '../assets/images/public-relations/social-service/gautama-buddha-matha/image1.jpg';
+import gautamaBuddhaMatha2 from '../assets/images/public-relations/social-service/gautama-buddha-matha/image2.jpg';
+import gautamaBuddhaMatha3 from '../assets/images/public-relations/social-service/gautama-buddha-matha/image3.jpg';
+import gautamaBuddhaMatha4 from '../assets/images/public-relations/social-service/gautama-buddha-matha/image4.jpg';
+import gautamaBuddhaMatha5 from '../assets/images/public-relations/social-service/gautama-buddha-matha/image5.jpg';
+
 
 import about from "./images/about.jpg";
 import innerAbout from "./images/inner-about.jpg";
@@ -346,6 +355,19 @@ publicRelations:{
     image2:publicRelationsMilina2
   },
 },
+
+gautamaBuddhaMatha:{
+  background:gautamaBuddhaMathaBackground,
+  logo:gautamaBuddhaMathaLogo,
+  gallery:{
+    image1:gautamaBuddhaMatha1,
+    image2:gautamaBuddhaMatha2,
+    image3:gautamaBuddhaMatha3,
+    image4:gautamaBuddhaMatha4,
+    image5:gautamaBuddhaMatha5,
+  },
+},
+
 },
 
   practice: {

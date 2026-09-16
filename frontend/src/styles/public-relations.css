@@ -1112,3 +1112,277 @@
     transform: none !important;
   }
 }
+
+/* =========================================================
+   GAUTAMA BUDDHA MATHA
+   ========================================================= */
+
+.public-relations-buddha-matha {
+  position: relative;
+  width: 100%;
+  padding: 48px 30px 78px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--ink);
+  overflow: hidden;
+}
+
+.public-relations-buddha-matha-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg,rgba(255,255,255,0.9) 0%,rgba(255,255,255,0.76) 46%,rgba(255,255,255,0.34) 75%,rgba(255,255,255,0.08) 100%);
+  pointer-events: none;
+}
+
+.public-relations-buddha-matha-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.public-relations-buddha-matha-header {
+  width: 100%;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.public-relations-buddha-matha-logo {
+  width: clamp(150px,13vw,220px);
+  height: auto;
+  flex: 0 0 auto;
+  display: block;
+  object-fit: contain;
+}
+
+.public-relations-buddha-matha-header h2 {
+  margin: 0;
+  color: #9b5415;
+  font-family: var(--serif);
+  font-size: clamp(34px,3vw,48px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.public-relations-buddha-matha-main {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0,1.08fr) minmax(0,0.92fr);
+  gap: clamp(32px,4vw,58px);
+  align-items: start;
+}
+
+.public-relations-buddha-matha-copy {
+  min-width: 0;
+}
+
+.public-relations-buddha-matha-description {
+  max-width: 690px;
+}
+
+.public-relations-buddha-matha-description p {
+  margin: 0 0 16px;
+  color: #625f5a;
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.95;
+}
+
+.public-relations-buddha-matha-description p:last-child {
+  margin-bottom: 0;
+}
+
+.public-relations-buddha-matha-carousel {
+  position: sticky;
+  top: 120px;
+  width: 100%;
+  height: 340px;
+  min-width: 0;
+  background: transparent;
+}
+
+.buddha-matha-depth-carousel {
+  background: transparent !important;
+}
+
+.buddha-matha-depth-carousel .depth-carousel__stage {
+  background: transparent;
+}
+
+.buddha-matha-depth-carousel .depth-carousel__card {
+  border: 1px solid rgba(175,103,28,0.1);
+  background: #fff;
+  box-shadow:
+    0 28px 58px -26px rgba(156,84,21,0.25),
+    0 9px 24px -16px rgba(156,84,21,0.16);
+}
+
+.buddha-matha-depth-carousel .depth-carousel__img {
+  object-fit: cover;
+}
+
+.buddha-matha-depth-carousel .depth-carousel__arrow {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(156,84,21,0.16);
+  background: rgba(255,255,255,0.82);
+  color: #9b5415;
+  box-shadow: 0 9px 28px rgba(156,84,21,0.08);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.buddha-matha-depth-carousel .depth-carousel__arrow:hover {
+  border-color: rgba(228,135,38,0.5);
+  background: rgba(255,255,255,0.97);
+}
+
+.buddha-matha-depth-carousel .depth-carousel__arrow--prev {
+  left: 3px;
+}
+
+.buddha-matha-depth-carousel .depth-carousel__arrow--next {
+  right: 3px;
+}
+
+.buddha-matha-depth-carousel .depth-carousel__dots {
+  bottom: 3px;
+  padding: 6px 10px;
+  background: rgba(255,255,255,0.76);
+  box-shadow: 0 8px 24px rgba(156,84,21,0.06);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.buddha-matha-depth-carousel .depth-carousel__dot {
+  background: rgba(156,84,21,0.2);
+}
+
+.buddha-matha-depth-carousel .depth-carousel__dot.is-active {
+  background: #e48726;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  .public-relations-buddha-matha {
+    padding: 46px 24px 72px;
+  }
+
+  .public-relations-buddha-matha-logo {
+    width: 145px;
+  }
+
+  .public-relations-buddha-matha-header h2 {
+    font-size: clamp(29px,3.8vw,40px);
+  }
+
+  .public-relations-buddha-matha-main {
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    gap: 28px;
+  }
+
+  .public-relations-buddha-matha-description p {
+    font-size: 13px;
+    line-height: 1.88;
+  }
+
+  .public-relations-buddha-matha-carousel {
+    top: 100px;
+    height: 300px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .public-relations-buddha-matha {
+    padding: 38px 18px 64px;
+    background-position: center;
+  }
+
+  .public-relations-buddha-matha-overlay {
+    background: rgba(255,255,255,0.6);
+  }
+
+  .public-relations-buddha-matha-header {
+    margin-bottom: 24px;
+    gap: 12px;
+  }
+
+  .public-relations-buddha-matha-logo {
+    width: 105px;
+  }
+
+  .public-relations-buddha-matha-header h2 {
+    flex: 1;
+    min-width: 0;
+    font-size: clamp(21px,6vw,29px);
+    white-space: nowrap;
+  }
+
+  .public-relations-buddha-matha-main {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .public-relations-buddha-matha-description {
+    max-width: none;
+  }
+
+  .public-relations-buddha-matha-description p {
+    font-size: 13px;
+    line-height: 1.92;
+  }
+
+  .public-relations-buddha-matha-carousel {
+    position: relative;
+    top: auto;
+    width: calc(100% + 10px);
+    height: 270px;
+    margin-left: -5px;
+  }
+
+  .buddha-matha-depth-carousel .depth-carousel__arrow {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 390px) {
+  .public-relations-buddha-matha-logo {
+    width: 90px;
+  }
+
+  .public-relations-buddha-matha-header {
+    gap: 9px;
+  }
+
+  .public-relations-buddha-matha-header h2 {
+    font-size: 20px;
+  }
+
+  .public-relations-buddha-matha-carousel {
+    height: 255px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .public-relations-buddha-matha-header,
+  .public-relations-buddha-matha-description p,
+  .public-relations-buddha-matha-carousel {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

@@ -3,6 +3,7 @@ import PublicRelationsHero from '../sections/public-relations/PublicRelationsHer
 import PublicRelationsSocialService from '../sections/public-relations/PublicRelationsSocialService';
 import PublicRelationsFoundation from '../sections/public-relations/PublicRelationsFoundation';
 import PublicRelationsMilinaMatha from '../sections/public-relations/PublicRelationsMilinaMatha';
+import PublicRelationsGautamaBuddhaMatha from '../sections/public-relations/PublicRelationsGautamaBuddhaMatha';
 import '../styles/public-relations.css';
 
 export default function PublicRelations() {
@@ -16,6 +17,7 @@ export default function PublicRelations() {
       <PublicRelationsSocialService/>
       <PublicRelationsFoundation/>
       <PublicRelationsMilinaMatha/>
+      <PublicRelationsGautamaBuddhaMatha/>
     </motion.main>
   );
 }
