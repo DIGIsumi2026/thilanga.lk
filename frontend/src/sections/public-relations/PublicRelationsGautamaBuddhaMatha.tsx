@@ -1,6 +1,8 @@
 import {useEffect,useLayoutEffect,useRef,useState} from 'react';
 import {gsap} from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
+import {animate,stagger} from 'animejs';
+import {ChevronDown} from 'lucide-react';
 import DepthCarousel from '../../components/common/DepthCarousel';
 import GalleryLightbox from '../../components/common/GalleryLightbox';
 import useSectionActive from '../../hooks/useSectionActive';
@@ -31,10 +33,23 @@ const galleryItems = [
   },
 ];
 
+const storyParagraphs = [
+  `විශ්වයේ සුවහසක් මව්රුන්ගේ නාමයට "ගෞතම බුද්ධ මාතා” රූපගත කිරීම ඇරඹෙයි. රාජ මාතාව, රාජ මෙහෙසිය, රාජ කුමරිය යන නාමයන් ස්ත්‍රියන් හට දුලබ නොවෙති. නමුත් යම් ස්ත්‍රියක් හට “බුද්ධ මාතා” යන නමක් වේ නම් එය ලෝකයේ පරම දුර්ලභය. ආත්ම කල්ප ගණනක් පෙරුම් පුරාගෙන විත් බුදුවන සිදුහත් කුමරුන්ට සිය මව් කුසය දුන් මහාමායා දේවිය හැරුණු කොට ඒ දුර්ලභ වාසනාව උදාවූයේ කල්ප ගණනකින් උපදින වාසනාවන්ත ස්ත්‍රී රත්නයකට පමණක්මය.`,
+  `ගෞතම බුදුන් නිසාම ඒ මහා වාසනාව ලද්දී මහා ප්‍රජාපතී ගෝතමී දේවියයි. සුවහසක් කාන්තාවන්ගේ විමුක්තිය වෙනුවෙන් මෙහෙණි සස්න ආරම්භ කීරීමටද පුරෝගාමී වූ ඈ, සිදුහත් කුමරා කුසින් නොවැදුවද එදා මෙදා තුර අප ගෞරවයෙන් වන්දනා කරන ගෞතම බුදු සසුනේ බුද්ධ මාතාවයි. සම්මානිත මහාචාර්ය සුනිල් ආරියරත්නයන් අධ්‍යක්ෂණයෙන් සහ මාගේ නිෂ්පාදනයෙන් නිර්මාණය වන නවතම සිනමාපටය දිග හැරෙන්නේ මේ උතුම්, වන්දනීය කාන්තා රත්නය වටාය.`,
+  `"ගෞතම බුද්ධ මාතා” ලෙසින් නම්කර ඇති මෙම සිනමා පටයේ රූපගත කිරීම් 2024 ජුනි 14 වැනි සිකුරාදා දිනට යෙදී තිබුණු සුබ මොහොතින් ආරම්භ කෙරිණ. බෞද්ධ සාහිත්‍යයේ අපට හමුවන පරම පූජනීය උතුම් කාන්තා රත්නයක්වන මහා ප්‍රජාපතී ගෝතමියගේ ජීවන පුවත ඇසුරෙන්, මාගේ සංකල්පයකට අනුව ඉතා දීර්ඝ ගවේෂණයකින් පසු මෙහි තිර රචනය සහ දෙබස්ද ලියා ඇත්තේ මහාචාර්ය සුනිල් ආරියරත්නයන් විසිනි.`,
+  `"මාගේ ආදරණීය මව වන දිවංගත මිලිනා සුමතිපාල මහත්මිය සිංහල සිනමාවට සම්මානනීය චිත්‍රපට ගොන්නක් තිළිණ කළා. ගඟ අද්දර, දුවට මවක මිස, උප්පලවණ්ණා සහ පත්තිනි ඒ අතරින් ප්‍රධානයි. බුදුන් වහන්සේගේ සුළු මව වූ මහා ප්‍රජාපතී ගෝතමිය නම්වූ ශ්‍රේෂ්ඨ කාන්තා චරිතය ඇසුරෙන්ද චිත්‍රපටයක් නිර්මාණය කිරීමේ නොනිමි ආශාවක් සහ බලාපොරොත්තුවක් මගේ මව තුළ තිබුණා. ඇගේ එම බලාපොරොත්තුව ඉටුකිරීමේ අරමුණද ඇතිවයි මා එම බුද්ධ මාතාවගේ කතා පුවත සිනමාවට නගන්නට තීරණය කළේ. මේ වසරේ අවසානය වන විට 'ගෞතම බුද්ධ මාතා' චිත්‍රපටය ඔබ හමුවට ගෙන ඒමට අපි බලාපොරොත්තු වෙනවා." සිදුහත් කුමරුගේ මව ‘කුමරුන්‘ ඉපිද දින හතකින් මෙලොව හැරයෑමෙන් පසු, සුළු මව ලෙස සිදුහත් කුමරු රැකබලා ගැනීම පිණිස මහා ප්‍රජාපතී ගෝතමිය කළ අසීමිත කැපකිරීම පිළිබද නොඇසූ කතා පුවතක් "ගෞතම බුද්ධ මාතා” සිනමාපටය හරහා ඔබටත් දැකබලා ගැනීමට ලැබෙනු ඇති.`,
+];
+
 export default function PublicRelationsGautamaBuddhaMatha() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const mobileMoreRef = useRef<HTMLDivElement | null>(null);
+  const mobileMoreInnerRef = useRef<HTMLDivElement | null>(null);
+  const readMoreButtonRef = useRef<HTMLButtonElement | null>(null);
+  const isAnimatingRef = useRef(false);
+
   const [lightboxOpen,setLightboxOpen] = useState(false);
   const [lightboxIndex,setLightboxIndex] = useState(0);
+  const [isExpanded,setIsExpanded] = useState(false);
   const isSectionActive = useSectionActive(sectionRef,{threshold:0.3});
 
   const [isMobile,setIsMobile] = useState(
@@ -64,6 +79,118 @@ export default function PublicRelationsGautamaBuddhaMatha() {
     };
   },[]);
 
+  useEffect(() => {
+    setIsExpanded(false);
+    isAnimatingRef.current = false;
+    if (mobileMoreRef.current) {
+      gsap.set(mobileMoreRef.current,{
+        clearProps:'height,overflow',
+      });
+      const innerParas = mobileMoreInnerRef.current?.querySelectorAll('p');
+      if (innerParas && innerParas.length > 0) {
+        gsap.set(innerParas,{
+          clearProps:'opacity,transform',
+        });
+      }
+    }
+  },[isMobile]);
+
+  const handleToggle = () => {
+    if (isAnimatingRef.current) return;
+
+    const reducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+
+    const moreEl = mobileMoreRef.current;
+    const innerEl = mobileMoreInnerRef.current;
+    if (!moreEl || !innerEl) return;
+
+    if (!isExpanded) {
+      setIsExpanded(true);
+
+      if (reducedMotion) {
+        moreEl.style.height = 'auto';
+        moreEl.style.overflow = 'visible';
+        const innerParas = innerEl.querySelectorAll('p');
+        innerParas.forEach((p) => {
+          p.style.opacity = '1';
+          p.style.transform = 'none';
+        });
+        ScrollTrigger.refresh();
+        return;
+      }
+
+      isAnimatingRef.current = true;
+      const contentHeight = innerEl.scrollHeight;
+
+      moreEl.style.overflow = 'hidden';
+
+      gsap.to(moreEl,{
+        height:contentHeight,
+        duration:0.75,
+        ease:'power3.inOut',
+        overwrite:'auto',
+        onComplete:() => {
+          gsap.set(moreEl,{
+            height:'auto',
+          });
+          isAnimatingRef.current = false;
+          ScrollTrigger.refresh();
+        },
+      });
+
+      const innerParas = innerEl.querySelectorAll('p');
+      animate(innerParas,{
+        opacity:[0,1],
+        translateY:[12,0],
+        delay:stagger(80),
+        duration:520,
+        ease:'outExpo',
+      });
+    } else {
+      if (moreEl.contains(document.activeElement)) {
+        readMoreButtonRef.current?.focus();
+      }
+
+      if (reducedMotion) {
+        setIsExpanded(false);
+        moreEl.style.height = '0px';
+        moreEl.style.overflow = 'hidden';
+        ScrollTrigger.refresh();
+        return;
+      }
+
+      isAnimatingRef.current = true;
+      const innerParas = innerEl.querySelectorAll('p');
+
+      animate(innerParas,{
+        opacity:[1,0],
+        translateY:[0,8],
+        duration:280,
+        ease:'outQuad',
+      });
+
+      const currentHeight = moreEl.getBoundingClientRect().height;
+      gsap.set(moreEl,{
+        height:currentHeight,
+        overflow:'hidden',
+      });
+
+      gsap.to(moreEl,{
+        height:0,
+        duration:0.62,
+        ease:'power3.inOut',
+        overwrite:'auto',
+        onComplete:() => {
+          setIsExpanded(false);
+          isAnimatingRef.current = false;
+          ScrollTrigger.refresh();
+        },
+      });
+    }
+  };
+
   useLayoutEffect(() => {
     const section = sectionRef.current;
 
@@ -81,12 +208,16 @@ export default function PublicRelationsGautamaBuddhaMatha() {
       '.public-relations-buddha-matha-description p',
     );
 
+    const continuation = section.querySelector<HTMLElement>(
+      '.public-relations-buddha-matha-continuation',
+    );
+
     const carousel = section.querySelector<HTMLElement>(
       '.public-relations-buddha-matha-carousel',
     );
 
     if (reducedMotion) {
-      [header,carousel,...Array.from(paragraphs)].forEach((element) => {
+      [header,carousel,continuation,...Array.from(paragraphs)].forEach((element) => {
         if (!element) return;
         element.style.opacity = '1';
         element.style.transform = 'none';
@@ -107,6 +238,13 @@ export default function PublicRelationsGautamaBuddhaMatha() {
         autoAlpha:0,
         y:22,
       });
+
+      if (continuation) {
+        gsap.set(continuation,{
+          autoAlpha:0,
+          y:18,
+        });
+      }
 
       if (carousel) {
         gsap.set(carousel,{
@@ -138,6 +276,16 @@ export default function PublicRelationsGautamaBuddhaMatha() {
             delay:0.12,
             ease:'power3.out',
           });
+
+          if (continuation) {
+            gsap.to(continuation,{
+              autoAlpha:1,
+              y:0,
+              duration:0.8,
+              delay:0.35,
+              ease:'power3.out',
+            });
+          }
 
           if (carousel) {
             gsap.to(carousel,{
@@ -195,113 +343,107 @@ export default function PublicRelationsGautamaBuddhaMatha() {
   return (
     <>
       <section
-      ref={sectionRef}
-      className="public-relations-buddha-matha"
-      style={{
-        backgroundImage:
-          `url(${imageAssets.publicRelations.gautamaBuddhaMatha.background})`,
-      }}
-    >
-      <div className="public-relations-buddha-matha-overlay" />
+        ref={sectionRef}
+        className="public-relations-buddha-matha"
+        style={{
+          backgroundImage:
+            `url(${imageAssets.publicRelations.gautamaBuddhaMatha.background})`,
+        }}
+      >
+        <div className="public-relations-buddha-matha-overlay" />
 
-      <div className="public-relations-buddha-matha-container">
-        <header className="public-relations-buddha-matha-header">
-          <img
-            src={imageAssets.publicRelations.gautamaBuddhaMatha.logo}
-            alt="ගෞතම බුද්ධ මාතා"
-            className="public-relations-buddha-matha-logo"
-          />
+        <div className="public-relations-buddha-matha-container">
+          <header className="public-relations-buddha-matha-header">
+            <img
+              src={imageAssets.publicRelations.gautamaBuddhaMatha.logo}
+              alt="ගෞතම බුද්ධ මාතා"
+              className="public-relations-buddha-matha-logo"
+            />
 
-          <h2>ගෞතම බුද්ධ මාතා</h2>
-        </header>
+            <h2>ගෞතම බුද්ධ මාතා</h2>
+          </header>
 
-        <div className="public-relations-buddha-matha-main">
-          <div className="public-relations-buddha-matha-copy">
-            <div className="public-relations-buddha-matha-description">
-              <p>
-                විශ්වයේ සුවහසක් මව්රුන්ගේ නාමයට "ගෞතම බුද්ධ මාතා”
-                රූපගත කිරීම ඇරඹෙයි. රාජ මාතාව, රාජ මෙහෙසිය, රාජ කුමරිය
-                යන නාමයන් ස්ත්‍රියන් හට දුලබ නොවෙති. නමුත් යම් ස්ත්‍රියක්
-                හට “බුද්ධ මාතා” යන නමක් වේ නම් එය ලෝකයේ පරම දුර්ලභය.
-                ආත්ම කල්ප ගණනක් පෙරුම් පුරාගෙන විත් බුදුවන සිදුහත්
-                කුමරුන්ට සිය මව් කුසය දුන් මහාමායා දේවිය හැරුණු කොට ඒ
-                දුර්ලභ වාසනාව උදාවූයේ කල්ප ගණනකින් උපදින වාසනාවන්ත
-                ස්ත්‍රී රත්නයකට පමණක්මය.
-              </p>
+          <div className="public-relations-buddha-matha-main">
+            <div className="public-relations-buddha-matha-copy">
+              <div className="public-relations-buddha-matha-description">
+                {storyParagraphs.slice(0,3).map((text,index) => (
+                  <p key={index}>{text}</p>
+                ))}
+              </div>
 
-              <p>
-                ගෞතම බුදුන් නිසාම ඒ මහා වාසනාව ලද්දී මහා ප්‍රජාපතී
-                ගෝතමී දේවියයි. සුවහසක් කාන්තාවන්ගේ විමුක්තිය වෙනුවෙන්
-                මෙහෙණි සස්න ආරම්භ කීරීමටද පුරෝගාමී වූ ඈ, සිදුහත් කුමරා
-                කුසින් නොවැදුවද එදා මෙදා තුර අප ගෞරවයෙන් වන්දනා කරන
-                ගෞතම බුදු සසුනේ බුද්ධ මාතාවයි. සම්මානිත මහාචාර්ය
-                සුනිල් ආරියරත්නයන් අධ්‍යක්ෂණයෙන් සහ මාගේ නිෂ්පාදනයෙන්
-                නිර්මාණය වන නවතම සිනමාපටය දිග හැරෙන්නේ මේ උතුම්,
-                වන්දනීය කාන්තා රත්නය වටාය.
-              </p>
+              {isMobile && (
+                <>
+                  <button
+                    ref={readMoreButtonRef}
+                    type="button"
+                    className={`public-relations-buddha-matha-read-more ${
+                      isExpanded ? 'is-expanded' : ''
+                    }`}
+                    aria-expanded={isExpanded}
+                    aria-controls="buddha-matha-more-content"
+                    onClick={handleToggle}
+                  >
+                    <span>{isExpanded ? 'Show Less' : 'Read More'}</span>
+                    <ChevronDown size={14} strokeWidth={2.2} />
+                  </button>
 
-              <p>
-                "ගෞතම බුද්ධ මාතා” ලෙසින් නම්කර ඇති මෙම සිනමා පටයේ
-                රූපගත කිරීම් 2024 ජුනි 14 වැනි සිකුරාදා දිනට යෙදී
-                තිබුණු සුබ මොහොතින් ආරම්භ කෙරිණ. බෞද්ධ සාහිත්‍යයේ අපට
-                හමුවන පරම පූජනීය උතුම් කාන්තා රත්නයක්වන මහා ප්‍රජාපතී
-                ගෝතමියගේ ජීවන පුවත ඇසුරෙන්, මාගේ සංකල්පයකට අනුව ඉතා
-                දීර්ඝ ගවේෂණයකින් පසු මෙහි තිර රචනය සහ දෙබස්ද ලියා
-                ඇත්තේ මහාචාර්ය සුනිල් ආරියරත්නයන් විසිනි.
-              </p>
+                  <div
+                    id="buddha-matha-more-content"
+                    ref={mobileMoreRef}
+                    className="public-relations-buddha-matha-mobile-more"
+                  >
+                    <div
+                      ref={mobileMoreInnerRef}
+                      className="public-relations-buddha-matha-mobile-more-inner"
+                    >
+                      {storyParagraphs.slice(3).map((text,index) => (
+                        <p key={index}>{text}</p>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
 
-              <p>
-                "මාගේ ආදරණීය මව වන දිවංගත මිලිනා සුමතිපාල මහත්මිය
-                සිංහල සිනමාවට සම්මානනීය චිත්‍රපට ගොන්නක් තිළිණ කළා.
-                ගඟ අද්දර, දුවට මවක මිස, උප්පලවණ්ණා සහ පත්තිනි ඒ
-                අතරින් ප්‍රධානයි. බුදුන් වහන්සේගේ සුළු මව වූ මහා
-                ප්‍රජාපතී ගෝතමිය නම්වූ ශ්‍රේෂ්ඨ කාන්තා චරිතය ඇසුරෙන්ද
-                චිත්‍රපටයක් නිර්මාණය කිරීමේ නොනිමි ආශාවක් සහ
-                බලාපොරොත්තුවක් මගේ මව තුළ තිබුණා. ඇගේ එම
-                බලාපොරොත්තුව ඉටුකිරීමේ අරමුණද ඇතිවයි මා එම බුද්ධ
-                මාතාවගේ කතා පුවත සිනමාවට නගන්නට තීරණය කළේ. මේ වසරේ
-                අවසානය වන විට 'ගෞතම බුද්ධ මාතා' චිත්‍රපටය ඔබ හමුවට
-                ගෙන ඒමට අපි බලාපොරොත්තු වෙනවා." සිදුහත් කුමරුගේ මව
-                ‘කුමරුන්‘ ඉපිද දින හතකින් මෙලොව හැරයෑමෙන් පසු, සුළු
-                මව ලෙස සිදුහත් කුමරු රැකබලා ගැනීම පිණිස මහා ප්‍රජාපතී
-                ගෝතමිය කළ අසීමිත කැපකිරීම පිළිබද නොඇසූ කතා පුවතක්
-                "ගෞතම බුද්ධ මාතා” සිනමාපටය හරහා ඔබටත් දැකබලා ගැනීමට
-                ලැබෙනු ඇති.
-              </p>
+            <div className="public-relations-buddha-matha-carousel">
+              <DepthCarousel
+                items={galleryItems}
+                depth={carouselConfig.depth}
+                spread={carouselConfig.spread}
+                tilt={carouselConfig.tilt}
+                tiltDirection="right"
+                perspective={1400}
+                visibleCards={carouselConfig.visibleCards}
+                falloff={0.18}
+                blur={carouselConfig.blur}
+                autoplay={isSectionActive && !lightboxOpen}
+                loop
+                cardWidth={carouselConfig.cardWidth}
+                cardHeight={carouselConfig.cardHeight}
+                radius={carouselConfig.radius}
+                tint="#ffffff"
+                duration={850}
+                ease="power3.out"
+                autoplayDelay={carouselConfig.autoplayDelay}
+                showControls
+                showIndicators
+                onItemClick={(index) => {
+                  setLightboxIndex(index);
+                  setLightboxOpen(true);
+                }}
+                className="buddha-matha-depth-carousel"
+              />
             </div>
           </div>
 
-          <div className="public-relations-buddha-matha-carousel">
-            <DepthCarousel
-              items={galleryItems}
-              depth={carouselConfig.depth}
-              spread={carouselConfig.spread}
-              tilt={carouselConfig.tilt}
-              tiltDirection="right"
-              perspective={1400}
-              visibleCards={carouselConfig.visibleCards}
-              falloff={0.18}
-              blur={carouselConfig.blur}
-              autoplay={isSectionActive && !lightboxOpen}
-              loop
-              cardWidth={carouselConfig.cardWidth}
-              cardHeight={carouselConfig.cardHeight}
-              radius={carouselConfig.radius}
-              tint="#ffffff"
-              duration={850}
-              ease="power3.out"
-              autoplayDelay={carouselConfig.autoplayDelay}
-              showControls
-              showIndicators
-              onItemClick={(index) => {
-                setLightboxIndex(index);
-                setLightboxOpen(true);
-              }}
-              className="buddha-matha-depth-carousel"
-            />
-          </div>
+          {!isMobile && (
+            <div className="public-relations-buddha-matha-continuation">
+              {storyParagraphs.slice(3).map((text,index) => (
+                <p key={index}>{text}</p>
+              ))}
+            </div>
+          )}
         </div>
-      </div>
       </section>
 
       <GalleryLightbox
