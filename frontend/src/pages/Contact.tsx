@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import ContactHero from "../sections/contact/ContactHero";
 import ContactFormSection from "../sections/contact/ContactFormSection";
+import ContactLocationSection from "../sections/contact/ContactLocationSection";
 import "../styles/contact.css";
 export default function Contact() {
   return (
@@ -11,6 +12,7 @@ export default function Contact() {
     >
       <ContactHero/>
       <ContactFormSection/>
+      <ContactLocationSection/>
     </motion.main>
   );
 }
