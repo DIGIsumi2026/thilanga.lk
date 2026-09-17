@@ -50,6 +50,8 @@ export default function Navbar() {
     typeof setTimeout
   > | null>(null);
 
+  const isHoveredRef = useRef(false);
+
   const location = useLocation();
 
   const clearHideTimer = () => {
@@ -63,7 +65,7 @@ export default function Navbar() {
     clearHideTimer();
 
     hideTimer.current = setTimeout(() => {
-      if (window.scrollY > TOP_THRESHOLD) {
+      if (window.scrollY > TOP_THRESHOLD && !isHoveredRef.current && !menuOpen) {
         setNavbarState('hidden');
       }
     }, AUTO_HIDE_DELAY);
@@ -85,7 +87,7 @@ export default function Navbar() {
       }
 
       // nav bar scroll
-      if (menuOpen) {
+      if (menuOpen || isHoveredRef.current) {
         clearHideTimer();
         setNavbarState('visible');
 
@@ -189,8 +191,27 @@ export default function Navbar() {
     });
   };
 
+  const handleMouseEnter = () => {
+    isHoveredRef.current = true;
+    clearHideTimer();
+    if (window.scrollY > TOP_THRESHOLD) {
+      setNavbarState('visible');
+    }
+  };
+
+  const handleMouseLeave = () => {
+    isHoveredRef.current = false;
+    if (window.scrollY > TOP_THRESHOLD && !menuOpen) {
+      setNavbarState('hidden');
+    }
+  };
+
   return (
-    <header className={navbarClassName}>
+    <header 
+      className={navbarClassName}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="nav-shell">
 
         {/* BRAND LOGO */}
