@@ -157,6 +157,8 @@ import sumathiAwardsImage6 from '../assets/images/public-relations/social-servic
 import sumathiAwardsImage7 from '../assets/images/public-relations/social-service/sumathi-awards/image7.jpg';
 import sumathiAwardsImage8 from '../assets/images/public-relations/social-service/sumathi-awards/image8.jpg';
 
+//contact-page 
+import contactHero  from '../assets/images/contact/hero.png';
 
 
 import about from "./images/about.jpg";
@@ -395,7 +397,10 @@ sumathiAwards:{
     image8:sumathiAwardsImage8
   },
 },
+},
 
+contact:{
+  hero:contactHero,
 },
 
   practice: {

@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import PageHero from "../components/common/PageHero";
-import ContactForm from "../sections/contact/ContactForm";
+import ContactHero from "../sections/contact/ContactHero";
 import "../styles/contact.css";
 export default function Contact() {
   return (
@@ -9,8 +8,7 @@ export default function Contact() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <PageHero title="Contact us" breadcrumb="Contact us" />
-      <ContactForm />
+      <ContactHero/>
     </motion.main>
   );
 }
