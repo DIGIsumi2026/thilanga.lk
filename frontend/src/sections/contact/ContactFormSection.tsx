@@ -42,7 +42,6 @@ export default function ContactFormSection() {
       <div className="contact-form-container">
         <div className="contact-form-panel">
           <div className="contact-form-heading">
-            <span>Let's Connect</span>
 
             <h2>
               Send a message
