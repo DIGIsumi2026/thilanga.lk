@@ -5,6 +5,8 @@ import {AnimatePresence,motion} from 'framer-motion';
 import { imageAssets } from '../../assets/imageAssets';
 import BorderGlow from './BorderGlow';
 
+import { contactButtonGlowProps } from './borderGlowPresets';
+
 const navLinks = [
   {
     label: 'Home',
@@ -237,17 +239,8 @@ export default function Navbar() {
             path === '/contact' ? (
               <BorderGlow
                 key={path}
-                borderOnly
                 className="navbar-contact-glow"
-                edgeSensitivity={22}
-                glowColor="40 90 72"
-                borderRadius={999}
-                glowRadius={28}
-                glowIntensity={1.15}
-                coneSpread={24}
-                animated={false}
-                fillOpacity={0}
-                colors={['#c99b3b','#ffd98a','#8bd3c7']}
+                {...contactButtonGlowProps}
               >
                 <NavLink
                   to={path}
