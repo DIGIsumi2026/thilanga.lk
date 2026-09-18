@@ -319,11 +319,7 @@ export default function Navbar() {
             </span>
           </a>
 
-        </div>
-
-        <div className="scrolled-nav-actions" aria-label="Contact and social links">
-          <a className="scroll-nav-icon" href="mailto:info@thilangasumathipala.lk" aria-label="Email Thilanga Sumathipala"><Mail size={17} strokeWidth={1.6} /></a>
-          <a className="scroll-nav-icon" href="tel:+94112697106" aria-label="Call +94 11 269 7106"><Phone size={15} strokeWidth={1.6} /></a>
+        <div className="scrolled-nav-actions" aria-label="Social links" inert={navbarState !== 'visible'}>
           {socialIcons.map(({key, label, icon}) => {
             const href = navbarSocialLinks[key];
             return href ? (
@@ -332,6 +328,7 @@ export default function Navbar() {
               <button key={key} className="scroll-nav-icon" type="button" disabled aria-label={`${label} (link unavailable)`}>{icon}</button>
             );
           })}
+        </div>
         </div>
 
         {/*MOBILE MENU BUTTON */}
