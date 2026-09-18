@@ -8,6 +8,7 @@ import Footer from './components/common/Footer';
 import FloatingContact from './components/common/FloatingContact';
 */}
 import ScrollToTop from './components/common/ScrollToTop';
+import RouteScrollRestoration from './components/common/RouteScrollRestoration';
 import SmoothScroll from './components/common/SmoothScroll';
 import CustomScrollbar from './components/common/CustomScrollbar';
 import { PageLoadProvider } from './components/common/page-loader/PageLoadContext';
@@ -28,6 +29,7 @@ export default function App() {
       <PageReloadTransition>
         <SmoothScroll>
           <ScrollToTop />
+          <RouteScrollRestoration />
           <CustomScrollbar />
 
           <Navbar />

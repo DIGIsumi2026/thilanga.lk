@@ -11,7 +11,6 @@ export default function ContactLocationSection() {
               <div className="contact-location-kicker">
                 <span className="contact-location-kicker-line" />
               </div>
-              <h2>Find Us Here</h2>
 
               <p>
                 Visit our office at No 02, Dr Milina Sumathipala Mawatha,

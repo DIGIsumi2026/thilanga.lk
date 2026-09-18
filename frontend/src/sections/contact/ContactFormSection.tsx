@@ -173,7 +173,7 @@ export default function ContactFormSection() {
 
             <div>
               <span className="contact-detail-label">
-                Visit Us
+                Visit
               </span>
 
               <h3>Office Address</h3>
@@ -192,7 +192,7 @@ export default function ContactFormSection() {
 
             <div>
               <span className="contact-detail-label">
-                Call Us
+                Call
               </span>
 
               <h3>Phone</h3>
@@ -218,7 +218,7 @@ export default function ContactFormSection() {
 
             <div>
               <span className="contact-detail-label">
-                Email Us
+                Email
               </span>
 
               <h3>Email</h3>
