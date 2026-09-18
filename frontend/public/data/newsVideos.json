@@ -1,14 +1,6 @@
-[
+[ 
   {
     "id": "video-1",
-    "videoUrl": "https://youtu.be/jc7BGNSIHmQ?si=qs9MQt0NNkCItrcI",
-    "category": "Events",
-    "title": "ගෞතම බුද්ධ මාතා සිනමා පටයේ මංගල දර්ශනය",
-    "description": "Experience the Grand Premiere of Gauthama Buddha Matha at Savoy Premiere, Wellawatte",
-    "date": "2024-12-10"
-  },
-  {
-    "id": "video-2",
     "videoUrl": "https://www.youtube.com/watch?v=lgiNxtBdzrE",
     "category": "Interviews",
     "title": "B-READY දර්ශකය සහ ලංකාවේ 'ප්‍රතිපත්ති-ක්‍රියාත්මක කිරීමේ' පරතරය ",
@@ -16,12 +8,20 @@
     "date": "2026-04-06"
   },
   {
-    "id": "video-3",
+    "id": "video-2",
     "videoUrl": "https://youtu.be/0JBVDSgRr2Y?si=yDc0AB1_P-dp0ejs",
     "category": "TV Appearance",
     "title": "31st Sumathi Awards ",
     "description": "ශ්‍රී ලාංකේය ටෙලිනාට්‍ය හා රූපවාහිනී කලාවේ විශිෂ්ටත්වය තවදුරටත් ඔප්නංවමින්, අමතක නොවන සුමති සම්මාන උළෙලක් වෙනුවෙන් උළෙලේ සැලසුම්, නිර්මාණාත්මක අදහස් සහ ඉදිරි කටයුතු පිළිබඳ සවිස්තරාත්මක සාකච්ඡාවන් සමඟින් සුමති සම්මාන 31",
     "date": "2026-07-07"
+  },
+  {
+    "id": "video-3",
+    "videoUrl": "https://youtu.be/jc7BGNSIHmQ?si=qs9MQt0NNkCItrcI",
+    "category": "Events",
+    "title": "ගෞතම බුද්ධ මාතා සිනමා පටයේ මංගල දර්ශනය",
+    "description": "Experience the Grand Premiere of Gauthama Buddha Matha at Savoy Premiere, Wellawatte",
+    "date": "2024-12-10"
   },
   {
     "id": "video-4",

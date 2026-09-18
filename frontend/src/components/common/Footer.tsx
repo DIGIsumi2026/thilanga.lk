@@ -63,7 +63,7 @@ export default function Footer() {
           </nav>
 
           <section className="footer-contact-column">
-            <h2 className="footer-heading">Contact Us</h2>
+            <h2 className="footer-heading">Contact</h2>
             <div className="footer-contact-list">
               <div className="footer-contact-row">
                 <MapPin size={17} strokeWidth={1.7} aria-hidden="true" />
@@ -84,7 +84,7 @@ export default function Footer() {
           </section>
 
           <section className="footer-map-column">
-            <h2 className="footer-heading">Our Location</h2>
+            <h2 className="footer-heading">Location</h2>
             <div className="footer-map-frame">
               <iframe
                 src={contactLocation.mapEmbed}
