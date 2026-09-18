@@ -1,11 +1,18 @@
 import {useEffect, useRef, useState} from 'react';
 import {Link,NavLink,useLocation} from 'react-router-dom';
-import {Mail,Menu,Phone,X} from 'lucide-react';
+import {Facebook,Linkedin,Mail,Menu,Phone,X} from 'lucide-react';
 import {AnimatePresence,motion} from 'framer-motion';
 import { imageAssets } from '../../assets/imageAssets';
 import BorderGlow from './BorderGlow';
 
 import { contactButtonGlowProps } from './borderGlowPresets';
+import { navbarSocialLinks } from './navbarSocialLinks';
+
+const socialIcons = [
+  {key: 'facebook', label: 'Facebook', icon: <Facebook size={16} strokeWidth={1.6} />},
+  {key: 'x', label: 'X', icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3L12 14.6 5.5 22H2.3l7.9-9L.8 2h6.5l4.5 6.7L18.9 2ZM17.8 20h1.7L6.2 4H4.4l13.4 16Z" /></svg>},
+  {key: 'linkedin', label: 'LinkedIn', icon: <Linkedin size={16} strokeWidth={1.6} />},
+] as const;
 
 const navLinks = [
   {
@@ -155,18 +162,30 @@ export default function Navbar() {
     setMenuOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    const breakpoint = window.matchMedia('(max-width: 900px)');
+    const resolveLayout = () => {
+      clearHideTimer();
+      isHoveredRef.current = false;
+      lastScrollY.current = window.scrollY;
+      if (!breakpoint.matches) setMenuOpen(false);
+      // Reset stale desktop hover state without adding a second hide timer.
+      setNavbarState(window.scrollY <= TOP_THRESHOLD ? 'top' : 'hidden');
+    };
+    resolveLayout();
+    breakpoint.addEventListener('change', resolveLayout);
+    return () => breakpoint.removeEventListener('change', resolveLayout);
+  }, []);
+
   /*
    * Prevent scrolling behind the mobile menu.
    */
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-
+    if (!menuOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = previousOverflow;
     };
   }, [menuOpen]);
 
@@ -300,6 +319,19 @@ export default function Navbar() {
             </span>
           </a>
 
+        </div>
+
+        <div className="scrolled-nav-actions" aria-label="Contact and social links">
+          <a className="scroll-nav-icon" href="mailto:info@thilangasumathipala.lk" aria-label="Email Thilanga Sumathipala"><Mail size={17} strokeWidth={1.6} /></a>
+          <a className="scroll-nav-icon" href="tel:+94112697106" aria-label="Call +94 11 269 7106"><Phone size={15} strokeWidth={1.6} /></a>
+          {socialIcons.map(({key, label, icon}) => {
+            const href = navbarSocialLinks[key];
+            return href ? (
+              <a key={key} className="scroll-nav-icon" href={href} aria-label={label} target="_blank" rel="noopener noreferrer">{icon}</a>
+            ) : (
+              <button key={key} className="scroll-nav-icon" type="button" disabled aria-label={`${label} (link unavailable)`}>{icon}</button>
+            );
+          })}
         </div>
 
         {/*MOBILE MENU BUTTON */}
