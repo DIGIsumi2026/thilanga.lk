@@ -47,6 +47,76 @@ const TOP_THRESHOLD = 40;
 const SCROLL_DELTA = 5;
 const AUTO_HIDE_DELAY = 2400;
 
+const mobileMenuVariants = {
+  closed: (reduceMotion: boolean) => ({
+    opacity: 0,
+    y: reduceMotion ? 0 : -10,
+    scale: reduceMotion ? 1 : 0.988,
+    transition: reduceMotion
+      ? {duration: 0}
+      : {
+          duration: 0.24,
+          ease: [0.4, 0, 1, 1] as const,
+          staggerChildren: 0.015,
+          staggerDirection: -1,
+        },
+  }),
+  open: (reduceMotion: boolean) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: reduceMotion
+      ? {duration: 0}
+      : {
+          duration: 0.34,
+          ease: [0.22, 1, 0.36, 1] as const,
+          delayChildren: 0.02,
+          staggerChildren: 0.03,
+        },
+  }),
+};
+
+const mobileNavItemVariants = {
+  closed: (reduceMotion: boolean) => ({
+    opacity: 0,
+    y: reduceMotion ? 0 : 5,
+    transition: reduceMotion ? {duration: 0} : {duration: 0.14, ease: [0.4, 0, 1, 1] as const},
+  }),
+  open: (reduceMotion: boolean) => ({
+    opacity: 1,
+    y: 0,
+    transition: reduceMotion ? {duration: 0} : {duration: 0.24, ease: [0.22, 1, 0.36, 1] as const},
+  }),
+};
+
+const mobileContactVariants = {
+  closed: (reduceMotion: boolean) => ({
+    opacity: 0,
+    y: reduceMotion ? 0 : 5,
+    transition: reduceMotion ? {duration: 0} : {duration: 0.14, ease: [0.4, 0, 1, 1] as const},
+  }),
+  open: (reduceMotion: boolean) => ({
+    opacity: 1,
+    y: 0,
+    transition: reduceMotion ? {duration: 0} : {duration: 0.22, ease: [0.22, 1, 0.36, 1] as const},
+  }),
+};
+
+const mobileSocialVariants = {
+  closed: (reduceMotion: boolean) => ({
+    opacity: 0,
+    scale: reduceMotion ? 1 : 0.94,
+    y: reduceMotion ? 0 : 4,
+    transition: reduceMotion ? {duration: 0} : {duration: 0.14, ease: [0.4, 0, 1, 1] as const},
+  }),
+  open: (reduceMotion: boolean) => ({
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: reduceMotion ? {duration: 0} : {duration: 0.24, ease: [0.22, 1, 0.36, 1] as const},
+  }),
+};
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -250,9 +320,8 @@ export default function Navbar() {
           aria-label="Close navigation menu"
           onClick={() => setMenuOpen(false)}
           initial={{opacity: 0}}
-          animate={{opacity: 1}}
-          exit={{opacity: 0}}
-          transition={{duration: reduceMotion ? 0 : 0.28}}
+          animate={{opacity: 1, transition: {duration: reduceMotion ? 0 : 0.22, ease: 'easeOut'}}}
+          exit={{opacity: 0, transition: {duration: reduceMotion ? 0 : 0.18, ease: 'easeIn'}}}
         />
       )}
     </AnimatePresence>
@@ -389,13 +458,11 @@ export default function Navbar() {
         {menuOpen && (
           <motion.div
             className="mobile-nav-wrapper"
-            initial={{opacity: 0, y: reduceMotion ? 0 : -12, scale: reduceMotion ? 1 : 0.985}}
-            animate={{opacity: 1, y: 0, scale: 1}}
-            exit={{opacity: 0, y: reduceMotion ? 0 : -8, scale: reduceMotion ? 1 : 0.99}}
-            transition={{
-              duration: reduceMotion ? 0 : 0.4,
-              ease: [0.22, 1, 0.36, 1],
-            }}
+            custom={reduceMotion}
+            variants={mobileMenuVariants}
+            initial="closed"
+            animate="open"
+            exit="closed"
           >
             <nav
               id="mobile-navigation"
@@ -403,20 +470,11 @@ export default function Navbar() {
               aria-label="Mobile navigation"
             >
               {navLinks.map(
-                ({ label, path }, index) => (
+                ({ label, path }) => (
                   <motion.div
                     key={path}
-                    initial={{
-                      opacity: 0,
-                      y: 12,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                    }}
-                    transition={{
-                      delay: reduceMotion ? 0 : index * 0.04,
-                    }}
+                    custom={reduceMotion}
+                    variants={mobileNavItemVariants}
                   >
                     <NavLink
                       to={path}
@@ -429,7 +487,11 @@ export default function Navbar() {
                 ),
               )}
 
-              <div className="mobile-nav-contact">
+              <motion.div
+                className="mobile-nav-contact"
+                custom={reduceMotion}
+                variants={mobileContactVariants}
+              >
                 <a href="mailto:info@thilangasumathipala.lk">
                   <Mail
                     size={17}
@@ -451,13 +513,12 @@ export default function Navbar() {
                     (+94) 112 697 106
                   </span>
                 </a>
-              </div>
+              </motion.div>
 
               <motion.div
                 className="mobile-nav-socials"
-                initial={{opacity: 0, scale: reduceMotion ? 1 : 0.92}}
-                animate={{opacity: 1, scale: 1}}
-                transition={{duration: reduceMotion ? 0 : 0.3, delay: reduceMotion ? 0 : 0.26}}
+                custom={reduceMotion}
+                variants={mobileSocialVariants}
                 aria-label="Social links"
               >
                 {socialIcons.map(({key, label, icon}) => {
