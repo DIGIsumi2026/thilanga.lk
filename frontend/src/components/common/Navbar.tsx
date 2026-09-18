@@ -1,7 +1,7 @@
 import {useEffect, useRef, useState} from 'react';
 import {Link,NavLink,useLocation} from 'react-router-dom';
-import {Facebook,Linkedin,Mail,Menu,Phone,X} from 'lucide-react';
-import {AnimatePresence,motion} from 'framer-motion';
+import {Facebook,Linkedin,Mail,Phone} from 'lucide-react';
+import {AnimatePresence,motion,useReducedMotion} from 'framer-motion';
 import { imageAssets } from '../../assets/imageAssets';
 import BorderGlow from './BorderGlow';
 
@@ -60,6 +60,8 @@ export default function Navbar() {
   > | null>(null);
 
   const isHoveredRef = useRef(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const reduceMotion = useReducedMotion();
 
   const location = useLocation();
 
@@ -189,6 +191,17 @@ export default function Navbar() {
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      setMenuOpen(false);
+      requestAnimationFrame(() => menuButtonRef.current?.focus());
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [menuOpen]);
+
   const navbarClassName = [
     'site-header',
     navbarState === 'top' && 'is-top',
@@ -228,6 +241,21 @@ export default function Navbar() {
   };
 
   return (
+    <>
+    <AnimatePresence>
+      {menuOpen && (
+        <motion.button
+          type="button"
+          className="mobile-nav-backdrop"
+          aria-label="Close navigation menu"
+          onClick={() => setMenuOpen(false)}
+          initial={{opacity: 0}}
+          animate={{opacity: 1}}
+          exit={{opacity: 0}}
+          transition={{duration: reduceMotion ? 0 : 0.28}}
+        />
+      )}
+    </AnimatePresence>
     <header 
       className={navbarClassName}
       onMouseEnter={handleMouseEnter}
@@ -334,27 +362,23 @@ export default function Navbar() {
         {/*MOBILE MENU BUTTON */}
 
         <button
+          ref={menuButtonRef}
           type="button"
           className="menu-btn"
           onClick={toggleMenu}
           aria-label={
             menuOpen
-              ? 'Close navigation'
-              : 'Open navigation'
+              ? 'Close navigation menu'
+              : 'Open navigation menu'
           }
           aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
         >
-          {menuOpen ? (
-            <X
-              size={25}
-              strokeWidth={1.5}
-            />
-          ) : (
-            <Menu
-              size={25}
-              strokeWidth={1.5}
-            />
-          )}
+          <span className={`menu-icon${menuOpen ? ' is-open' : ''}`} aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </span>
         </button>
 
       </div>
@@ -365,24 +389,16 @@ export default function Navbar() {
         {menuOpen && (
           <motion.div
             className="mobile-nav-wrapper"
-            initial={{
-              opacity: 0,
-              height: 0,
-            }}
-            animate={{
-              opacity: 1,
-              height: 'auto',
-            }}
-            exit={{
-              opacity: 0,
-              height: 0,
-            }}
+            initial={{opacity: 0, y: reduceMotion ? 0 : -12, scale: reduceMotion ? 1 : 0.985}}
+            animate={{opacity: 1, y: 0, scale: 1}}
+            exit={{opacity: 0, y: reduceMotion ? 0 : -8, scale: reduceMotion ? 1 : 0.99}}
             transition={{
-              duration: 0.35,
+              duration: reduceMotion ? 0 : 0.4,
               ease: [0.22, 1, 0.36, 1],
             }}
           >
             <nav
+              id="mobile-navigation"
               className="mobile-nav"
               aria-label="Mobile navigation"
             >
@@ -399,23 +415,14 @@ export default function Navbar() {
                       y: 0,
                     }}
                     transition={{
-                      delay: index * 0.04,
+                      delay: reduceMotion ? 0 : index * 0.04,
                     }}
                   >
                     <NavLink
                       to={path}
                       end={path === '/'}
-                      className={({ isActive }) =>
-                        `${path === '/contact' ? 'mobile-contact-link' : ''}${isActive ? `${path === '/contact' ? ' ' : ''}active` : ''}` || undefined
-                      }
+                      className={({isActive}) => `mobile-nav-link${isActive ? ' active' : ''}`}
                     >
-                      <span className="mobile-link-number">
-                        {String(index + 1).padStart(
-                          2,
-                          '0',
-                        )}
-                      </span>
-
                       <span>{label}</span>
                     </NavLink>
                   </motion.div>
@@ -445,10 +452,28 @@ export default function Navbar() {
                   </span>
                 </a>
               </div>
+
+              <motion.div
+                className="mobile-nav-socials"
+                initial={{opacity: 0, scale: reduceMotion ? 1 : 0.92}}
+                animate={{opacity: 1, scale: 1}}
+                transition={{duration: reduceMotion ? 0 : 0.3, delay: reduceMotion ? 0 : 0.26}}
+                aria-label="Social links"
+              >
+                {socialIcons.map(({key, label, icon}) => {
+                  const href = navbarSocialLinks[key];
+                  return href ? (
+                    <a key={key} href={href} aria-label={label} target="_blank" rel="noopener noreferrer">{icon}</a>
+                  ) : (
+                    <button key={key} type="button" disabled aria-label={`${label} (link unavailable)`}>{icon}</button>
+                  );
+                })}
+              </motion.div>
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
     </header>
+    </>
   );
 }
