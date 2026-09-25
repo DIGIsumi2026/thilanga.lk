@@ -2395,12 +2395,18 @@ button.corporate-company-tile-action {
   margin-top: 42px;
 }
 
-.dambulla-legacy-story p {
+.dambulla-legacy-story p,
+.dambulla-legacy-heading-description {
   margin: 0;
   color: rgba(255,255,255,0.72);
   font-family: var(--sans);
   font-size: 15px;
   line-height: 1.95;
+}
+
+.dambulla-legacy-heading-description {
+  max-width: 940px;
+  margin-top: 20px;
 }
 
 .dambulla-legacy-intro {
@@ -2653,7 +2659,8 @@ button.corporate-company-tile-action {
     margin-top: 28px;
   }
 
-  .dambulla-legacy-story p {
+  .dambulla-legacy-story p,
+  .dambulla-legacy-heading-description {
     font-size: 13px;
     line-height: 1.85;
   }

@@ -751,6 +751,10 @@ export default function DambullaLegacy() {
               Rangiri Dambulla <br/>
               International Cricket Stadium
             </h2>
+
+            <p className="dambulla-legacy-heading-description">
+              Under his guidance, the stadium was planned and built in an incredibly fast 167 days, showcasing remarkable teamwork and execution.
+            </p>
           </header>
 
           <div
