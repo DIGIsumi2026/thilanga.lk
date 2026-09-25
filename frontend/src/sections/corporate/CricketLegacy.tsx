@@ -54,7 +54,7 @@ const cricketLegacyBlocks:CricketLegacyBlock[] = [
     id:'cricket-legacy-01',
     image:imageAssets.corporate.cricketLegacy.leadership,
     alt:'Thilanga Sumathipala in cricket administration',
-    title:'Leadership, governance and execution',
+    title:'Thilanga @ Cricket',
     paragraphs:[
       'His eye for innovation has also led him to serve in the capacity of President, Director, and Member of many esteemed institutes and organizations such as the International Cricket Council (ICC), the Asian Cricket Council (ACC), and the Board of Control for Cricket in Sri Lanka.',
       'As President of Sri Lanka Cricket, his leadership led to the completion of the Rangiri Dambulla International Cricket Stadium in just 167 days, reflecting a rare combination of vision, execution, and administrative strength.',
@@ -67,7 +67,6 @@ const cricketLegacyBlocks:CricketLegacyBlock[] = [
     title:'Identity, reform and wider institutional impact',
     paragraphs:[
       'He later re-structured and headed the re-launch of the BCCSL’s new logo and the name change to “Sri Lanka Cricket” in 2004, helping define a stronger and more contemporary identity for the institution.',
-      'Beyond cricket, he has also held honourable positions at the International Advertising Association (IAA), the Newspaper Society of Sri Lanka, INCA-FIEJ Research Association (IFRA) India, and the Asian Mass Communication Research & Information Centre (AMIC).',
     ],
     archive:cricketArchiveImages,
   },
