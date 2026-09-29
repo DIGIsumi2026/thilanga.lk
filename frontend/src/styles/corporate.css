@@ -1575,7 +1575,7 @@ button.corporate-company-tile-action {
 .cricket-legacy-section {
   position: relative;
   width: 100%;
-  padding: 105px 30px 115px;
+  padding: 105px 30px 70px;
   background: #fff;
   color: var(--ink);
   overflow: hidden;
@@ -1662,8 +1662,14 @@ button.corporate-company-tile-action {
 .cricket-legacy-row-2 .cricket-legacy-copy {
   grid-column: 2;
   grid-row: 1;
-  justify-content: flex-start;
-  padding: 30px 36px 26px;
+  justify-content: flex-end;
+  gap: 28px;
+  padding: 30px 22px 20px;
+}
+
+.cricket-legacy-row-2 .cricket-legacy-archive {
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .cricket-legacy-copy-main {
@@ -1778,7 +1784,7 @@ button.corporate-company-tile-action {
 
 .cricket-legacy-archive-item {
   position: relative;
-  height: 96px;
+  height: 136px;
   padding: 0;
   border: 1px solid rgba(13,41,51,0.1);
   background: #fff;
@@ -1790,7 +1796,7 @@ button.corporate-company-tile-action {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   background: #fff;
   transition: transform 0.5s cubic-bezier(0.22,1,0.36,1),filter 0.35s ease;
@@ -1943,7 +1949,7 @@ button.corporate-company-tile-action {
 
 @media (max-width: 1100px) {
   .cricket-legacy-section {
-    padding: 90px 25px 100px;
+    padding: 90px 25px 70px;
   }
 
   .cricket-legacy-copy,
@@ -1956,13 +1962,13 @@ button.corporate-company-tile-action {
   }
 
   .cricket-legacy-archive-item {
-    height: 96px;
+    height: 124px;
   }
 }
 
 @media (max-width: 900px) {
   .cricket-legacy-section {
-    padding: 82px 22px 90px;
+    padding: 82px 22px 64px;
   }
 
   .cricket-legacy-heading {
@@ -2016,7 +2022,8 @@ button.corporate-company-tile-action {
     order: 2;
     grid-column: 1;
     grid-row: 2;
-    padding: 30px 26px 26px;
+    gap: 28px;
+    padding: 30px 20px 20px;
   }
 
   .cricket-legacy-archive {
@@ -2025,7 +2032,7 @@ button.corporate-company-tile-action {
   }
 
   .cricket-legacy-archive-item {
-    height: 150px;
+    height: 124px;
   }
 
   .cricket-archive-lightbox {
@@ -2040,7 +2047,7 @@ button.corporate-company-tile-action {
 
 @media (max-width: 600px) {
   .cricket-legacy-section {
-    padding: 70px 18px 78px;
+    padding: 70px 18px 58px;
   }
 
   .cricket-legacy-heading h2 {
@@ -2070,7 +2077,7 @@ button.corporate-company-tile-action {
   }
 
   .cricket-legacy-archive-item {
-    height: 120px;
+    height: 112px;
   }
 
   .cricket-archive-lightbox {
