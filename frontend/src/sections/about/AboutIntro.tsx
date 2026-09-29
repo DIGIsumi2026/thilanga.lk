@@ -32,7 +32,7 @@ const AboutIntro = () => {
         >
 
           <blockquote className="about-intro-quote">
-            “Shaped by enterprise Driven by public service Defined by leadership ”
+            “Shaped by enterprise. Driven by public service. Defined by leadership.”
           </blockquote>
         </motion.div>
       </div>

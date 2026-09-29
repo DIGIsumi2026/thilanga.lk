@@ -753,7 +753,7 @@ export default function DambullaLegacy() {
             </h2>
 
             <p className="dambulla-legacy-heading-description">
-              Under his guidance, the stadium was planned and built in an incredibly fast 167 days, showcasing remarkable teamwork and execution.
+              The stadium was planned and completed in approximately 167 days, reflecting the speed and coordination of the development programme.
             </p>
           </header>
 

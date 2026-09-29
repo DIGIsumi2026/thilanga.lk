@@ -212,9 +212,8 @@ export default function PoliticalParliament() {
                 </strong>
 
                 <p>
-                  Sumathipala entered Parliament in 2010 and served in the
-                  government of President Mahinda Rajapaksa as Deputy Minister
-                  of Skills Development & Vocational Training.
+                  Sumathipala was elected to Parliament in 2010, representing the Colombo District. 
+                  In 2015, he served as Deputy Minister of Skills Development and Vocational Training.
                 </p>
               </div>
             </div>

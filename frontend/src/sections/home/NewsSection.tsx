@@ -133,8 +133,8 @@ export default function NewsSection() {
             <div className="news-heading">
               <h2>Latest Insights</h2>
               <p>
-                Conversations, stories and reflections on leadership, cricket
-                and the journey of impact.
+                Conversations, stories and 
+                reflections on leadership, business, cricket and public service.
               </p>
             </div>
 

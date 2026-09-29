@@ -264,16 +264,11 @@ export default function PublicRelationsSumathiAwards() {
           <div className="public-relations-sumathi-awards-main">
             <div className="public-relations-sumathi-awards-copy">
               <p className="public-relations-sumathi-awards-description">
-                Celebrating its 31<sup>th</sup> year in 2026, the prestigious
-                "Sumathi Awards", conducted annually by the Sumathi Group
-                to encourage, reward, honor & celebrate invaluable
-                contribution to the Arts, were conceptualized and
-                spearheaded by Thilanga Sumathipala in 1995 as a tribute
-                to his late father, U W Sumathipala. In its history of a
-                quarter century, the Sumathi Awards have become synonymous
-                with excellence in the Sri Lankan Television industry,
-                and are an anticipated, and coveted award for its
-                recognition of creativity, innovation and craft.
+                Established in 1995, the Sumathi Awards were conceptualised by Thilanga Sumathipala as a tribute to his late father, U. W. Sumathipala. 
+                Conducted by the Sumathi Group, the awards recognise creativity, 
+                innovation and professional achievement in Sri Lanka's television industry. 
+                More than three decades since their inception, the Sumathi Awards continue to provide a platform for 
+                recognising contributions to television and the arts.
               </p>
 
               <a

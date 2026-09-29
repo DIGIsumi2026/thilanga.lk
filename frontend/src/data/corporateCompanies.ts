@@ -80,7 +80,7 @@ export const corporateCompanies:CorporateCompany[] = [
       image:imageAssets.corporate.companies.company06.preview,
       metric:'70+',
       title:'Years of Experience',
-      description:'Reliable Engineering Solutions Built on Experience and Precision.',
+      description:'Reliable engineering solutions built on experience and precision.',
     },
   },
   {
@@ -100,7 +100,7 @@ export const corporateCompanies:CorporateCompany[] = [
       image:imageAssets.corporate.companies.company08.preview,
       metric:'17+',
       title:'Years of Excellence',
-      description:'NAPCO offers complete printing solutions across a broad spectrum of Industries including Telecommunication, Apparel, Education, FMCG, Media , Banks and Finance many others.',
+      description:'NAPCO provides comprehensive printing solutions across industries including telecommunications, apparel, education, FMCG, media, banking and financial services.',
     },
   },
   {
@@ -166,8 +166,8 @@ export const corporateCompanies:CorporateCompany[] = [
     preview:{
       image:imageAssets.corporate.companies.company15.preview,
       metric:'Sumathi Ventures',
-      title:'A foundation strengthenedby unity',
-      description:'Using the most modern and up-to date technology to create a sustainable business that brings merits and profitability to the entire society.',
+      title:'A Foundation Strengthened by Unity',
+      description:'Using modern, up-to-date technology to build sustainable businesses that create long-term value for stakeholders and society.',
     },
   },
 ];

@@ -258,17 +258,13 @@ export default function PublicRelationsFoundation() {
         <div className="public-relations-foundation-main">
           <div className="public-relations-foundation-copy">
             <p className="public-relations-foundation-description">
-              In 2006, he established the "Thilanga Sumathipala Foundation"
-              with the primary mission of "Service for Human Needs" through
-              which he initiates and extends projects across a sphere of
-              societal needs such as humanitarian and medical assistance,
-              poverty alleviation, disaster assistance, urban and environmental
-              development, rehabilitation and more. Currently, and over the
-              next several years, the Foundation will focus its attention on
-              initiatives designed to benefit vulnerable sections of society
-              such as Women, Children and the Elderly. The Foundation, rooted
-              in Buddhist principles, also conduct regular religious,
-              meditational and meritorious activities.
+              Established in 2006 with the mission “Service for Human Needs,” 
+              the Thilanga Sumathipala Foundation undertakes initiatives across 
+              humanitarian and medical assistance, poverty alleviation, 
+              disaster response, community development and environmental programmes. 
+              Rooted in Buddhist principles, the Foundation also supports religious, 
+              meditation and community-based activities, with particular attention to 
+              women, children and older people.
             </p>
           </div>
 

@@ -39,7 +39,7 @@ export default function Footer() {
               <img src={imageAssets.brand.logo} alt="Thilanga Sumathipala" />
             </Link>
             <p className="footer-description">
-              Thilanga Sumathipala | Chairman, Sumathi Ventures &amp; Asia Capital PLC | Former Sri Lankan MP, Deputy Speaker, and State Minister (2010–2020).
+              Thilanga Sumathipala | Chairman, Sumathi Ventures | Former Member of Parliament, Deputy Speaker of Parliament and State Minister of Technology &amp; Innovation.
             </p>
             <div className="footer-socials" aria-label="Social links">
               {socialIcons.map(({key, label, icon}) => {

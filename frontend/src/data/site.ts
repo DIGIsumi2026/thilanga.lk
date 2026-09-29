@@ -13,7 +13,7 @@ export const heroSlides = [
   {
     id: 2,
     number: '02',
-    role: 'Political Leadership',
+    role: 'Public Service',
     quoteLines: ['"Public service is not', 'a position to hold, but a', 'responsibility to uphold"'],
     shortQuoteLines: ['"Public service is', 'a responsibility', 'to uphold"'],
     image: imageAssets.hero.image2,
@@ -31,7 +31,7 @@ export const heroSlides = [
   {
     id: 4,
     number: '04',
-    role: 'Public Relations & Social Service',
+    role: 'Community & Social Impact',
     quoteLines: ['"True leadership is measured', 'by the lives we uplift and', 'the hope we leave behind"'],
     shortQuoteLines: ['"Leadership is measured', 'by the lives we uplift"'],
     image: imageAssets.hero.image4,
@@ -40,7 +40,7 @@ export const heroSlides = [
   {
     id: 5,
     number: '05',
-    role: 'Visionary Leadership',
+    role: 'Culture, Media & Legacy or Cultural & Media Initiatives',
     quoteLines: ['"A nation’s stories preserve', 'its identity and inspire the', 'generations that follow"'],
     shortQuoteLines: ['"Stories preserve identity', '& inspire generations"'],
     image: imageAssets.hero.image5,

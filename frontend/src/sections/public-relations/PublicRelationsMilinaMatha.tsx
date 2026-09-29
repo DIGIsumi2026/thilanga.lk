@@ -210,19 +210,13 @@ export default function PublicRelationsMilinaMatha() {
         <div className="public-relations-milina-main">
           <div className="public-relations-milina-copy">
             <p className="public-relations-milina-description">
-              Following the demise of his beloved mother in 2017,
-              Sumathipala established the "Milina Matha Foundation" in
-              commemoration of her exemplary and benevolent life, and it
-              through this Foundation that the legacy of the late Mrs.
-              Sumathipala PhD is continued by her children, through projects
-              designed and implemented provide educational assistance, and
-              support for the dissemination and elevation of Buddhist
-              teachings across the land. Activities include acknowledging
-              and promoting the quality of of Buddhist teaching in the Daham
-              Schools, awarding scholarships for university candidates &
-              students who have excelled at GCE O/L & A/L as well as annual
-              donations of school books and educational needs of children
-              of the staff of the Sumathi Universal Group of Companies.
+              Following the passing of his mother in 2017, 
+              Sumathipala established the Milina Matha Foundation in commemoration of her life and philanthropic work. 
+              The Foundation continues her legacy through initiatives that provide educational assistance 
+              and support the study and dissemination of Buddhist teachings. 
+              Its activities include supporting Dhamma-school education, awarding 
+              scholarships to students pursuing higher education, recognising achievement at GCE Ordinary Level and Advanced Level examinations, 
+              and providing schoolbooks and educational supplies to children of employees of the Sumathi Universal Group of Companies.
             </p>
           </div>
 

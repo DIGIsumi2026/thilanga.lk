@@ -36,7 +36,7 @@ const accordionItems: AccordionItem[] = [
     title: "Political",
     role: "Public Service & National Leadership",
     description:
-      "A public-service journey spanning provincial and parliamentary leadership, including service as a Member of Parliament, Deputy Minister, Deputy Speaker of Parliament and State Minister of Technology & Innovation.",
+      "Public-service experience spanning provincial and parliamentary roles, including service as a Member of Parliament, Deputy Minister, Deputy Speaker of Parliament and State Minister of Technology & Innovation.",
     image: imageAssets.home.accordion.political,
     path: "/political",
     accent: "#5aa8ff",
@@ -247,7 +247,7 @@ export default function LeadershipAccordion() {
   return (
     <section ref={sectionRef} className="leadership-section">
       <div className="leadership-heading">
-        <span className="leadership-kicker">Leadership across spheres</span>
+        <span className="leadership-kicker">Leadership Across Sectors</span>
 
         <h2>
           A journey shaped by enterprise,

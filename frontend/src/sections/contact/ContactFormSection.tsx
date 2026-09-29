@@ -48,8 +48,9 @@ export default function ContactFormSection() {
             </h2>
 
             <p>
-              Complete the form below and our team will get back to you
-              regarding your inquiry.
+             For official inquiries, corporate communication, public engagement 
+             and general correspondence, please contact the office of Thilanga Sumathipala. 
+             Our team will respond as soon as possible.
             </p>
           </div>
 

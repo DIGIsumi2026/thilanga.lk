@@ -168,14 +168,10 @@ export default function PublicRelationsSocialService() {
 
           <div className="public-relations-social-copy">
             <p className="public-relations-social-paragraph">
-              Hailing from a family where the Buddhist precepts of
-              brahmavihara loving kindness or benevolence
-              (මෛත්‍රී/මෙත්තා), compassion (කරුණා), empathetic joy
-              (මුදිතා) and equanimity (උපේක්ෂා/උපේක්ඛා) were and
-              remain a way of life, Thilanga Sumathipala and his six
-              siblings ideated, organized and supported the numerous
-              philanthropic and social service efforts of the family,
-              led by their mother. These included relief at both
+              Raised in a family shaped by the Buddhist principles of the Brahmavihāras loving kindness, 
+              compassion, sympathetic joy and equanimity Thilanga Sumathipala and his siblings have 
+              supported a range of philanthropic and community service initiatives. 
+              These included relief at both
               national and local scale, humanitarian assistance to
               those affected by the devastating 2004 Tsunami,
               donations in cash and kind to hospitals, donations of
