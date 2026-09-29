@@ -59,6 +59,10 @@ export default function PoliticalParliament() {
         '.political-parliament-milestone',
       );
 
+      const milestoneYear = section.querySelector<HTMLElement>(
+        '.political-parliament-year',
+      );
+
       const roles = section.querySelectorAll<HTMLElement>(
         '.political-parliament-role',
       );
@@ -162,9 +166,37 @@ export default function PoliticalParliament() {
           });
         },
       });
+
+      if (milestone && milestoneYear) {
+        ScrollTrigger.create({
+          trigger:milestone,
+          start:'top 85%',
+          once:true,
+          onEnter:() => {
+            const countdown = {year:Math.max(new Date().getFullYear(),2010)};
+
+            milestoneYear.textContent = String(countdown.year);
+
+            gsap.to(countdown,{
+              year:2010,
+              duration:1.6,
+              ease:'power2.out',
+              onUpdate:() => {
+                milestoneYear.textContent = String(Math.round(countdown.year));
+              },
+            });
+          },
+        });
+      }
     },section);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      const milestoneYear = section.querySelector<HTMLElement>(
+        '.political-parliament-year',
+      );
+      if (milestoneYear) milestoneYear.textContent = '2010';
+    };
   },[]);
 
   return (
