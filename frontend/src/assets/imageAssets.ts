@@ -82,7 +82,7 @@ import corporateGallery12 from '../assets/images/corporate/gallery/gallery-12.jp
 
 //thilanga-cricket
 import cricketLeadership from '../assets/images/corporate/cricket-leadership.jpg'
-import cricketPlaying from '../assets/images/corporate/cricket-playing.jpg';
+import cricketLogo from '../assets/images/corporate/crickect-logo.png';
 import cricketRationale from "../assets/images/corporate/cricket-legacy/rationale.jpg";
 import  cricketLaunchArticle from '../assets/images/corporate/cricket-legacy/launch-article.jpg';
 
@@ -283,7 +283,7 @@ export const imageAssets = {
   },
   cricketLegacy: {
       leadership: cricketLeadership,
-      playing: cricketPlaying,
+      logo: cricketLogo,
       rationale: cricketRationale,
       launchArticle: cricketLaunchArticle,
     },

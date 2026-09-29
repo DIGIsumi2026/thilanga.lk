@@ -62,7 +62,7 @@ const cricketLegacyBlocks:CricketLegacyBlock[] = [
   },
   {
     id:'cricket-legacy-02',
-    image:imageAssets.corporate.cricketLegacy.playing,
+    image:imageAssets.corporate.cricketLegacy.logo,
     alt:'Thilanga Sumathipala playing cricket',
     title:'Identity, reform and wider institutional impact',
     paragraphs:[
