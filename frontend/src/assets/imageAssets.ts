@@ -2,35 +2,35 @@
 import brandLogo from "../assets/images/brand-logo.png";
 
 //hero section
-import heroImage1 from "../assets/images/hero/image1.png";
-import heroImage2 from "../assets/images/hero/image2.png";
-import heroImage3 from "../assets/images/hero/image3.png";
-import heroImage4 from "../assets/images/hero/image4.png";
-import heroImage5 from "../assets/images/hero/image5.jpg";
+import heroImage1 from "../assets/images/hero/image1.webp";
+import heroImage2 from "../assets/images/hero/image2.webp";
+import heroImage3 from "../assets/images/hero/image3.webp";
+import heroImage4 from "../assets/images/hero/image4.webp";
+import heroImage5 from "../assets/images/hero/image5.webp";
 
 //hero - accordian 
-import accordionCorporate from "../assets/images/hero/accordion/corporate.png";
-import accordionPolitical from "../assets/images/hero/accordion/political.png";
-import accordionPublicRelations from "../assets/images/hero/accordion/public-relations.png";
+import accordionCorporate from "../assets/images/hero/accordion/corporate.webp";
+import accordionPolitical from "../assets/images/hero/accordion/political.webp";
+import accordionPublicRelations from "../assets/images/hero/accordion/public-relations.webp";
 
 //home - quote
-import quoteBackground from "../assets/images/hero/quote/quote-background.png";
+import quoteBackground from "../assets/images/hero/quote/quote-background.webp";
 
 //about page 
 //hero 
-import aboutHero from "../assets/images/about/about-hero.png";
+import aboutHero from "../assets/images/about/about-hero.webp";
 
 //family image 
-import aboutFanily from "../assets/images/about/about-family.png";
+import aboutFanily from "../assets/images/about/about-family.webp";
 //contact cta
-import aboutContactCta from "./images/about/contact-cta.png";
+import aboutContactCta from "./images/about/contact-cta.webp";
 
 //corporate page
 //hero
-import corporateThumbnail from "../assets/images/corporate/corporate-thumnail.png";
+import corporateThumbnail from "../assets/images/corporate/corporate-thumnail.webp";
 
 //intro
-import corporateChairmanBackground from "../assets/images/corporate/chairman-background.png";
+import corporateChairmanBackground from "../assets/images/corporate/chairman-background.webp";
 
 //company logos 
 import company01Logo from "../assets/images/corporate/companies/company-01-logo.webp";
@@ -67,98 +67,98 @@ import company15Logo from "../assets/images/corporate/companies/company-15-logo.
 import company15Preview from "../assets/images/corporate/companies/previews/company-15-preview.webp";
 
 //corporate gallery
-import corporateGallery01 from '../assets/images/corporate/gallery/gallery-01.jpg';
-import corporateGallery02 from '../assets/images/corporate/gallery/gallery-02.jpeg';
+import corporateGallery01 from '../assets/images/corporate/gallery/gallery-01.webp';
+import corporateGallery02 from '../assets/images/corporate/gallery/gallery-02.webp';
 import corporateGallery03 from '../assets/images/corporate/gallery/gallery-03.webp';
-import corporateGallery04 from '../assets/images/corporate/gallery/gallery-04.jpg';
-import corporateGallery05 from '../assets/images/corporate/gallery/gallery-05.jpeg';
-import corporateGallery06 from '../assets/images/corporate/gallery/gallery-06.jpg';
-import corporateGallery07 from '../assets/images/corporate/gallery/gallery-07.jpg';
+import corporateGallery04 from '../assets/images/corporate/gallery/gallery-04.webp';
+import corporateGallery05 from '../assets/images/corporate/gallery/gallery-05.webp';
+import corporateGallery06 from '../assets/images/corporate/gallery/gallery-06.webp';
+import corporateGallery07 from '../assets/images/corporate/gallery/gallery-07.webp';
 import corporateGallery08 from '../assets/images/corporate/gallery/gallery-08.webp';
-import corporateGallery09 from '../assets/images/corporate/gallery/gallery-09.jpg';
+import corporateGallery09 from '../assets/images/corporate/gallery/gallery-09.webp';
 import corporateGallery10 from '../assets/images/corporate/gallery/gallery-10.webp';
-import corporateGallery11 from '../assets/images/corporate/gallery/gallery-11.jpg';
-import corporateGallery12 from '../assets/images/corporate/gallery/gallery-12.jpeg';
+import corporateGallery11 from '../assets/images/corporate/gallery/gallery-11.webp';
+import corporateGallery12 from '../assets/images/corporate/gallery/gallery-12.webp';
 
 //thilanga-cricket
-import cricketLeadership from '../assets/images/corporate/cricket-leadership.jpg'
-import cricketLogo from '../assets/images/corporate/crickect-logo.png';
-import cricketRationale from "../assets/images/corporate/cricket-legacy/rationale.jpg";
-import  cricketLaunchArticle from '../assets/images/corporate/cricket-legacy/launch-article.jpg';
+import cricketLeadership from '../assets/images/corporate/cricket-leadership.webp'
+import cricketLogo from '../assets/images/corporate/crickect-logo.webp';
+import cricketRationale from "../assets/images/corporate/cricket-legacy/rationale.webp";
+import  cricketLaunchArticle from '../assets/images/corporate/cricket-legacy/launch-article.webp';
 
 
 //dambulla-images
-import dambulla01 from "../assets/images/corporate/dambulla/dambulla-01.jpeg";
-import dambulla02 from "../assets/images/corporate/dambulla/dambulla-02.jpeg";
-import dambulla03 from "../assets/images/corporate/dambulla/dambulla-03.jpg";
-import dambulla04 from "../assets/images/corporate/dambulla/dambulla-04.jpg";
-import dambulla05 from "../assets/images/corporate/dambulla/dambulla-05.jpg";
-import dambulla06 from "../assets/images/corporate/dambulla/dambulla-06.jpg";
+import dambulla01 from "../assets/images/corporate/dambulla/dambulla-01.webp";
+import dambulla02 from "../assets/images/corporate/dambulla/dambulla-02.webp";
+import dambulla03 from "../assets/images/corporate/dambulla/dambulla-03.webp";
+import dambulla04 from "../assets/images/corporate/dambulla/dambulla-04.webp";
+import dambulla05 from "../assets/images/corporate/dambulla/dambulla-05.webp";
+import dambulla06 from "../assets/images/corporate/dambulla/dambulla-06.webp";
 
 //slt-corporate
-import telecomPortrait from '../assets/images/corporate/telecommunications/telecom-portrait.jpg';
-import sltMobitelImage from '../assets/images/corporate/telecommunications/slt-mobitel.png';
+import telecomPortrait from '../assets/images/corporate/telecommunications/telecom-portrait.webp';
+import sltMobitelImage from '../assets/images/corporate/telecommunications/slt-mobitel.webp';
 
 //political- page 
-import politicalHeroThumbnail from '../assets/images/political/political-hero-thumbnail.png';
+import politicalHeroThumbnail from '../assets/images/political/political-hero-thumbnail.webp';
 
 //political-intro
-import parliamentLeadershipBg from '../assets/images/political/parliament/parliament-leadership-bg.png';
+import parliamentLeadershipBg from '../assets/images/political/parliament/parliament-leadership-bg.webp';
 
 //governance
-import politicalGovernanceBg from '../assets/images/political/governance-bg.png';
+import politicalGovernanceBg from '../assets/images/political/governance-bg.webp';
 
-import  politicalGovernance1 from '../assets/images/political/governance-gallery/image1.jpg';
-import  politicalGovernance2 from '../assets/images/political/governance-gallery/image2.png';
-import  politicalGovernance3 from '../assets/images/political/governance-gallery/image3.jpg';
-import  politicalGovernance4 from '../assets/images/political/governance-gallery/image4.jpg';
-import  politicalGovernance5 from '../assets/images/political/governance-gallery/image5.jpg';
-import  politicalGovernance6 from '../assets/images/political/governance-gallery/image6.jpg';
+import  politicalGovernance1 from '../assets/images/political/governance-gallery/image1.webp';
+import  politicalGovernance2 from '../assets/images/political/governance-gallery/image2.webp';
+import  politicalGovernance3 from '../assets/images/political/governance-gallery/image3.webp';
+import  politicalGovernance4 from '../assets/images/political/governance-gallery/image4.webp';
+import  politicalGovernance5 from '../assets/images/political/governance-gallery/image5.webp';
+import  politicalGovernance6 from '../assets/images/political/governance-gallery/image6.webp';
 
 //public-relations page
-import publicRelationsHero  from '../assets/images/public-relations/hero/public-relations-hero.png';
+import publicRelationsHero  from '../assets/images/public-relations/hero/public-relations-hero.webp';
 
 //social-service
-import publicRelationsSocialServiceBg  from '../assets/images/public-relations/social-service/social-service-bg.png';
+import publicRelationsSocialServiceBg  from '../assets/images/public-relations/social-service/social-service-bg.webp';
 
 //foundadtion
-import publicRelationsFoundationLogo  from '../assets/images/public-relations/social-service/foundation/foundation-logo.png';
-import publicRelationsFoundationBg from '../assets/images/public-relations/social-service/foundation/foundation-bg.png';
-import publicRelationsFoundation1 from '../assets/images/public-relations/social-service/foundation/image1.jpg';
-import publicRelationsFoundation2 from '../assets/images/public-relations/social-service/foundation/image2.jpg';
-import publicRelationsFoundation3 from '../assets/images/public-relations/social-service/foundation/image3.jpg';
-import publicRelationsFoundation4 from '../assets/images/public-relations/social-service/foundation/image4.jpg';
-import publicRelationsFoundation5 from '../assets/images/public-relations/social-service/foundation/image5.jpg';
+import publicRelationsFoundationLogo  from '../assets/images/public-relations/social-service/foundation/foundation-logo.webp';
+import publicRelationsFoundationBg from '../assets/images/public-relations/social-service/foundation/foundation-bg.webp';
+import publicRelationsFoundation1 from '../assets/images/public-relations/social-service/foundation/image1.webp';
+import publicRelationsFoundation2 from '../assets/images/public-relations/social-service/foundation/image2.webp';
+import publicRelationsFoundation3 from '../assets/images/public-relations/social-service/foundation/image3.webp';
+import publicRelationsFoundation4 from '../assets/images/public-relations/social-service/foundation/image4.webp';
+import publicRelationsFoundation5 from '../assets/images/public-relations/social-service/foundation/image5.webp';
 
 //milina-matha
-import publicRelationsMilinaBg  from '../assets/images/public-relations/social-service/milina-matha/milina-matha-bg.png';
-import publicRelationsMilinaLogo  from '../assets/images/public-relations/social-service/milina-matha/milina-matha-logo.png';
+import publicRelationsMilinaBg  from '../assets/images/public-relations/social-service/milina-matha/milina-matha-bg.webp';
+import publicRelationsMilinaLogo  from '../assets/images/public-relations/social-service/milina-matha/milina-matha-logo.webp';
 import publicRelationsMilina1  from '../assets/images/public-relations/social-service/milina-matha/image1.webp';
 import publicRelationsMilina2  from '../assets/images/public-relations/social-service/milina-matha/image2.webp';
 
 //buddha-matha
-import gautamaBuddhaMathaBackground  from '../assets/images/public-relations/social-service/gautama-buddha-matha/background.png';
-import gautamaBuddhaMathaLogo  from '../assets/images/public-relations/social-service/gautama-buddha-matha/logo.png';
-import gautamaBuddhaMatha1 from '../assets/images/public-relations/social-service/gautama-buddha-matha/image1.jpg';
-import gautamaBuddhaMatha2 from '../assets/images/public-relations/social-service/gautama-buddha-matha/image2.jpg';
-import gautamaBuddhaMatha3 from '../assets/images/public-relations/social-service/gautama-buddha-matha/image3.jpg';
-import gautamaBuddhaMatha4 from '../assets/images/public-relations/social-service/gautama-buddha-matha/image4.jpg';
-import gautamaBuddhaMatha5 from '../assets/images/public-relations/social-service/gautama-buddha-matha/image5.jpg';
+import gautamaBuddhaMathaBackground  from '../assets/images/public-relations/social-service/gautama-buddha-matha/background.webp';
+import gautamaBuddhaMathaLogo  from '../assets/images/public-relations/social-service/gautama-buddha-matha/logo.webp';
+import gautamaBuddhaMatha1 from '../assets/images/public-relations/social-service/gautama-buddha-matha/image1.webp';
+import gautamaBuddhaMatha2 from '../assets/images/public-relations/social-service/gautama-buddha-matha/image2.webp';
+import gautamaBuddhaMatha3 from '../assets/images/public-relations/social-service/gautama-buddha-matha/image3.webp';
+import gautamaBuddhaMatha4 from '../assets/images/public-relations/social-service/gautama-buddha-matha/image4.webp';
+import gautamaBuddhaMatha5 from '../assets/images/public-relations/social-service/gautama-buddha-matha/image5.webp';
 
 //sumathi-awards
-import sumathiAwardsBackground  from '../assets/images/public-relations/social-service/sumathi-awards/background.png';
-import sumathiAwardsLogo  from '../assets/images/public-relations/social-service/sumathi-awards/logo.png';
-import sumathiAwardsImage1 from '../assets/images/public-relations/social-service/sumathi-awards/image1.jpg';
+import sumathiAwardsBackground  from '../assets/images/public-relations/social-service/sumathi-awards/background.webp';
+import sumathiAwardsLogo  from '../assets/images/public-relations/social-service/sumathi-awards/logo.webp';
+import sumathiAwardsImage1 from '../assets/images/public-relations/social-service/sumathi-awards/image1.webp';
 import sumathiAwardsImage2 from '../assets/images/public-relations/social-service/sumathi-awards/image2.webp';
-import sumathiAwardsImage3 from '../assets/images/public-relations/social-service/sumathi-awards/image3.jpg';
-import sumathiAwardsImage4 from '../assets/images/public-relations/social-service/sumathi-awards/image4.jpg';
-import sumathiAwardsImage5 from '../assets/images/public-relations/social-service/sumathi-awards/image5.jpg';
-import sumathiAwardsImage6 from '../assets/images/public-relations/social-service/sumathi-awards/image6.jpg';
-import sumathiAwardsImage7 from '../assets/images/public-relations/social-service/sumathi-awards/image7.jpg';
-import sumathiAwardsImage8 from '../assets/images/public-relations/social-service/sumathi-awards/image8.jpg';
+import sumathiAwardsImage3 from '../assets/images/public-relations/social-service/sumathi-awards/image3.webp';
+import sumathiAwardsImage4 from '../assets/images/public-relations/social-service/sumathi-awards/image4.webp';
+import sumathiAwardsImage5 from '../assets/images/public-relations/social-service/sumathi-awards/image5.webp';
+import sumathiAwardsImage6 from '../assets/images/public-relations/social-service/sumathi-awards/image6.webp';
+import sumathiAwardsImage7 from '../assets/images/public-relations/social-service/sumathi-awards/image7.webp';
+import sumathiAwardsImage8 from '../assets/images/public-relations/social-service/sumathi-awards/image8.webp';
 
 //contact-page 
-import contactHero  from '../assets/images/contact/hero.png';
+import contactHero  from '../assets/images/contact/hero.webp';
 
 
 export const imageAssets = {
