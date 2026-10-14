@@ -187,7 +187,7 @@ export const corporateCompanies:CorporateCompany[] = [
   },
   
   {
-    id:'company-03',
+    id:'company-16',
     name:'Company03',
     logo:imageAssets.corporate.companies.company03.logo,
     href:null,

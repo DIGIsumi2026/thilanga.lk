@@ -122,11 +122,13 @@ export default function CricketLegacy() {
           y:18,
         });
 
-        gsap.set(archiveItems,{
-          opacity:0,
-          y:18,
-          scale:0.985,
-        });
+        if (archiveItems.length) {
+          gsap.set(archiveItems,{
+            opacity:0,
+            y:18,
+            scale:0.985,
+          });
+        }
 
         ScrollTrigger.create({
           trigger:row,
