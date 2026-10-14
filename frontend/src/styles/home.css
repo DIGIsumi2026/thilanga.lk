@@ -319,7 +319,7 @@
 }
 
 .hero-pagination .swiper-pagination-bullet-active .progress-fill {
-  animation: slideProgress 6.5s linear forwards;
+  animation: slideProgress 10s linear forwards;
 }
 
 @keyframes slideProgress {

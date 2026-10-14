@@ -1,24 +1,5 @@
-import {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
-import {
-  ChevronDown,
-  ChevronLeft,
-  ChevronRight,
-  FastForward,
-  Maximize2,
-  Minimize2,
-  Pause,
-  Play,
-  Rewind,
-  Volume2,
-  VolumeX,
-  X,
-} from 'lucide-react';
+import {useCallback, useEffect, useLayoutEffect, useRef, useState,} from 'react';
+import {ChevronDown, ChevronLeft, ChevronRight, FastForward, Maximize2, Minimize2, Pause, Play, Rewind, Volume2, VolumeX, X,} from 'lucide-react';
 import {AnimatePresence,motion} from 'framer-motion';
 import {animate,stagger} from 'animejs';
 import {gsap} from 'gsap';
@@ -749,7 +730,7 @@ export default function DambullaLegacy() {
 
             <h2>
               Rangiri Dambulla <br/>
-              International Cricket Stadium
+              Sri Lanka’s 8th International Cricket Venue
             </h2>
 
             <p className="dambulla-legacy-heading-description">
