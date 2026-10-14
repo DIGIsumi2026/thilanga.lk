@@ -292,7 +292,7 @@ const AboutBiography = () => {
 
           <div className="about-biography-bottom">
             <div className="about-biography-text">
-              {remainingParagraphs.map((paragraph,index) => (
+              {remainingParagraphs.slice(0,2).map((paragraph,index) => (
                 <p key={index}>{paragraph}</p>
               ))}
             </div>
@@ -305,6 +305,11 @@ const AboutBiography = () => {
                 decoding="async"
               />
             </figure>
+            <div className="about-biography-text about-biography-final-text">
+              {remainingParagraphs.slice(2).map((paragraph,index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
           </div>
 
           <span className="about-biography-end-line" aria-hidden="true" />

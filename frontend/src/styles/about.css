@@ -228,15 +228,38 @@
 .about-biography-top,
 .about-biography-bottom {
   display: grid;
-  grid-template-columns: minmax(0,1.15fr) minmax(0,0.85fr);
+  grid-template-columns: minmax(0,0.85fr) minmax(0,1.15fr);
   gap: 32px;
   align-items: start;
 }
 
 .about-biography-bottom {
-  grid-template-columns: minmax(0,1.2fr) minmax(0,0.8fr);
+  grid-template-columns: minmax(0,0.8fr) minmax(0,1.2fr);
   gap: 36px;
+  row-gap: 20px;
   margin-top: 40px;
+}
+
+@media (min-width: 901px) {
+  .about-biography-top .about-biography-text,
+  .about-biography-bottom .about-biography-family {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .about-biography-top .about-biography-carousel,
+  .about-biography-bottom .about-biography-text {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .about-biography-bottom .about-biography-family {
+    grid-row: 1 / span 2;
+  }
+
+  .about-biography-bottom .about-biography-final-text {
+    grid-row: 2;
+  }
 }
 
 .about-biography-image-wrap {
