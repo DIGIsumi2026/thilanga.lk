@@ -41,7 +41,10 @@ import company02Preview from "../assets/images/corporate/companies/previews/comp
 
 import company03Logo from "../assets/images/corporate/companies/company-03-logo.webp";
 import company04Logo from "../assets/images/corporate/companies/company-04-logo.webp";
+
 import company05Logo from "../assets/images/corporate/companies/company-05-logo.webp";
+import company05Preview from '..//assets/images/corporate/companies/previews/company-05-preview.webp';
+
 
 import company06Logo from "../assets/images/corporate/companies/company-06-logo.webp";
 import company06Preview from "../assets/images/corporate/companies/previews/company-06-preview.webp";
@@ -65,6 +68,9 @@ import company14Preview from "../assets/images/corporate/companies/previews/comp
 
 import company15Logo from "../assets/images/corporate/companies/company-15-logo.webp";
 import company15Preview from "../assets/images/corporate/companies/previews/company-15-preview.webp";
+
+import company17Logo from "../assets/images/corporate/companies/company-17-logo.webp";
+import company17Preview from "../assets/images/corporate/companies/previews/company-17-preview.webp";
 
 //corporate gallery
 import corporateGallery01 from '../assets/images/corporate/gallery/gallery-01.webp';
@@ -220,6 +226,7 @@ export const imageAssets = {
 
     company05: {
       logo: company05Logo,
+      preview: company05Preview,
     },
 
     company06: {
@@ -265,6 +272,11 @@ export const imageAssets = {
     company15: {
       logo: company15Logo,
       preview: company15Preview,
+    },
+
+    company17: {
+      logo: company17Logo,
+      preview: company17Preview,
     },
   },
    gallery: {

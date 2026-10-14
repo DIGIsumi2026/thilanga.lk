@@ -35,6 +35,22 @@ export const corporateCompanies:CorporateCompany[] = [
       description:'Using modern, up-to-date technology to build sustainable businesses that create long-term value for stakeholders and society.',
     },
   },
+
+  {
+  id: 'company-17',
+  name: 'Company17`',
+  logo: imageAssets.corporate.companies.company17.logo,
+  href: 'https://www.sumathiuniversal.com/',
+  accent: {from: '#123F53',to: '#C49A45',
+  },
+  preview: {
+    image: imageAssets.corporate.companies.company17.preview,
+    metric: 'Sumathi Universal',
+    title: 'Diversified Businesses. Shared Vision.',
+    description:'A Sri Lankan business group driving sustainable growth through strategic investments, diversified operations and a strong foundation of family values.',
+  },
+},
+
   {
     id:'company-02',
     name:'Company06',
@@ -80,9 +96,15 @@ export const corporateCompanies:CorporateCompany[] = [
     id:'company-06',
     name:'Company05',
     logo:imageAssets.corporate.companies.company05.logo,
-    href:null,
-    preview:null,
+    href:'https://sumathieventainment.lk/',
+    accent:{from:'#d2008b',to:'#34236f'},
+    preview:{
+      image:imageAssets.corporate.companies.company05.preview,
+      metric:'Sumathi Eventainment',
+       title: 'Bringing Stories to Life',
+      description:'Creating engaging film, television and entertainment productions that celebrate Sri Lankan talent, creativity and storytelling.',
   },
+},
   {
     id:'company-07',
     name:'Company2',
