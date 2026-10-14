@@ -20,6 +20,13 @@ import quoteBackground from "../assets/images/hero/quote/quote-background.webp";
 //hero 
 import aboutHero from "../assets/images/about/about-hero.webp";
 
+//about-thilanga
+import aboutThilanga1 from "./images/about/thilanga-1.webp";
+import aboutThilanga2 from "./images/about/thilanga-2.webp";
+import aboutThilanga3 from "./images/about/thilanga-3.webp";
+import aboutThilanga4 from "./images/about/thilanga-4.webp";
+import aboutThilanga5 from "./images/about/thilanga-5.webp";
+
 //family image 
 import aboutFanily from "../assets/images/about/about-family.webp";
 //contact cta
@@ -71,6 +78,7 @@ import company15Preview from "../assets/images/corporate/companies/previews/comp
 
 import company17Logo from "../assets/images/corporate/companies/company-17-logo.webp";
 import company17Preview from "../assets/images/corporate/companies/previews/company-17-preview.webp";
+
 
 //corporate gallery
 import corporateGallery01 from '../assets/images/corporate/gallery/gallery-01.webp';
@@ -193,6 +201,13 @@ export const imageAssets = {
 
   about: {
     hero: aboutHero,
+    biographySlides:{
+      image1: aboutThilanga1,
+      image2: aboutThilanga2,
+      image3: aboutThilanga3,
+      image4: aboutThilanga4,
+      image5: aboutThilanga5,
+    },
     family: aboutFanily,
     contactCta: aboutContactCta
   },
