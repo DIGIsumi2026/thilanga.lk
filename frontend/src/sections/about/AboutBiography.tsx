@@ -70,10 +70,13 @@ const AboutBiography = () => {
     };
 
     const observer = new IntersectionObserver(([entry]) => {
-      inView = entry.isIntersecting;
+      inView = entry.isIntersecting && entry.intersectionRatio >= 0.25;
       syncAutoplay();
+    },{
+      threshold:0.25,
+      rootMargin:'-96px 0px 0px 0px',
     });
-    observer.observe(section);
+    observer.observe(swiper.el);
     document.addEventListener('visibilitychange',syncAutoplay);
 
     return () => {
