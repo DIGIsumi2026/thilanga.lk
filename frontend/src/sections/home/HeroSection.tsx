@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -84,7 +84,21 @@ export default function HeroSection() {
       >
         {heroSlides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <div className="hero-slide">
+            <div
+              className={`hero-slide${slide.mobilePresentation === 'layered' ? ' hero-slide--mobile-layered' : ''}`}
+              style={{
+                '--hero-mobile-position': `${slide.mobilePosition}% top`,
+                '--hero-mobile-scale': slide.mobileScale,
+                '--hero-mobile-shift': `${(1 - slide.mobileScale) * slide.mobilePosition}%`,
+              } as CSSProperties}
+            >
+              {slide.mobilePresentation === 'layered' && (
+                <div
+                  className="hero-mobile-backdrop"
+                  style={{backgroundImage: `url(${slide.image})`}}
+                  aria-hidden="true"
+                />
+              )}
               <div className="hero-image-wrapper">
                 <img
                   src={slide.image}

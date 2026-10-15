@@ -6,9 +6,12 @@ export const heroSlides = [
     number: '01',
     role: 'Corporate Leadership',
     quoteLines: ['Vision creates opportunity.', 'Leadership turns it', 'into lasting value'],
-    shortQuoteLines: ['"Vision creates', 'opportunity', '& lasting value"'],
+    shortQuoteLines: ['Vision creates', 'opportunity', '& lasting value'],
     image: imageAssets.hero.image1,
     imageAlt: 'Thilanga Sumathipala - Corporate Leadership',
+    mobilePosition: 86,
+    mobilePresentation: 'cover',
+    mobileScale: 1,
   },
 
   {
@@ -26,6 +29,9 @@ export const heroSlides = [
   ],
   image: imageAssets.hero.image2,
   imageAlt: 'Thilanga Sumathipala - Education and Leadership',
+  mobilePosition: 90,
+  mobilePresentation: 'cover',
+  mobileScale: 1,
 },
 
 
@@ -34,9 +40,12 @@ export const heroSlides = [
     number: '03',
     role: 'Sports Administration',
     quoteLines: ['Sport builds more than', 'champions; it builds discipline,', 'unity and national pride'],
-    shortQuoteLines: ['"Sport builds discipline,', 'unity & national pride"'],
+    shortQuoteLines: ['Sport builds discipline,', 'unity & national pride'],
     image: imageAssets.hero.image3,
     imageAlt: 'Thilanga Sumathipala - Sports Administration',
+    mobilePosition: 56,
+    mobilePresentation: 'layered',
+    mobileScale: 1.6,
   },
   {
   id: 4,
@@ -53,6 +62,9 @@ export const heroSlides = [
   ],
   image: imageAssets.hero.image4,
   imageAlt: 'Thilanga Sumathipala - Ventures and Investments',
+  mobilePosition: 100,
+  mobilePresentation: 'layered',
+  mobileScale: 1.6,
 },
 
   {
@@ -60,8 +72,11 @@ export const heroSlides = [
     number: '05',
     role: 'Culture, Media & Legacy or Cultural & Media Initiatives',
     quoteLines: ['A nation’s stories preserve', 'its identity and inspire the', 'generations that follow'],
-    shortQuoteLines: ['"Stories preserve identity', '& inspire generations"'],
+    shortQuoteLines: ['Stories preserve identity', '& inspire generations'],
     image: imageAssets.hero.image5,
     imageAlt: 'Thilanga Sumathipala - Visionary Leadership',
+    mobilePosition: 91,
+    mobilePresentation: 'layered',
+    mobileScale: 1.6,
   },
 ] as const;
