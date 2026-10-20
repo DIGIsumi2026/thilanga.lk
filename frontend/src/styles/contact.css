@@ -380,7 +380,8 @@
   min-height: 180px;
   padding: 15px 16px;
   line-height: 1.7;
-  resize: vertical;
+  resize: none;
+  overflow-y: hidden;
 }
 
 .contact-field input::placeholder,

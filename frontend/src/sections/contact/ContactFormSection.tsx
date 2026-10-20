@@ -1,4 +1,4 @@
-import {FormEvent,useState} from 'react';
+import {FormEvent,useLayoutEffect,useRef,useState} from 'react';
 import {
   ArrowUpRight,
   Mail,
@@ -13,7 +13,32 @@ const MAX_CHARACTERS = 500;
 
 export default function ContactFormSection() {
   const [message,setMessage] = useState('');
+  const messageRef = useRef<HTMLTextAreaElement>(null);
   const remainingCharacters = Math.max(0, MAX_CHARACTERS - message.length);
+
+  useLayoutEffect(() => {
+    const textarea = messageRef.current;
+    if (!textarea) return;
+
+    const resize = () => {
+      textarea.style.height = 'auto';
+      const styles = getComputedStyle(textarea);
+      const borderHeight = parseFloat(styles.borderTopWidth) + parseFloat(styles.borderBottomWidth);
+      textarea.style.height = `${Math.ceil(textarea.scrollHeight + borderHeight)}px`;
+    };
+
+    resize();
+    let previousWidth = textarea.clientWidth;
+    const observer = new ResizeObserver(() => {
+      if (textarea.clientWidth !== previousWidth) {
+        previousWidth = textarea.clientWidth;
+        resize();
+      }
+    });
+    observer.observe(textarea);
+
+    return () => observer.disconnect();
+  }, [message]);
 
   const handleMessageChange = (
     event:React.ChangeEvent<HTMLTextAreaElement>,
@@ -140,6 +165,7 @@ export default function ContactFormSection() {
               </div>
 
               <textarea
+                ref={messageRef}
                 id="contact-message"
                 name="message"
                 value={message}
