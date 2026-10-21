@@ -730,7 +730,7 @@ export default function DambullaLegacy() {
 
             <h2>
               Rangiri Dambulla <br/>
-              Sri Lanka’s 8th International Cricket Venue
+              Sri Lanka’s 2<sup>nd</sup> International Floodlit Stadium
             </h2>
 
             <p className="dambulla-legacy-heading-description">
