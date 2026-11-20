@@ -436,7 +436,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(5,minmax(0,1fr));
-  grid-template-rows: repeat(3,110px);
+  grid-template-rows: repeat(var(--company-grid-rows,3),110px);
   border-top: 1px solid #e5e5e5;
   border-left: 1px solid #e5e5e5;
   background: #fff;
@@ -685,7 +685,7 @@ button.corporate-company-tile-action {
   }
 
   .corporate-company-grid {
-    grid-template-rows: repeat(3,100px);
+    grid-template-rows: repeat(var(--company-grid-rows,3),100px);
   }
 
   .corporate-company-logo-placeholder {

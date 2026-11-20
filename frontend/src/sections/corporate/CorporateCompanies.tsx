@@ -8,6 +8,7 @@ import {
   useState,
 } from 'react';
 import {ArrowUpRight,Plus} from 'lucide-react';
+import {imageAssets} from '../../assets/imageAssets';
 import {animate,stagger,type JSAnimation} from 'animejs';
 import {gsap} from 'gsap';
 import {
@@ -30,7 +31,49 @@ type PreviewGeometry = {
 const clamp = (value:number,min:number,max:number) =>
   Math.max(min,Math.min(value,max));
 
+const associateCompanyLogos = [
+  imageAssets.corporate.companies.company03.logo,
+  imageAssets.corporate.companies.company11.logo,
+  imageAssets.corporate.companies.company04.logo,
+  imageAssets.corporate.companies.company12.logo,
+  imageAssets.corporate.companies.company14.logo,
+  imageAssets.corporate.companies.company05.logo,
+];
+const associateCompanies = associateCompanyLogos
+  .map((logo) => corporateCompanies.find((company) => company.logo === logo))
+  .filter((company):company is CorporateCompany => company !== undefined);
+const mainCompanies = corporateCompanies.filter(
+  (company) => !associateCompanyLogos.includes(company.logo ?? ''),
+);
+
+type CorporateCompanyGridProps = {
+  heading:string;
+  description:string;
+  companies:CorporateCompany[];
+};
+
 export default function CorporateCompanies() {
+  return (
+    <>
+      <CorporateCompanyGrid
+        heading="Companies"
+        description="A portfolio shaped by entrepreneurship, strategic investment and long-term leadership."
+        companies={mainCompanies}
+      />
+      <CorporateCompanyGrid
+        heading="Associate Companies"
+        description="Associate companies connected through shared values, collaboration and a commitment to long-term growth."
+        companies={associateCompanies}
+      />
+    </>
+  );
+}
+
+function CorporateCompanyGrid({
+  heading,
+  description,
+  companies,
+}:CorporateCompanyGridProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const gridRef = useRef<HTMLDivElement | null>(null);
   const tileRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -658,7 +701,7 @@ export default function CorporateCompanies() {
     ? Math.min(
       Math.ceil((activeIndex + 1) / mobileColumnCount) *
         mobileColumnCount - 1,
-      corporateCompanies.length - 1,
+      companies.length - 1,
     )
     : null;
 
@@ -670,21 +713,21 @@ export default function CorporateCompanies() {
       <div className="corporate-companies-container">
         <header className="corporate-companies-heading">
 
-          <h2>Companies</h2>
+          <h2>{heading}</h2>
 
-          <p>
-            A portfolio shaped by entrepreneurship,
-            strategic investment and long-term leadership.
-          </p>
+          <p>{description}</p>
         </header>
 
         <div
           ref={gridRef}
           className="corporate-company-grid"
+          style={{
+            '--company-grid-rows':Math.ceil(companies.length / DESKTOP_COLUMNS),
+          } as CSSProperties}
           onMouseLeave={closeDesktopPreview}
           onKeyDown={handleGridKeyDown}
         >
-          {corporateCompanies.map((company,index) => {
+          {companies.map((company,index) => {
             const hasPreview = Boolean(company.preview);
             const hasLink = Boolean(company.href);
             const mark = renderCompanyMark(company);
