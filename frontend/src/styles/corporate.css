@@ -390,7 +390,7 @@
 
 .corporate-companies-container {
   width: 100%;
-  max-width: 1180px;
+  max-width: 1260px;
   margin: 0 auto;
 }
 
@@ -436,7 +436,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(5,minmax(0,1fr));
-  grid-template-rows: repeat(var(--company-grid-rows,3),110px);
+  grid-template-rows: repeat(var(--company-grid-rows,3),120px);
   border-top: 1px solid #e5e5e5;
   border-left: 1px solid #e5e5e5;
   background: #fff;
@@ -626,7 +626,7 @@ button.corporate-company-tile-action {
   margin-bottom: 4px;
   color: #fff;
   font-family: var(--sans);
-  font-size: clamp(37px,3.2vw,48px);
+  font-size: clamp(42px,3.8vw,56px);
   fonT-weight: 500;
   line-height: 0.95;
   letter-spacing: -2px;
@@ -685,7 +685,7 @@ button.corporate-company-tile-action {
   }
 
   .corporate-company-grid {
-    grid-template-rows: repeat(var(--company-grid-rows,3),100px);
+    grid-template-rows: repeat(var(--company-grid-rows,3),110px);
   }
 
   .corporate-company-logo-placeholder {
@@ -834,7 +834,7 @@ button.corporate-company-tile-action {
     display: block;
     margin-bottom: 5px;
     font-family: var(--sans);
-    font-size: clamp(36px,6vw,48px);
+    font-size: clamp(40px,7vw,54px);
     font-weight: 500;
     line-height: 0.95;
     letter-spacing: -2px;
@@ -928,7 +928,7 @@ button.corporate-company-tile-action {
   }
 
   .corporate-company-inline-preview-content strong {
-    font-size: clamp(32px,10vw,42px);
+    font-size: clamp(36px,11vw,46px);
   }
 
   .corporate-company-inline-preview-content p {
