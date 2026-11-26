@@ -52,7 +52,7 @@ const accordionItems: AccordionItem[] = [
     id: "public-relations",
     number: "03",
     title: "Public Relations",
-    role: "Philanthropy, Community & Cultural Impact",
+    role: "CSR",
     description:
       "A longstanding commitment to social service, humanitarian assistance, education, community development and cultural initiatives that support people and celebrate Sri Lankan achievement.",
     image: imageAssets.home.accordion.publicRelations,
