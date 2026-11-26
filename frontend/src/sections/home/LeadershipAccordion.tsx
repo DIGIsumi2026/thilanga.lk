@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Plus } from "lucide-react";
 import { gsap } from "gsap";
-import { animate, stagger } from "animejs";
+import { animate, stagger, type JSAnimation } from "animejs";
 import { imageAssets } from "../../assets/imageAssets";
 
 type AccordionItem = {
@@ -56,262 +56,215 @@ const accordionItems: AccordionItem[] = [
   },
 ];
 
+const hoverQuery = "(min-width: 901px) and (hover: hover) and (pointer: fine)";
+
 export default function LeadershipAccordion() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const panelsRef = useRef<(HTMLDivElement | null)[]>([]);
-  // Task 2: Active the first accordian when the section renders
-  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  const detailsRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const detailsInnerRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const previousActiveRef = useRef<number | null | undefined>(undefined);
+  const [canHover, setCanHover] = useState(() => window.matchMedia(hoverQuery).matches);
+  const [reducedMotion, setReducedMotion] = useState(() =>
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
+  const [activeIndex, setActiveIndex] = useState<number | null>(() =>
+    window.matchMedia(hoverQuery).matches ? 0 : null,
+  );
 
-  // Initialize GSAP states immediately on mount
   useEffect(() => {
-    animatePanels(0);
+    const hover = window.matchMedia(hoverQuery);
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateHover = () => {
+      setCanHover(hover.matches);
+      setActiveIndex(hover.matches ? 0 : null);
+    };
+    const updateMotion = () => setReducedMotion(motion.matches);
+    hover.addEventListener("change", updateHover);
+    motion.addEventListener("change", updateMotion);
+    return () => {
+      hover.removeEventListener("change", updateHover);
+      motion.removeEventListener("change", updateMotion);
+    };
   }, []);
 
-  // Initial Section Entrance (Anime.js)
   useEffect(() => {
-    if (!sectionRef.current) return;
+    const mobile = window.matchMedia("(max-width: 900px)");
+    const panels = sectionRef.current?.querySelectorAll<HTMLElement>(".leadership-panel");
+    let frame: number | null = null;
 
+    const updateActivePanel = () => {
+      frame = null;
+      if (!mobile.matches || !panels) return;
+
+      const readingLine = window.innerHeight * 0.5;
+      const index = Array.from(panels).findIndex((panel) => {
+        const rect = panel.getBoundingClientRect();
+        return rect.top <= readingLine && rect.bottom >= readingLine;
+      });
+
+      if (index !== -1) setActiveIndex(index);
+    };
+    const scheduleUpdate = () => {
+      if (mobile.matches && frame === null) {
+        frame = window.requestAnimationFrame(updateActivePanel);
+      }
+    };
+
+    scheduleUpdate();
+    window.addEventListener("scroll", scheduleUpdate, {passive: true});
+    mobile.addEventListener("change", scheduleUpdate);
+    return () => {
+      window.removeEventListener("scroll", scheduleUpdate);
+      mobile.removeEventListener("change", scheduleUpdate);
+      if (frame !== null) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  useEffect(() => {
     const section = sectionRef.current;
+    if (!section) return;
     const heading = section.querySelector(".leadership-heading");
     const panels = section.querySelectorAll(".leadership-panel");
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-
-        if (heading) {
-          animate(heading, {
-            opacity: [0, 1],
-            y: [30, 0],
-            duration: 800,
-            ease: "outExpo",
-          });
-        }
-
-        if (panels.length) {
-          animate(panels, {
-            opacity: [0, 1],
-            y: [45, 0],
-            delay: stagger(120),
-            duration: 900,
-            ease: "outExpo",
-          });
-        }
-
-        observer.disconnect();
-      },
-      {
-        threshold: 0.18,
-      },
-    );
-
+    const targets = heading ? [heading, ...panels] : [...panels];
+    const animations: JSAnimation[] = [];
+    if (reducedMotion) {
+      targets.forEach((element) => {
+        (element as HTMLElement).style.opacity = "1";
+        (element as HTMLElement).style.transform = "none";
+      });
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      if (heading) animations.push(animate(heading, {
+        opacity: [0, 1], translateY: [30, 0], duration: 800, ease: "outExpo",
+      }));
+      animations.push(animate(panels, {
+        opacity: [0, 1], translateY: [45, 0], delay: stagger(120),
+        duration: 900, ease: "outExpo",
+      }));
+      observer.disconnect();
+    }, {threshold: 0.08});
     observer.observe(section);
-
     return () => {
       observer.disconnect();
+      animations.forEach((animation) => animation.cancel());
     };
-  }, []);
+  }, [reducedMotion]);
 
-  // Task 4: Mobile Scroll Observer to expand panels on scroll
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (window.innerWidth > 900) return;
-
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Number((entry.target as HTMLElement).dataset.index);
-            if (!isNaN(index)) {
-              setActiveIndex(index);
-              animatePanels(index);
-            }
-          }
-        });
-      },
-      {
-        rootMargin: "-35% 0px -40% 0px",
-        threshold: 0,
-      },
-    );
-
-    panelsRef.current.forEach((panel) => {
-      if (panel) observer.observe(panel);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  // Handle Resize Cleanup
-  useEffect(() => {
-    let isMobile = window.innerWidth <= 900;
-
-    const handleResize = () => {
-      const currentIsMobile = window.innerWidth <= 900;
-      if (currentIsMobile !== isMobile) {
-        isMobile = currentIsMobile;
-
-        if (currentIsMobile) {
-          // Entering mobile mode: clean up desktop flex styles
-          gsap.killTweensOf(panelsRef.current);
-          gsap.set(panelsRef.current, { clearProps: "flexGrow,flexBasis" });
-          animatePanels(activeIndex);
-        } else {
-          // Entering desktop mode: re-apply desktop styles
-          animatePanels(activeIndex);
-        }
+  useLayoutEffect(() => {
+    const previous = previousActiveRef.current;
+    detailsRefs.current.forEach((details, index) => {
+      const inner = detailsInnerRefs.current[index];
+      if (!details || !inner) return;
+      const content = inner.querySelectorAll(".leadership-description, .leadership-cta");
+      const isActive = activeIndex === index;
+      if (reducedMotion || previous === undefined) {
+        gsap.killTweensOf([details, ...content]);
+        gsap.set(details, {height: isActive ? "auto" : 0});
+        gsap.set(content, {opacity: isActive ? 1 : 0, y: 0});
+        return;
       }
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [activeIndex]);
-
-  const animatePanels = (index: number | null) => {
-    const isDesktop = window.innerWidth > 900;
-
-    panelsRef.current.forEach((panel, panelIndex) => {
-      if (!panel) return;
-
-      const image = panel.querySelector(".leadership-panel-image");
-      const description = panel.querySelector(".leadership-description");
-      const cta = panel.querySelector(".leadership-cta");
-
-      const isActive = panelIndex === index;
-      const hasActive = index !== null;
-
-      if (isDesktop) {
-        gsap.to(panel, {
-          flexGrow: hasActive ? (isActive ? 2.4 : 0.75) : 1,
-          duration: 0.8,
-          ease: "power4.out",
-          overwrite: "auto",
-        });
-      }
-
-      if (image) {
-        gsap.to(image, {
-          scale: isActive ? 1.055 : 1,
-          duration: 0.9,
-          ease: "power3.out",
-          overwrite: "auto",
-        });
-      }
-
-      if (description) {
-        gsap.to(description, {
+      if (index !== previous && !isActive) return;
+      gsap.killTweensOf([details, ...content]);
+      gsap.to(details, {
+        height: isActive ? inner.offsetHeight : 0,
+        duration: isActive ? 0.55 : 0.4,
+        ease: "power3.out", overwrite: "auto",
+        onComplete: () => {
+          if (isActive) gsap.set(details, {height: "auto"});
+        },
+      });
+      content.forEach((element, contentIndex) => {
+        gsap.to(element, {
           opacity: isActive ? 1 : 0,
-          y: isActive ? 0 : 18,
-          duration: 0.45,
-          delay: isActive ? 0.18 : 0,
-          ease: "power3.out",
-          overwrite: "auto",
+          y: isActive ? 0 : contentIndex === 0 ? 12 : 10,
+          duration: isActive ? 0.35 : 0.25,
+          delay: isActive ? 0.1 + contentIndex * 0.06 : 0,
+          ease: "power3.out", overwrite: "auto",
         });
-      }
-
-      if (cta) {
-        gsap.to(cta, {
-          opacity: isActive ? 1 : 0,
-          y: isActive ? 0 : 14,
-          duration: 0.45,
-          delay: isActive ? 0.24 : 0,
-          ease: "power3.out",
-          overwrite: "auto",
-        });
-      }
+      });
     });
-  };
+    previousActiveRef.current = activeIndex;
+  }, [activeIndex, reducedMotion]);
 
-  const handleEnter = (index: number) => {
-    if (window.innerWidth <= 900) return;
-
-    setActiveIndex(index);
-    animatePanels(index);
-  };
-
-  const handleLeave = () => {
-    if (window.innerWidth <= 900) return;
-
-    setActiveIndex(null);
-    animatePanels(null);
-  };
-
-  const handleMobileToggle = (index: number) => {
-    if (window.innerWidth > 900) return;
-
-    const nextIndex = activeIndex === index ? null : index;
-
-    setActiveIndex(nextIndex);
-    animatePanels(nextIndex);
-  };
+  useEffect(() => () => {
+    detailsRefs.current.forEach((details) => {
+      if (!details) return;
+      gsap.killTweensOf([details, ...details.querySelectorAll(".leadership-description, .leadership-cta")]);
+    });
+  }, []);
 
   return (
     <section ref={sectionRef} className="leadership-section">
       <div className="leadership-heading">
         <span className="leadership-kicker">Leadership Across Sectors</span>
-
         <h2>
           A journey shaped by enterprise,
           <br />
           public service and social impact
         </h2>
       </div>
-
-      <div className="leadership-accordion" onMouseLeave={handleLeave}>
-        {accordionItems.map((item, index) => (
-          <div
-            key={item.id}
-            data-index={index}
-            ref={(element) => {
-              panelsRef.current[index] = element;
-            }}
-            className={`leadership-panel ${
-              activeIndex === index ? "is-active" : ""
-            }`}
-            style={
-              {
-                "--panel-accent": item.accent,
-                "--panel-glow": item.glow,
-              } as React.CSSProperties
-            }
-            onMouseEnter={() => handleEnter(index)}
-            onClick={() => handleMobileToggle(index)}
-          >
-            <div className="leadership-panel-glow" />
-
-            <div className="leadership-image-wrap">
-              <img
-                src={item.image}
-                alt={`${item.title} - Thilanga Sumathipala`}
-                className="leadership-panel-image"
-              />
-
-              <div className="leadership-image-overlay" />
-            </div>
-
-            <div className="leadership-panel-content">
-              <div className="leadership-panel-top">
-                <span className="leadership-role">{item.role}</span>
-              </div>
-
-              <div className="leadership-panel-bottom">
-                <h3>{item.title}</h3>
-
-                <p className="leadership-description">{item.description}</p>
-
-                <Link
-                  to={item.path}
-                  className="leadership-cta"
-                  onClick={(event) => event.stopPropagation()}
+      <div className="leadership-accordion">
+        {accordionItems.map((item, index) => {
+          const isActive = activeIndex === index;
+          const detailsId = `leadership-details-${item.id}`;
+          return (
+            <article
+              key={item.id}
+              className={`leadership-panel ${isActive ? "is-active" : ""}`}
+              style={{"--panel-accent": item.accent, "--panel-glow": item.glow} as React.CSSProperties}
+              onPointerEnter={(event) => {
+                if (canHover && event.pointerType === "mouse") setActiveIndex(index);
+              }}
+              onPointerLeave={(event) => {
+                if (canHover && event.pointerType === "mouse" && !event.currentTarget.contains(document.activeElement)) {
+                  setActiveIndex((current) => current === index ? null : current);
+                }
+              }}
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget)) {
+                  setActiveIndex((current) => current === index ? null : current);
+                }
+              }}
+            >
+              <h3 className="leadership-card-heading">
+                <button
+                  type="button"
+                  className="leadership-trigger"
+                  aria-expanded={isActive}
+                  aria-controls={detailsId}
+                  onClick={() => setActiveIndex((current) => current === index ? null : index)}
                 >
-                  Explore {item.title}
-                  <span>
-                    <ArrowUpRight size={15} strokeWidth={1.7} />
+                  <span className="leadership-image-wrap">
+                    <img src={item.image} alt={`${item.title} - Thilanga Sumathipala`} className="leadership-panel-image" />
+                    <span className="leadership-image-overlay" aria-hidden="true" />
                   </span>
-                </Link>
+                  <span className="leadership-panel-content">
+                    <span className="leadership-role">{item.role}</span>
+                    <span className="leadership-title">{item.title}</span>
+                    <Plus className="leadership-toggle-icon" size={19} aria-hidden="true" />
+                  </span>
+                </button>
+              </h3>
+              <div
+                ref={(element) => {detailsRefs.current[index] = element;}}
+                id={detailsId}
+                className="leadership-details"
+                inert={!isActive}
+                aria-hidden={!isActive}
+              >
+                <div ref={(element) => {detailsInnerRefs.current[index] = element;}} className="leadership-details-inner">
+                  <p className="leadership-description">{item.description}</p>
+                  <Link to={item.path} className="leadership-cta">
+                    Explore {item.title}
+                    <span><ArrowUpRight size={15} strokeWidth={1.7} /></span>
+                  </Link>
+                </div>
               </div>
-            </div>
-          </div>
-        ))}
+            </article>
+          );
+        })}
       </div>
     </section>
   );
