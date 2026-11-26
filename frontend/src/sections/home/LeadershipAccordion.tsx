@@ -1,9 +1,15 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Plus } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, Plus } from "lucide-react";
 import { gsap } from "gsap";
 import { animate, stagger, type JSAnimation } from "animejs";
 import { imageAssets } from "../../assets/imageAssets";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination, A11y } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
+import "swiper/css";
+import "swiper/css/pagination";
 
 type AccordionItem = {
   id: string;
@@ -58,7 +64,7 @@ const accordionItems: AccordionItem[] = [
 
 const hoverQuery = "(min-width: 901px) and (hover: hover) and (pointer: fine)";
 
-export default function LeadershipAccordion() {
+function LeadershipMobileAccordion() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const detailsRefs = useRef<(HTMLDivElement | null)[]>([]);
   const detailsInnerRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -265,6 +271,191 @@ export default function LeadershipAccordion() {
             </article>
           );
         })}
+      </div>
+    </section>
+  );
+}
+
+export default function LeadershipAccordion() {
+  const [isDesktop, setIsDesktop] = useState(() => window.matchMedia("(min-width: 901px)").matches);
+  const desktopIndexRef = useRef(0);
+  useEffect(() => {
+    const query = window.matchMedia("(min-width: 901px)");
+    const update = () => setIsDesktop(query.matches);
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
+  return isDesktop ? (
+    <LeadershipDesktopCarousel
+      initialIndex={desktopIndexRef.current}
+      onIndexChange={(index) => {desktopIndexRef.current = index;}}
+    />
+  ) : <LeadershipMobileAccordion />;
+}
+
+function LeadershipDesktopCarousel({initialIndex, onIndexChange}: {
+  initialIndex: number;
+  onIndexChange: (index: number) => void;
+}) {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const stageRef = useRef<HTMLDivElement | null>(null);
+  const previousRef = useRef<HTMLButtonElement | null>(null);
+  const nextRef = useRef<HTMLButtonElement | null>(null);
+  const paginationRef = useRef<HTMLDivElement | null>(null);
+  const swiperRef = useRef<SwiperType | null>(null);
+  const visibleRef = useRef(false);
+  const hoveringRef = useRef(false);
+  const focusedRef = useRef(false);
+  const revealRef = useRef<gsap.core.Tween | null>(null);
+  const [activeIndex, setActiveIndex] = useState(initialIndex);
+  const [reducedMotion, setReducedMotion] = useState(() =>
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
+
+  const syncAutoplay = useCallback(() => {
+    const swiper = swiperRef.current;
+    if (!swiper || swiper.destroyed) return;
+    const shouldPlay = visibleRef.current && !document.hidden && !reducedMotion &&
+      !hoveringRef.current && !focusedRef.current;
+    if (shouldPlay && !swiper.autoplay.running) swiper.autoplay.start();
+    if (!shouldPlay && swiper.autoplay.running) swiper.autoplay.stop();
+  }, [reducedMotion]);
+
+  useEffect(() => {
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReducedMotion(query.matches);
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      visibleRef.current = entry.isIntersecting && entry.intersectionRect.height >=
+        Math.min(entry.boundingClientRect.height * 0.4, window.innerHeight * 0.4);
+      syncAutoplay();
+    }, {threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.6, 1]});
+    observer.observe(stage);
+    document.addEventListener("visibilitychange", syncAutoplay);
+    syncAutoplay();
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", syncAutoplay);
+      swiperRef.current?.autoplay?.stop();
+    };
+  }, [syncAutoplay]);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const heading = section.querySelector<HTMLElement>(".leadership-heading");
+    const stage = stageRef.current;
+    const targets = [heading, stage].filter((element): element is HTMLElement => element !== null);
+    const animations: JSAnimation[] = [];
+    if (reducedMotion) {
+      targets.forEach((element) => {element.style.opacity = "1"; element.style.transform = "none";});
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      animations.push(animate(targets, {
+        opacity: [0, 1], translateY: [30, 0], duration: 800,
+        delay: stagger(120), ease: "outExpo",
+      }));
+      observer.disconnect();
+    }, {threshold: 0.08});
+    observer.observe(section);
+    return () => {
+      observer.disconnect();
+      animations.forEach((animation) => animation.cancel());
+    };
+  }, [reducedMotion]);
+
+  useLayoutEffect(() => {
+    const swiper = swiperRef.current;
+    const content = swiper?.slides[swiper.activeIndex]?.querySelectorAll(".leadership-desktop__item");
+    revealRef.current?.kill();
+    if (!content) return;
+    if (reducedMotion) gsap.set(content, {opacity: 1, y: 0});
+    else revealRef.current = gsap.fromTo(content, {opacity: 0, y: 14}, {
+      opacity: 1, y: 0, duration: 0.55, stagger: 0.08, ease: "power3.out", overwrite: "auto",
+    });
+    return () => {revealRef.current?.kill();};
+  }, [activeIndex, reducedMotion]);
+
+  return (
+    <section ref={sectionRef} className="leadership-section leadership-desktop">
+      <div className="leadership-heading">
+        <span className="leadership-kicker">Leadership Across Sectors</span>
+        <h2>A journey shaped by enterprise,<br />public service and social impact</h2>
+      </div>
+      <div
+        ref={stageRef}
+        className="leadership-desktop__stage"
+        onMouseEnter={() => {hoveringRef.current = true; syncAutoplay();}}
+        onMouseLeave={() => {hoveringRef.current = false; syncAutoplay();}}
+        onFocus={() => {focusedRef.current = true; syncAutoplay();}}
+        onBlur={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget)) {
+            focusedRef.current = false;
+            syncAutoplay();
+          }
+        }}
+      >
+        <button ref={previousRef} className="leadership-desktop__nav leadership-desktop__nav--previous" type="button" aria-label="Previous leadership slide"><ChevronLeft size={23} /></button>
+        <button ref={nextRef} className="leadership-desktop__nav leadership-desktop__nav--next" type="button" aria-label="Next leadership slide"><ChevronRight size={23} /></button>
+        <div ref={paginationRef} className="leadership-desktop__pagination" />
+        <Swiper
+          className="leadership-desktop__swiper"
+          modules={[Autoplay, Navigation, Pagination, A11y]}
+          initialSlide={initialIndex}
+          slidesPerView={1}
+          spaceBetween={0}
+          loop
+          speed={reducedMotion ? 0 : 850}
+          grabCursor
+          allowTouchMove
+          simulateTouch
+          autoplay={{delay: 6500, disableOnInteraction: false, pauseOnMouseEnter: true}}
+          navigation={{prevEl: previousRef.current, nextEl: nextRef.current}}
+          pagination={{
+            el: paginationRef.current, clickable: true,
+            renderBullet: (index, className) => `<button type="button" class="${className}" aria-label="Show ${accordionItems[index].title}"></button>`,
+          }}
+          onBeforeInit={(swiper) => {
+            if (typeof swiper.params.navigation === "object") {
+              swiper.params.navigation.prevEl = previousRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+            }
+            if (typeof swiper.params.pagination === "object") swiper.params.pagination.el = paginationRef.current;
+          }}
+          onSwiper={(swiper) => {swiperRef.current = swiper; syncAutoplay();}}
+          onSlideChange={(swiper) => {setActiveIndex(swiper.realIndex); onIndexChange(swiper.realIndex);}}
+          a11y={{
+            containerMessage: "Leadership across sectors",
+            slideLabelMessage: "{{index}} of {{slidesLength}}",
+            prevSlideMessage: "Previous leadership slide",
+            nextSlideMessage: "Next leadership slide",
+          }}
+        >
+          {accordionItems.map((item, index) => (
+            <SwiperSlide key={item.id} inert={activeIndex !== index} aria-hidden={activeIndex !== index}>
+              <article className="leadership-desktop__slide" style={{"--panel-accent": item.accent} as React.CSSProperties}>
+                <div className="leadership-desktop__media">
+                  <img src={item.image} alt={`${item.title} - Thilanga Sumathipala`} className="leadership-desktop__image" />
+                </div>
+                <div className="leadership-desktop__content">
+                  <span className="leadership-desktop__role leadership-desktop__item">{item.role}</span>
+                  <h3 className="leadership-desktop__item">{item.title}</h3>
+                  <span className="leadership-desktop__divider leadership-desktop__item" aria-hidden="true" />
+                  <p className="leadership-desktop__item">{item.description}</p>
+                  <Link to={item.path} className="leadership-desktop__cta leadership-desktop__item">Explore {item.title}<ArrowUpRight size={17} strokeWidth={1.7} /></Link>
+                </div>
+              </article>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </section>
   );
