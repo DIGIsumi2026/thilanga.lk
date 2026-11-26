@@ -62,7 +62,7 @@ export default function HeroSection() {
         speed={1100}
         allowTouchMove
         autoplay={{
-          delay: 12000,
+          delay: 15000,
           disableOnInteraction: false,
         }}
         fadeEffect={{
@@ -112,8 +112,6 @@ export default function HeroSection() {
               <div className="hero-content">
                 <div className="hero-copy">
                   <div className="hero-role-wrap">
-                    <span className="hero-slide-number">{slide.number}</span>
-
                     <span className="hero-role">{slide.role}</span>
                   </div>
 
