@@ -62,7 +62,7 @@ export default function HeroSection() {
         speed={1100}
         allowTouchMove
         autoplay={{
-          delay: 8000,
+          delay: 12000,
           disableOnInteraction: false,
         }}
         fadeEffect={{
