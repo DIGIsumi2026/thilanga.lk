@@ -910,7 +910,7 @@
     display: block;
     width: 48px;
     height: 1px;
-    background: var(--gold);
+    background: var(--panel-accent);
   }
 
   .leadership-desktop__content p {
@@ -956,7 +956,7 @@
     display: grid;
     place-items: center;
     padding: 0;
-    border: 1px solid rgba(201,155,59,0.45);
+    border: 1px solid var(--panel-accent);
     border-radius: 50%;
     background: #0b0e10;
     color: #fff;
@@ -972,8 +972,8 @@
   }
 
   .leadership-desktop__nav:hover {
-    border-color: var(--gold);
-    background: rgba(201,155,59,0.12);
+    border-color: var(--panel-accent);
+    background: color-mix(in srgb,var(--panel-accent) 12%,transparent);
   }
 
   .leadership-desktop__pagination {
@@ -998,13 +998,13 @@
   }
 
   .leadership-desktop__pagination .swiper-pagination-bullet-active {
-    border-color: var(--gold);
-    background: var(--gold);
+    border-color: var(--panel-accent);
+    background: var(--panel-accent);
   }
 
   .leadership-desktop button:focus-visible,
   .leadership-desktop a:focus-visible {
-    outline: 2px solid var(--gold);
+    outline: 2px solid var(--panel-accent);
     outline-offset: 5px;
   }
 }

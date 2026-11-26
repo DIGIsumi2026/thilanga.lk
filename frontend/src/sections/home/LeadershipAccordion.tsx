@@ -393,6 +393,7 @@ function LeadershipDesktopCarousel({initialIndex, onIndexChange}: {
       <div
         ref={stageRef}
         className="leadership-desktop__stage"
+        style={{"--panel-accent": accordionItems[activeIndex].accent} as React.CSSProperties}
         onMouseEnter={() => {hoveringRef.current = true; syncAutoplay();}}
         onMouseLeave={() => {hoveringRef.current = false; syncAutoplay();}}
         onFocus={() => {focusedRef.current = true; syncAutoplay();}}
