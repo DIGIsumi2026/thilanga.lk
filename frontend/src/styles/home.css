@@ -599,8 +599,8 @@
   font-family: var(--serif);
   font-size: clamp(42px,3.4vw,70px);
   font-weight: 400;
-  line-height: 1;
-  letter-spacing: -0.115px;
+  line-height: 1.13;
+  letter-spacing: -0.005px;
 }
 
 .leadership-accordion {
@@ -811,7 +811,7 @@
 
   .leadership-heading h2 {
     font-size: clamp(34px,10vw,46px);
-    letter-spacing: -1.4px;
+    letter-spacing: -0.005px;
   }
 
   .leadership-panel-content {
